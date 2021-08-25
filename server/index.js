@@ -18,7 +18,7 @@ const db = mysql.createConnection({
     else(console.log(result));
 })
 
-app.post('/create',(req,res) => {
+app.post('/create',(req,res) => { 
     console.log(req.body)   
 
     const name = req.body.name
@@ -38,6 +38,18 @@ app.post('/create',(req,res) => {
     }
     )  
 })
+
+app.get('/students',(req,res) => {
+    db.query("SELECT * FROM studentsApp", (err,result) => {
+        if (err) {
+            console.log(err);
+        }
+        else{
+            res.send(result)
+        }
+    })
+})
+
 
 app.listen(3001, () => {
     console.log('Server is running on port 3001')

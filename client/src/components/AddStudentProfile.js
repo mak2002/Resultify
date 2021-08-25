@@ -44,6 +44,7 @@ export default function AddStudentProfile() {
     const [rollno, setrollno] = useState();
     const [classname, setclassname] = useState();
     const [prn, setprn] = useState();
+    const [studentsList, setstudentsList] = useState([]);
 
     const addStudent = () => {
         Axios.post("http://localhost:3001/create", {
@@ -52,6 +53,13 @@ export default function AddStudentProfile() {
             classname: classname,
             prn: prn,
           }).then(() => {console.log('success')})
+    }
+
+    const getStudents = () => {
+        Axios.get("http://localhost:3001/students").then((response) => {
+        {console.log(response.data)}
+        setstudentsList(response.data)
+        })
     }
 
         return (
@@ -71,6 +79,7 @@ export default function AddStudentProfile() {
             <Button variant="contained" color="primary"  className={classes.btn} onClick={addStudent}>
                 Add
             </Button>
+            <Button variant="contained" color="primary"  className={classes.btn} onClick={getStudents}>Get Students</Button>
             </form>
 
          </Grid>
