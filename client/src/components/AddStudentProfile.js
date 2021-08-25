@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import Axios from 'axios'
 
 const useStyles = makeStyles({
     root:{
@@ -44,7 +45,16 @@ export default function AddStudentProfile() {
     const [classname, setclassname] = useState();
     const [prn, setprn] = useState();
 
-    return (
+    const addStudent = () => {
+        Axios.post("http://localhost:3001/create", {
+            name: name,
+            rollno: rollno,
+            classname: classname,
+            prn: prn,
+          }).then(() => {console.log('success')})
+    }
+
+        return (
         <div className={classes.root}>
 
          <Grid className={classes.grid}>
@@ -58,7 +68,7 @@ export default function AddStudentProfile() {
             <TextField onChange={(e) => { setrollno(e.target.value) } } className={classes.textfield} label='Students Roll No'/>
             <TextField onChange={(e) => { setclassname(e.target.value) } } className={classes.textfield} label='Students Class'/>
             <TextField onChange={(e) => { setprn(e.target.value) } } className={classes.textfield} label='Students PRN'/>
-            <Button variant="contained" color="primary"  className={classes.btn} onClick={() => console.log(name,rollno,classname,prn)}>
+            <Button variant="contained" color="primary"  className={classes.btn} onClick={addStudent}>
                 Add
             </Button>
             </form>
