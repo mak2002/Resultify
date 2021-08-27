@@ -58,6 +58,11 @@ export default function Layout({ children }) {
             path : '/'
         },
         {
+            text: "Students List",
+            icon : <SubjectOutlined color="primary" />,
+            path : '/studentsList'
+        },
+        {
             text: "Add Results",
             icon : <AddCircleOutlineOutlined color="primary" />,
             path : '/addResults'
@@ -70,14 +75,13 @@ export default function Layout({ children }) {
         {
             text: "Charts",
             icon : <SubjectOutlined color="primary" />,
-            path : '/seeMarks'
+            path : '/charts'
         },
         {
             text: "Merit Result",
             icon : <SubjectOutlined color="primary" />,
-            path : '/seeMarks'
-        },
-
+            path : '/meritResult'
+        }
     ]
 
     const classes = useStyles()

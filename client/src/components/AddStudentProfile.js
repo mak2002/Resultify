@@ -4,6 +4,9 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
 import Axios from 'axios'
 
 const useStyles = makeStyles({
@@ -33,6 +36,9 @@ const useStyles = makeStyles({
     form:{
         display: 'flex',
         flexWrap: 'wrap'
+    },
+    select:{
+        minWidth: '250px',
     }
     
 })
@@ -45,6 +51,7 @@ export default function AddStudentProfile() {
     const [classname, setclassname] = useState();
     const [prn, setprn] = useState();
     const [studentsList, setstudentsList] = useState([]);
+    const [menuValue, setmenuValue] = useState('');
 
     const addStudent = () => {
         Axios.post("http://localhost:3001/create", {
@@ -62,6 +69,11 @@ export default function AddStudentProfile() {
         })
     }
 
+    const handleChange = (e) => {
+        setmenuValue(e.target.value)
+        setclassname(e.target.value)
+    }
+
         return (
         <div className={classes.root}>
 
@@ -74,7 +86,18 @@ export default function AddStudentProfile() {
             <form className={classes.form}>
             <TextField onChange={(e) => { setname(e.target.value) } } className={classes.textfield} label='Students Name'/>
             <TextField onChange={(e) => { setrollno(e.target.value) } } className={classes.textfield} label='Students Roll No'/>
-            <TextField onChange={(e) => { setclassname(e.target.value) } } className={classes.textfield} label='Students Class'/>
+            
+            {/* <InputLabel>Class</InputLabel> */}
+            
+            {<label>Class</label>}
+            <Select value={menuValue} className={classes.select} onChange={handleChange} disableUnderline>
+                <MenuItem value={'class1'}>Class 1</MenuItem>
+                <MenuItem value={'class2'}>Class 2</MenuItem>
+                <MenuItem value={'class3'}>Class 3</MenuItem>
+                <MenuItem value={'class4'}>Class 4</MenuItem>
+            </Select>
+
+            {/* <TextField onChange={(e) => { setclassname(e.target.value) } } className={classes.textfield} label='Students Class'/> */}
             <TextField onChange={(e) => { setprn(e.target.value) } } className={classes.textfield} label='Students PRN'/>
             <Button variant="contained" color="primary"  className={classes.btn} onClick={addStudent}>
                 Add

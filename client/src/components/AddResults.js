@@ -9,7 +9,7 @@ export default function AddResults() {
 
     return (
         <div >
-
+            <h1>Add Results</h1>
         </div>
     )
 }
