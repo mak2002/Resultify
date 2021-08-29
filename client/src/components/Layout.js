@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core'
+import { makeStyles, Paper } from '@material-ui/core'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
 import List from '@material-ui/core/List'
@@ -9,6 +9,9 @@ import ListItemText from '@material-ui/core/ListItemText'
 import { SubjectOutlined, AddCircleOutlineOutlined } from '@material-ui/icons'
 import RepeatIcon from '@material-ui/icons/Repeat';
 import { useHistory, useLocation } from 'react-router'
+import TypographyLayout from './TypographyLayout'
+import CssBaseline from "@material-ui/core/CssBaseline"
+import { ThemeProvider } from '@material-ui/core'
 
 export default function Layout({ children }) {
 
@@ -89,28 +92,30 @@ export default function Layout({ children }) {
     const loc = useLocation()
     return (
         <div className={classes.main}>
-        <Drawer className={classes.drawer} variant="permanent" anchor="left" 
-        classes={{paper: classes.drawerPaper}}>
+            <Drawer className={classes.drawer} variant="permanent" anchor="left" 
+            classes={{paper: classes.drawerPaper}}>
 
-            <List className={classes.list}>
-                {menuItems.map((item) => (
-                 <ListItem 
-                 button
-                 key={item.text}
-                 onClick={() => history.push(item.path)}
-                 className={loc.pathname == item.path ? classes.active : null }
-                 >
-                     <ListItemIcon>{item.icon}</ListItemIcon>
-                     <ListItemText primary={item.text}/>
-                 </ListItem> 
-                ))}
-            </List>
+                <List className={classes.list}>
+                    {menuItems.map((item) => (
+                        <ListItem 
+                        button
+                                key={item.text}
+                                onClick={() => history.push(item.path)}
+                                className={loc.pathname == item.path ? classes.active : null }
+                                >
+                                <ListItemIcon>{item.icon}</ListItemIcon>
+                                <ListItemText>
+                                    <TypographyLayout text={item.text}/>
+                                </ListItemText>
+                            </ListItem> 
+                    ))}
+                </List>
 
-        </Drawer>
-
+            </Drawer>
             <div className={classes.page}>
                 { children }
             </div>
         </div>
+        
     )
 }

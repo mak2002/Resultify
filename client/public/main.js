@@ -6,7 +6,10 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      webSecurity: true,
+      nodeIntegration: false,
+      contextIsolation: true,
+      enableRemoteModule: false,
     }
   })
 
@@ -39,6 +42,21 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+// ipc.on('open-file-dialog-for-file', function (event) {
+//   if(os.platform() === 'linux' || os.platform() === 'win32'){
+//      dialog.showOpenDialog({
+//          properties: ['openFile']
+//      }, function (files) {
+//         if (files) event.sender.send('selected-file', files[0]);
+//      });
+//  } else {
+//      dialog.showOpenDialog({
+//          properties: ['openFile', 'openDirectory']
+//      }, function (files) {
+//          if (files) event.sender.send('selected-file', files[0]);
+//      });
+//  }});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

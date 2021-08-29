@@ -46,6 +46,8 @@ const useStyles = makeStyles({
 export default function AddStudentProfile() {
     const classes = useStyles();
 
+    
+
     const [name, setname] = useState();
     const [rollno, setrollno] = useState();
     const [classname, setclassname] = useState();

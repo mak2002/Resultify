@@ -9,24 +9,55 @@ import AddResults from './components/AddResults'
 import ShowMarks from './components/ShowMarks'
 import AddStudentProfile from './components/AddStudentProfile'
 import StudentsList from './components/StudentsList';
+import { ThemeProvider, Paper } from '@material-ui/core'
+import { createTheme } from '@material-ui/core/styles';
+import CssBaseline from "@material-ui/core/CssBaseline"
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      type: 'dark',
+    }
+  })
+
   return (
     <div className="App">
       <Router>
+          <ThemeProvider theme={theme}>
+          <CssBaseline />
         <Layout>
           <Switch>
           
-          <Route exact path="/">
-            <AddStudentProfile  />
-          </Route>
 
-          <Route path="/studentsList">
-            <StudentsList />
-          </Route>
+            <Route exact path="/">
+              <Paper>
+                <AddStudentProfile  />
+              </Paper>
+            </Route>
+
+            <Route path="/studentsList">
+              <Paper>
+              <StudentsList />
+              </Paper>
+            </Route>
+
+            <Route path="/addResults">
+              <Paper>
+                <AddResults />
+              </Paper>
+            </Route>
+
+            <Route path="/seeMarks">
+              <Paper>
+                <ShowMarks />
+              </Paper>
+            </Route>
+
 
           </Switch>
         </Layout>
+          </ThemeProvider>
       </Router>
     </div>
   );
