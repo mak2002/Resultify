@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react'
 import Layout from './components/Layout'
 import AddResults from './components/AddResults'
 import ShowMarks from './components/ShowMarks'
+import Charts from './components/Charts'
 import AddStudentProfile from './components/AddStudentProfile'
 import StudentsList from './components/StudentsList';
 import { ThemeProvider, Paper } from '@material-ui/core'
@@ -51,6 +52,12 @@ function App() {
             <Route path="/seeMarks">
               <Paper>
                 <ShowMarks />
+              </Paper>
+            </Route>
+
+            <Route>
+              <Paper>
+                <Charts />
               </Paper>
             </Route>
 

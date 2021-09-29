@@ -6,10 +6,12 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json())
 
+
+
 const db = mysql.createConnection({
     user: 'root',
     host:'localhost',
-    password:'',
+    // password:'',
     database:'studentsAppSystem',
 }, (err, result) => {
     if (err) {
@@ -50,6 +52,87 @@ app.get('/students',(req,res) => {
     })
 })
 
+
+var semester
+var classname
+
+// results
+
+app.put('/resultsbody', (req,res) => {
+    console.log(req.body)
+
+    semester = req.body.semester
+    classname = req.body.classname
+})
+
+app.get('/results',(req,res) => {
+    db.query("SELECT * FROM Sem2", (err,result) => {
+        if(err) {
+            console.log(err);
+        }
+        else{
+            res.send(result)
+        }
+    })
+})
+
+app.get('/results1',(req,res) => {
+    db.query("SELECT * FROM Sem1", (err,result) => {
+        if(err) {
+            console.log(err);
+        }
+        else{
+            res.send(result)
+        }
+    })
+})
+
+app.get('/results3',(req,res) => {
+    db.query("SELECT * FROM Sem3", (err,result) => {
+        if(err) {
+            console.log(err);
+        }
+        else{
+            res.send(result)
+        }
+    })
+})
+
+app.get('/results4',(req,res) => {
+    db.query("SELECT * FROM Sem4", (err,result) => {
+        if(err) {
+            console.log(err);
+        }
+        else{
+            res.send(result)
+        }
+    })
+})
+
+var semarray = []
+
+app.get('/getindividualresults', (req,res) => {
+    db.query("SELECT * FROM Sem2 LIMIT 10,1", (err,result) => {
+        if(err) {
+            console.log(err);
+        }
+        else{
+            res.send(result)
+        }
+    })
+})
+// app.get('/results',(req,res) => {
+//     db.query("SELECT * FROM Sem2", (err,result) => {
+//         if (err) {
+//             console.log(err);
+//         }
+//         else{
+//             res.send(result)
+//         }
+//     })
+// })
+
+
 app.put('/update', (req,res) => {
     const id = req.body.id
     const column = req.body.column
@@ -67,8 +150,6 @@ app.put('/update', (req,res) => {
     }
 )
 })
-
-
 
 app.listen(3001, () => {
     console.log('Server is running on port 3001')

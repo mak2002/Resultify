@@ -80,11 +80,6 @@ export default function Layout({ children }) {
             icon : <SubjectOutlined color="primary" />,
             path : '/charts'
         },
-        {
-            text: "Merit Result",
-            icon : <SubjectOutlined color="primary" />,
-            path : '/meritResult'
-        }
     ]
 
     const classes = useStyles()

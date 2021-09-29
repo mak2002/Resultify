@@ -9,6 +9,9 @@ const useStyles = makeStyles({
     root:{
         // backgroundColor:'#9b9b9b',
         height:'100vh',
+    },
+    datagrid:{
+        height:'100vh',
     }
 })
 
@@ -59,10 +62,6 @@ export default function StudentsList() {
     ]
 
 
-    // useEffect(() => {
-    //         Axios.get("http://localhost:3001/students").then((response) => response.data.json).then((response) => {settableData(response)})
-    //     },[])
-
     useEffect(() => {
         Axios.get("http://localhost:3001/students").then((response) => response.data).then((response) => {settableData(response)});
     })
@@ -92,9 +91,10 @@ export default function StudentsList() {
         </Dialog>
 
         <DataGrid
+        className={classes.datagrid}
         rows={tableData}
         columns={columns}
-        pageSize={5}
+        pageSize={25}
         disableSelectionOnClick
         onRowDoubleClick={(item) => {setcurrentRow(item.row)}}
         editRowsModel={editRowsModel}

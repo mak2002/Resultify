@@ -20,7 +20,7 @@ const useStyles = makeStyles({
         // backgroundColor: '#ffffff',
     },
     grid:{
-        width: '850px',
+        width: '900px',
         margin:'20px auto',
     },
     grid2:{
@@ -38,15 +38,13 @@ const useStyles = makeStyles({
         flexWrap: 'wrap'
     },
     select:{
-        minWidth: '250px',
+        minWidth: '150px',
     }
     
 })
 
 export default function AddStudentProfile() {
     const classes = useStyles();
-
-    
 
     const [name, setname] = useState();
     const [rollno, setrollno] = useState();
