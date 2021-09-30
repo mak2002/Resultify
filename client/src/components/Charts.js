@@ -49,10 +49,15 @@ export default function Charts() {
     const [sem2,setsem2] = useState();
     const [sem3,setsem3] = useState();
     const [sem4,setsem4] = useState();
+    const [allSems,setallSems] = useState();
+
+    const [totalMarks, settotalMarks] = useState()
 
     var studentDetailsTrue = false
+    var totalMarksList = [];
 
     useEffect(() => {
+
 
         Axios.get("http://localhost:3001/results")
         .then((response) => response.data)
@@ -93,6 +98,7 @@ export default function Charts() {
         .then((response) => {setsem2(response);console.log('total result: ',response)})
 
 
+        setallSems([sem1,sem2,sem3,sem4])
         return individualStudents;  
 
 
@@ -106,6 +112,7 @@ export default function Charts() {
     const [menuValueSemester, setmenuValueSemester] = useState('')
     const [semester, setsemester] = useState('');
     const [classname, setclassname] = useState('');
+    const [rollno,setrollno] = useState();
 
     var individualStudents = []
 
@@ -119,13 +126,26 @@ export default function Charts() {
         setmenuValueSemester(e.target.value)
         setsemester(e.target.value)
     }
-
+    
+    const handleRollNoChange = (e) => {
+        setrollno(e.target.value)
+    }
     var dataappend = [];
 
     const handleClick = () => {
         console.log('clicked')
-        console.log(dataappend)
+        allSems.map((item) => {
+            // console.log('Item: ',item)
+            totalMarksList.push(item[rollno-1001].total) 
+            console.log(item[rollno-1001].total)
+            console.log(totalMarksList)
+            setstudentDetails(totalMarksList)
+            // totalMarksList.push(item[rollno-1001].total)
+            // console.log('totalMarksList: ',totalMarksList)
+            // console.log(totalMarksList)
+        })
     }
+
 
     
     const getStudentsData = async () => {
@@ -181,19 +201,24 @@ export default function Charts() {
         <div>
             <Typography variant="h3" color="secondary">Charts</Typography>
 
-
-            <Select value={menuValueClass || ''} className={classes.select} onChange={handleChangeClass} disableUnderline>
-                <MenuItem value={'class1'}>Class 1</MenuItem>
-                <MenuItem value={'class2'}>Class 2</MenuItem>
-                <MenuItem value={'class3'}>Class 3</MenuItem>
-                <MenuItem value={'class4'}>Class 4</MenuItem>
-            </Select>
-
-            <Select value={menuValueSemester || ''} className={classes.select} onChange={handleChangeSemester} disableUnderline>
+            {/* <Select value={menuValueSemester || ''} className={classes.select} onChange={handleChangeSemester} disableUnderline placeholder="Class1">
                 <MenuItem value={'Sem1'}>Sem 1</MenuItem>
                 <MenuItem value={'Sem2'}>Sem 2</MenuItem>
                 <MenuItem value={'Sem3'}>Sem 3</MenuItem>
                 <MenuItem value={'Sem4'}>Sem 4</MenuItem>
+            </Select> */}
+
+            <Select className={classes.select} disableUnderline label="Roll No" onChange={handleRollNoChange}> 
+                <MenuItem value={1001}>1001</MenuItem>
+                <MenuItem value={1002}>1002</MenuItem>
+                <MenuItem value={1003}>1003</MenuItem>
+                <MenuItem value={1004}>1004</MenuItem>
+                <MenuItem value={1005}>1005</MenuItem>
+                <MenuItem value={1006}>1006</MenuItem>
+                <MenuItem value={1007}>1007</MenuItem>
+                <MenuItem value={1008}>1008</MenuItem>
+                <MenuItem value={1009}>1009</MenuItem>
+                <MenuItem value={1010}>1010</MenuItem>
             </Select>
 
             <Button onClick={handleClick}>Get Marks</Button>

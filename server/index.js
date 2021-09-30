@@ -66,7 +66,7 @@ app.put('/resultsbody', (req,res) => {
 })
 
 app.get('/results',(req,res) => {
-    db.query("SELECT * FROM Sem2", (err,result) => {
+    db.query("SELECT * FROM Temp2", (err,result) => {
         if(err) {
             console.log(err);
         }
@@ -77,7 +77,7 @@ app.get('/results',(req,res) => {
 })
 
 app.get('/results1',(req,res) => {
-    db.query("SELECT * FROM Sem1", (err,result) => {
+    db.query("SELECT * FROM Temp1", (err,result) => {
         if(err) {
             console.log(err);
         }
@@ -88,7 +88,7 @@ app.get('/results1',(req,res) => {
 })
 
 app.get('/results3',(req,res) => {
-    db.query("SELECT * FROM Sem3", (err,result) => {
+    db.query("SELECT * FROM Temp3", (err,result) => {
         if(err) {
             console.log(err);
         }
@@ -99,7 +99,7 @@ app.get('/results3',(req,res) => {
 })
 
 app.get('/results4',(req,res) => {
-    db.query("SELECT * FROM Sem4", (err,result) => {
+    db.query("SELECT * FROM Temp4", (err,result) => {
         if(err) {
             console.log(err);
         }
