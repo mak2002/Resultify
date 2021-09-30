@@ -32,9 +32,7 @@ export default function StudentsList() {
 
     const handleCellEditCommit = React.useCallback(
     ({ id, field, value }) => {
-        // field = field.replace(/^"(.*)"$/, '$1');
         console.log(field , value)
-        // console.log(id, field.replace(/^"(.*)"$/, '$1'), value.replace(/^"(.*)"$/, '$1'))
         Axios.put("http://localhost:3001/update", {column: field, cellValue: value, id: id}).then((response) => {
             alert(response)
         })      

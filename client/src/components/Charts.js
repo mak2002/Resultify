@@ -44,7 +44,7 @@ const useStyles = makeStyles({
 
 export default function Charts() {
 
-    const [studentDetails,setstudentDetails] = useState([10])
+    const [studentDetails,setstudentDetails] = useState([10,20,30,40])
     const [sem1,setsem1] = useState();
     const [sem2,setsem2] = useState();
     const [sem3,setsem3] = useState();
@@ -53,7 +53,13 @@ export default function Charts() {
 
     const [totalMarks, settotalMarks] = useState()
 
-    var studentDetailsTrue = false
+    const [menuValueClass, setmenuValueClass] = useState('');
+    const [menuValueSemester, setmenuValueSemester] = useState('')
+    const [semester, setsemester] = useState('');
+    const [classname, setclassname] = useState('');
+    const [rollno,setrollno] = useState(1001);
+    const [studentName, setstudentName] = useState()
+
     var totalMarksList = [];
 
     useEffect(() => {
@@ -77,28 +83,13 @@ export default function Charts() {
         .then((response) => response.data)
         .then((response) => {setsem4(response);console.log('total result4: ',response)})
 
-
-    
-        Axios.get("http://localhost:3001/getindividualresults")
-            .then((response) => (response.data))
-            .then((response) => { 
-            // console.log(response)
-            individualStudents.push(response[0].subject1) 
-            individualStudents.push(response[0].subject2) 
-            individualStudents.push(response[0].subject3) 
-            individualStudents.push(response[0].subject4)
-            
-            console.log('useEffect individualStudents: ',individualStudents)
-            setstudentDetails(individualStudents)
-        })
-        studentDetailsTrue = true
-
         Axios.get("http://localhost:3001/results")
         .then((response) => response.data)
         .then((response) => {setsem2(response);console.log('total result: ',response)})
 
 
         setallSems([sem1,sem2,sem3,sem4])
+        console.log('allSems: ',allSems)
         return individualStudents;  
 
 
@@ -108,11 +99,7 @@ export default function Charts() {
 
     var data1
 
-    const [menuValueClass, setmenuValueClass] = useState('');
-    const [menuValueSemester, setmenuValueSemester] = useState('')
-    const [semester, setsemester] = useState('');
-    const [classname, setclassname] = useState('');
-    const [rollno,setrollno] = useState();
+   
 
     var individualStudents = []
 
@@ -129,57 +116,24 @@ export default function Charts() {
     
     const handleRollNoChange = (e) => {
         setrollno(e.target.value)
+        setallSems([sem1,sem2,sem3,sem4])
+
     }
-    var dataappend = [];
+    var totalValue;
 
     const handleClick = () => {
+        setallSems([sem1,sem2,sem3,sem4])
         console.log('clicked')
-        allSems.map((item) => {
-            // console.log('Item: ',item)
-            totalMarksList.push(item[rollno-1001].total) 
-            console.log(item[rollno-1001].total)
-            console.log(totalMarksList)
+        allSems.map(allsem => {
+            totalValue = allsem[rollno-1001].total
+            totalMarksList.push(totalValue) 
             setstudentDetails(totalMarksList)
-            // totalMarksList.push(item[rollno-1001].total)
-            // console.log('totalMarksList: ',totalMarksList)
-            // console.log(totalMarksList)
+            setstudentName(allsem[rollno-1001].name)
         })
-    }
-
-
-    
-    const getStudentsData = async () => {
-        var data2 = [1,2,3,10]
-        var data3;
-        Axios.get("http://localhost:3001/getindividualresults")
-        .then((response) => (response.data))
-        .then((response) => { 
-        console.log('console response: ',response[0].subject1)
-        individualStudents.push(response[0].subject1) 
-        individualStudents.push(response[0].subject2) 
-        individualStudents.push(response[0].subject3) 
-        individualStudents.push(response[0].subject4)
-        
-        console.log('individualStudents: ',individualStudents)
-        setstudentDetails(individualStudents)
-    })
-    return individualStudents;  
-    }
-
-    var handleClickVariable;
-
-    const getChartData = () => {
-        console.log('getChartData 2')
-        let students_data = getStudentsData()
-        students_data.then(function(result) {
-            console.log('result: ',result)
-            return result;
-        })
-        // console.log('students_data: ',students_data)
     }
 
     const data = {
-        labels: ['1', '2', '3', '4'],
+        labels: ['Sem1', 'Sem2', 'Sem3', 'Sem4'],
         datasets: [
           {
             label: '# of Votes',
@@ -193,22 +147,13 @@ export default function Charts() {
 
       var datalength = false;
 
-      if(dataappend.length > 0) {
-        datalength = true
-      }
-
     return (
+        
         <div>
+            
             <Typography variant="h3" color="secondary">Charts</Typography>
 
-            {/* <Select value={menuValueSemester || ''} className={classes.select} onChange={handleChangeSemester} disableUnderline placeholder="Class1">
-                <MenuItem value={'Sem1'}>Sem 1</MenuItem>
-                <MenuItem value={'Sem2'}>Sem 2</MenuItem>
-                <MenuItem value={'Sem3'}>Sem 3</MenuItem>
-                <MenuItem value={'Sem4'}>Sem 4</MenuItem>
-            </Select> */}
-
-            <Select className={classes.select} disableUnderline label="Roll No" onChange={handleRollNoChange}> 
+            <Select className={classes.select} value={rollno} disableUnderline label="Roll No" onChange={handleRollNoChange}> 
                 <MenuItem value={1001}>1001</MenuItem>
                 <MenuItem value={1002}>1002</MenuItem>
                 <MenuItem value={1003}>1003</MenuItem>
@@ -223,7 +168,9 @@ export default function Charts() {
 
             <Button onClick={handleClick}>Get Marks</Button>
 
-            {/* {studentDetails.length > 0 ? <Line data={data} options={{ maintainAspectRatio: true}} height={10} width={20}/> : null} */}
+            <Typography variant="h4" color="secondary">{studentName}</Typography>
+
+
             <Line data={data} options={{ maintainAspectRatio: true}} height={10} width={20}/>
         
         </div>
