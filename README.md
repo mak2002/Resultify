@@ -4,7 +4,7 @@
 
 ### It can also help us to visualize Students Semester wise performance with the help of Graph.
 
-Tech Used
+### Tech Used :
 
 - ## Front End : React , Material UI for styling
     
@@ -17,16 +17,16 @@ There are 5 section to this.
 
 1.  Add Student Profile
     - Which added Students Details like Name, Roll.No etc. to the local Database
-    - img
+    - <img src="client/images/screenshot1.png" > 
 2.  Students List
     - It shows the Students List added in above which is fetched from local database
-    - img
+    - <img src="client/images/Screenshot2.png" >
 3.  (Feature to be Implemented) Add Results
     - Add Students Results via CSV File
-    - img
+    - <img src="client/images/S3.png" >
 4.  Show Marks
     - Show the marks of Students added via above step. For demo purposes ii is already in the database
-    - img
+    - <img src="client/images/s4.png" >
 5.  Charts
-    - You can select Roll.No of student to get the Line Chart for students' performance for all 4 Semesters
-    - img
+    - You can select Roll.No of student from dropdown menu to get the Line Chart for students' performance for all 4 Semesters
+    - <img src="client/images/s5.png" >
