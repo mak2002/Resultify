@@ -64,7 +64,7 @@ export default function Charts() {
 
     useEffect(() => {
 
-
+        // fetch all Semesters results and store them in their respective variables
         Axios.get("http://localhost:3001/results")
         .then((response) => response.data)
         .then((response) => {

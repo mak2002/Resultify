@@ -20,6 +20,7 @@ const db = mysql.createConnection({
     else(console.log(result));
 })
 
+// add a student to database
 app.post('/create',(req,res) => { 
     console.log(req.body)   
 
@@ -41,6 +42,7 @@ app.post('/create',(req,res) => {
     )  
 })
 
+// get list of all the students in the database
 app.get('/students',(req,res) => {
     db.query("SELECT * FROM studentsApp", (err,result) => {
         if (err) {
@@ -65,6 +67,7 @@ app.put('/resultsbody', (req,res) => {
     classname = req.body.classname
 })
 
+// get semester 2 result
 app.get('/results',(req,res) => {
     db.query("SELECT * FROM Temp2", (err,result) => {
         if(err) {
@@ -76,6 +79,7 @@ app.get('/results',(req,res) => {
     })
 })
 
+// get semester 1 result
 app.get('/results1',(req,res) => {
     db.query("SELECT * FROM Temp1", (err,result) => {
         if(err) {
@@ -87,6 +91,7 @@ app.get('/results1',(req,res) => {
     })
 })
 
+// get semester 3 result
 app.get('/results3',(req,res) => {
     db.query("SELECT * FROM Temp3", (err,result) => {
         if(err) {
@@ -98,6 +103,7 @@ app.get('/results3',(req,res) => {
     })
 })
 
+// get semester 4 result
 app.get('/results4',(req,res) => {
     db.query("SELECT * FROM Temp4", (err,result) => {
         if(err) {
@@ -121,18 +127,10 @@ app.get('/getindividualresults', (req,res) => {
         }
     })
 })
-// app.get('/results',(req,res) => {
-//     db.query("SELECT * FROM Sem2", (err,result) => {
-//         if (err) {
-//             console.log(err);
-//         }
-//         else{
-//             res.send(result)
-//         }
-//     })
-// })
 
 
+
+// feature to be implemented
 app.put('/update', (req,res) => {
     const id = req.body.id
     const column = req.body.column

@@ -53,7 +53,6 @@ export default function ShowMarks() {
         {field: 'subject2', headerName: 'Subject2', width: 170, editable: true},
         {field: 'subject3', headerName: 'Subject3', width: 170, editable: true},
         {field: 'subject4', headerName: 'Subject4', width: 170, editable: true},
-        // {field: 'semester', headerName: 'Semester', width: 200, editable: true},
     ]
 
     const [tableData, settableData] = useState([]);
@@ -61,6 +60,7 @@ export default function ShowMarks() {
     const [classname, setclassname] = useState('');
     const [semester, setsemester] = useState('');
     
+    // setting class and semester values
     const [menuValueClass, setmenuValueClass] = useState('');
     const [menuValueSemester, setmenuValueSemester] = useState('')
 
@@ -79,9 +79,8 @@ export default function ShowMarks() {
     }
 
     const handleClick = (e) => {
-        // fetch marks from marks
-        
 
+        // fetch marks from marks
         Axios.put("http://localhost:3001/resultsbody", {
             semester : semester,
             classname : classname,
@@ -119,11 +118,13 @@ export default function ShowMarks() {
             columns={columns}
             pageSize={5}
             disableSelectionOnClick
-            // onRowDoubleClick={(item) => {setcurrentRow(item.row)}}
-            // editRowsModel={editRowsModel}
-            // onEditRowsModelChange={handleEditRowsModelChange}
-            // onCellEditCommit={handleCellEditCommit}
-            // cellDoubleClick={setdialogState(true)}
+            // feature to be implemented 
+
+                // onRowDoubleClick={(item) => {setcurrentRow(item.row)}}
+                // editRowsModel={editRowsModel}
+                // onEditRowsModelChange={handleEditRowsModelChange}
+                // onCellEditCommit={handleCellEditCommit}
+                // cellDoubleClick={setdialogState(true)}
             />
         </div>
     )

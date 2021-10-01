@@ -17,7 +17,6 @@ const useStyles = makeStyles({
         alignItems: 'center',
         height:'100vh',
         maxHeight:'100vh',
-        // backgroundColor: '#ffffff',
     },
     grid:{
         width: '900px',
@@ -53,6 +52,7 @@ export default function AddStudentProfile() {
     const [studentsList, setstudentsList] = useState([]);
     const [menuValue, setmenuValue] = useState('');
 
+    // add student to local database
     const addStudent = () => {
         Axios.post("http://localhost:3001/create", {
             name: name,
@@ -62,6 +62,7 @@ export default function AddStudentProfile() {
           }).then(() => {console.log('success')})
     }
 
+    // fetching students details and storing it in studentsList
     const getStudents = () => {
         Axios.get("http://localhost:3001/students").then((response) => {
         {console.log(response.data)}
@@ -87,8 +88,6 @@ export default function AddStudentProfile() {
             <TextField onChange={(e) => { setname(e.target.value) } } className={classes.textfield} label='Students Name'/>
             <TextField onChange={(e) => { setrollno(e.target.value) } } className={classes.textfield} label='Students Roll No'/>
             
-            {/* <InputLabel>Class</InputLabel> */}
-            
             {<label>Class</label>}
             <Select value={menuValue} className={classes.select} onChange={handleChange} disableUnderline>
                 <MenuItem value={'class1'}>Class 1</MenuItem>
@@ -97,12 +96,10 @@ export default function AddStudentProfile() {
                 <MenuItem value={'class4'}>Class 4</MenuItem>
             </Select>
 
-            {/* <TextField onChange={(e) => { setclassname(e.target.value) } } className={classes.textfield} label='Students Class'/> */}
             <TextField onChange={(e) => { setprn(e.target.value) } } className={classes.textfield} label='Students PRN'/>
             <Button variant="contained" color="primary"  className={classes.btn} onClick={addStudent}>
                 Add
             </Button>
-            <Button variant="contained" color="primary"  className={classes.btn} onClick={getStudents}>Get Students</Button>
             </form>
 
          </Grid>

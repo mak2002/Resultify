@@ -1,6 +1,5 @@
 import './App.css';
 import {BrowserRouter as Router , Switch, Route} from 'react-router-dom';
-// import { BrowserRouter as Switch, Route, Router } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 import Layout from './components/Layout'
 import AddResults from './components/AddResults'
@@ -53,7 +52,7 @@ function App() {
               </Paper>
             </Route>
 
-            <Route>
+            <Route path="/charts">
               <Paper>
                 <Charts />
               </Paper>
