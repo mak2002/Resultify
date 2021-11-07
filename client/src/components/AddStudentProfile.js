@@ -54,12 +54,14 @@ export default function AddStudentProfile() {
 
     // add student to local database
     const addStudent = () => {
-        Axios.post("http://localhost:3001/create", {
-            name: name,
-            rollno: rollno,
-            classname: classname,
-            prn: prn,
-          }).then(() => {console.log('success')})
+        // Axios.post("http://localhost:3001/create", {
+        //     name: name,
+        //     rollno: rollno,
+        //     classname: classname,
+        //     prn: prn,
+        //   }).then(() => {console.log('success')})
+
+        Axios.get("http://localhost:5000/todos").then((response) => {console.log('success', response.data)})
     }
 
     // fetching students details and storing it in studentsList
