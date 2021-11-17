@@ -1,105 +1,209 @@
-import React, { useState, useEffect } from 'react'
-import Axios from 'axios'
-import { DataGrid } from '@material-ui/data-grid';
-import { makeStyles } from '@material-ui/styles';
-import {Container, Paper, Box, Button, Dialog, DialogActions, DialogTitle, DialogContent,} from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import { DataGrid } from "@material-ui/data-grid";
+import { makeStyles } from "@material-ui/styles";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
+import {
+  Container,
+  Paper,
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  DialogContent,
+} from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles({
-    root:{
-        // backgroundColor:'#9b9b9b',
-        height:'100vh',
-    },
-    datagrid:{
-        height:'100vh',
-    }
-})
+  root: {
+    // backgroundColor:'#9b9b9b',
+    height: "100vh",
+  },
+  datagrid: {
+    height: "100vh",
+  },
+  select: {
+    minWidth: "150px",
+  },
+});
 
 export default function StudentsList() {
+  const classes = useStyles();
 
-    const classes = useStyles()
+  const [tableData, settableData] = useState([]);
+  const [dialogState, setdialogState] = useState();
+  const [editRowsModel, seteditRowsModel] = useState({});
+  const [currentRow, setcurrentRow] = useState({});
+  
+  const [selectValue, setselectValue] = useState();
+  const [selectOptions, setselectOptions] = useState();
+    // const [itemId, setitemId] = useState();
 
-    const [tableData, settableData] = useState([]);
-    const [dialogState, setdialogState] = useState();
-    const [editRowsModel, seteditRowsModel] = useState({});
-    const [currentRow, setcurrentRow] = useState({});
+  var itemId;
 
-    const handleEditRowsModelChange = React.useCallback((model) => {
-        setdialogState(true)
-        console.log(model)
-        // seteditRowsModel(model);
-      }, []);
+  const handleEditRowsModelChange = React.useCallback((model) => {
+    setdialogState(true);
+    console.log("model : ", Object.keys(model)[0]);
+    // setitemId(Object.keys(model)[0]);
+    itemId = Object.keys(model)[0];
+    console.log("model1 : ", itemId);
+    // seteditRowsModel(model);
+  }, []);
 
-    const handleCellEditCommit = React.useCallback(
+  const handleCellEditCommit = React.useCallback(
     ({ id, field, value }) => {
-        console.log(field , value)
-        Axios.put("http://localhost:3001/update", {column: field, cellValue: value, id: id}).then((response) => {
-            alert(response)
-        })      
-    }
-    ,
-    [tableData],
-    );
+      console.log("field, value : ", field, value);
+      Axios.put("http://localhost:5000/update_list", {
+        id: id,
+        column: field,
+        cellValue: value,
+      }).then((response) => {
+        alert(response);
+      });
+    },
+    [tableData]
+  );
 
-    const handleChange = (e) => {
-        setcurrentRow({...currentRow, [e.target.name]:e.target.value})
-    }
+  const handleCellChange = (e) => {
+    setcurrentRow({ ...currentRow, [e.target.name]: e.target.value });
+  };
 
-    const updateRow = (e) => {
-        
-    }
+  const handleUpdate = (e) => {
+    console.log("current row : ", currentRow);
+  };
 
-    
+  // const updateRow = (e) => {};
 
-    const columns = [
-        {field: 'id', headerName: 'ID', width: 300},
-        {field: 'name', headerName: 'NAME', width:250, editable: true},
-        {field: 'rollno', headerName: 'ROLL NO', width:300, editable: true},
-        {field: 'class', headerName: 'CLASS', width: 300, editable: true},
-        {field: 'prn', headerName: 'PRN', width: 200, editable: true},
-    ]
+  const columns = [
+    { field: "id", headerName: "ID", width: 300 },
+    { field: "rollno", headerName: "ROLL NO", width: 300, editable: true },
+    { field: "first_name", headerName: "NAME", width: 200, editable: true },
+    { field: "last_name", headerName: "NAME", width: 200, editable: true },
+    { field: "gender", headerName: "GENDER", width: 200, editable: true },
+    { field: "year", headerName: "YEAR", width: 300, editable: true },
+  ];
 
-
-    useEffect(() => {
-        Axios.get("http://localhost:3001/students").then((response) => response.data).then((response) => {settableData(response)});
+  useEffect(() => {
+    Axios.get("http://localhost:5000/students_list", {
+      params: {
+        studentYear : selectValue
+      }
     })
+      .then((response) => response.data)
+      .then((response) => {
+        settableData(response.rows);
+      });
+  });
 
-    return (
-        <div className={classes.root} style={{height: 1000, width : '100%'}}>
+  const handleOptionsClick = () => {
+    Axios.get("http://localhost:5000/list_options")
+      .then((response) => response.data)
+      .then((response) => {
+        setselectOptions(response);
+        console.log(selectOptions);
+      });
+  };
 
-        <Button variant="contained" color="primary">
+  const handleSelectChange = (e) => {
+    setselectValue(e.target.value);
+    console.log(selectValue);
+  }
+
+  return (
+    <div className={classes.root} style={{ height: 1000, width: "100%" }}>
+      <Button variant="contained" color="primary">
         EDIT
-        </Button>
+      </Button>
 
-        <Dialog open={dialogState} >
-            <DialogTitle>Update Row Data</DialogTitle>
-            
-            <DialogContent>
-                <TextField  onChange={handleChange} value={currentRow.name} fullWidth label="Name"/>
-                <TextField  onChange={handleChange} value={currentRow.rollno} fullWidth label="Roll No"/>
-                <TextField  onChange={handleChange} value={currentRow.class} fullWidth label="Class"/>
-                <TextField  onChange={handleChange} value={currentRow.prn} fullWidth label="PRN"/>
-            </DialogContent>
+      {/* <Button variant="contained" color="primary">
+        Options
+      </Button> */}
 
-            <DialogActions>
-                <Button variant="contained" color="primary">Update</Button>
-                <Button variant="outlined" color="primary" onClick={() => {setdialogState(false); console.log(dialogState);}}>Cancel</Button>
-            </DialogActions>
+      <Select
+        value={selectValue}
+        className={classes.select}
+        disableUnderline
+        onClick={handleOptionsClick}
+        onChange={handleSelectChange}
+        defaultValue=""
+      >
+        {selectOptions &&
+          selectOptions.map((item) => {
+            return (
+              <MenuItem value={item.table_name}>
+                {item.table_name.toUpperCase()}
+              </MenuItem>
+            );
+          })}
+      </Select>
 
-        </Dialog>
+      <Dialog open={dialogState}>
+        <DialogTitle>Update Row Data</DialogTitle>
 
-        <DataGrid
+        <DialogContent>
+          <TextField
+            onChange={handleCellChange}
+            name="name"
+            // value={currentRow.name}
+            fullWidth
+            label="Name"
+          />
+          <TextField
+            onChange={handleCellChange}
+            // value={currentRow.rollno}
+            fullWidth
+            name="rollno"
+            label="Roll No"
+          />
+          <TextField
+            onChange={handleCellChange}
+            // value={currentRow.class}
+            fullWidth
+            label="Class"
+            name="class"
+          />
+          <TextField
+            onChange={handleCellChange}
+            // value={currentRow.prn}
+            fullWidth
+            label="PRN"
+            name="prn"
+          />
+        </DialogContent>
+
+        <DialogActions>
+          <Button variant="contained" color="primary" onClick={handleUpdate}>
+            Update
+          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => {
+              setdialogState(false);
+              console.log("dialogState : ", dialogState);
+            }}
+          >
+            Cancel
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <DataGrid
         className={classes.datagrid}
         rows={tableData}
         columns={columns}
         pageSize={25}
         disableSelectionOnClick
-        onRowDoubleClick={(item) => {setcurrentRow(item.row)}}
-        editRowsModel={editRowsModel}
+        // onRowDoubleClick={(item) => {
+        //   // setcurrentRow(item.row); just testing purpose
+        // }}
+        // editRowsModel={editRowsModel}
         onEditRowsModelChange={handleEditRowsModelChange}
         onCellEditCommit={handleCellEditCommit}
         // cellDoubleClick={setdialogState(true)}
       />
-        </div>
-    )
+    </div>
+  );
 }

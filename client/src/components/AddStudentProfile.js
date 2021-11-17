@@ -61,7 +61,7 @@ export default function AddStudentProfile() {
         //     prn: prn,
         //   }).then(() => {console.log('success')})
 
-        Axios.get("http://localhost:5000/todos").then((response) => {console.log('success', response.data)})
+        Axios.get("http://localhost:5000/todos").then((response) => {console.log('success', response.data.rows)})
     }
 
     // fetching students details and storing it in studentsList
