@@ -36,10 +36,10 @@ export default function StudentsList() {
   const [dialogState, setdialogState] = useState();
   const [editRowsModel, seteditRowsModel] = useState({});
   const [currentRow, setcurrentRow] = useState({});
-  
+
   const [selectValue, setselectValue] = useState();
   const [selectOptions, setselectOptions] = useState();
-    // const [itemId, setitemId] = useState();
+  // const [itemId, setitemId] = useState();
 
   var itemId;
 
@@ -48,6 +48,7 @@ export default function StudentsList() {
     console.log("model : ", Object.keys(model)[0]);
     // setitemId(Object.keys(model)[0]);
     itemId = Object.keys(model)[0];
+    // setitemId(Object.keys(model)[0]);
     console.log("model1 : ", itemId);
     // seteditRowsModel(model);
   }, []);
@@ -72,30 +73,50 @@ export default function StudentsList() {
 
   const handleUpdate = (e) => {
     console.log("current row : ", currentRow);
+    console.log("itemID", itemId);
+
+    Axios.put("http://localhost:5000/update_list", {
+      id: itemId,
+      rollno: currentRow.rollno,
+      first_name: currentRow.firstname,
+      last_name: currentRow.lastname,
+      gender: currentRow.gender,
+      year: currentRow.year,
+      selectValue: selectValue,
+    });
   };
 
   // const updateRow = (e) => {};
 
   const columns = [
-    { field: "id", headerName: "ID", width: 300 },
+    { field: "id", headerName: "ID", width: 100 },
     { field: "rollno", headerName: "ROLL NO", width: 300, editable: true },
-    { field: "first_name", headerName: "NAME", width: 200, editable: true },
-    { field: "last_name", headerName: "NAME", width: 200, editable: true },
+    {
+      field: "first_name",
+      headerName: "First Name",
+      width: 200,
+      editable: true,
+    },
+    { field: "last_name", headerName: "Last Name", width: 200, editable: true },
     { field: "gender", headerName: "GENDER", width: 200, editable: true },
     { field: "year", headerName: "YEAR", width: 300, editable: true },
   ];
 
-  useEffect(() => {
+  // useEffect(() => {
+
+  // });
+
+  const getStudentsList = () => {
     Axios.get("http://localhost:5000/students_list", {
       params: {
-        studentYear : selectValue
-      }
+        studentYear: selectValue,
+      },
     })
       .then((response) => response.data)
       .then((response) => {
         settableData(response.rows);
       });
-  });
+  };
 
   const handleOptionsClick = () => {
     Axios.get("http://localhost:5000/list_options")
@@ -109,7 +130,7 @@ export default function StudentsList() {
   const handleSelectChange = (e) => {
     setselectValue(e.target.value);
     console.log(selectValue);
-  }
+  };
 
   return (
     <div className={classes.root} style={{ height: 1000, width: "100%" }}>
@@ -139,17 +160,38 @@ export default function StudentsList() {
           })}
       </Select>
 
+      <Button variant="contained" color="primary" onClick={getStudentsList}>
+        GET TABLE DATA
+      </Button>
+
       <Dialog open={dialogState}>
         <DialogTitle>Update Row Data</DialogTitle>
 
         <DialogContent>
           <TextField
             onChange={handleCellChange}
-            name="name"
+            name="firstname"
             // value={currentRow.name}
             fullWidth
-            label="Name"
+            label="First Name"
           />
+
+          <TextField
+            onChange={handleCellChange}
+            name="lastname"
+            // value={currentRow.name}
+            fullWidth
+            label="Last Name"
+          />
+
+          <TextField
+            onChange={handleCellChange}
+            name="gender"
+            // value={currentRow.name}
+            fullWidth
+            label="Gender"
+          />
+
           <TextField
             onChange={handleCellChange}
             // value={currentRow.rollno}
@@ -161,16 +203,17 @@ export default function StudentsList() {
             onChange={handleCellChange}
             // value={currentRow.class}
             fullWidth
-            label="Class"
-            name="class"
+            name="year"
+            label="Year"
           />
-          <TextField
+
+          {/* <TextField
             onChange={handleCellChange}
             // value={currentRow.prn}
             fullWidth
             label="PRN"
             name="prn"
-          />
+          /> */}
         </DialogContent>
 
         <DialogActions>
