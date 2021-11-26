@@ -50,7 +50,7 @@ export default function AddStudentProfile() {
     const [classname, setclassname] = useState();
     const [prn, setprn] = useState();
     const [studentsList, setstudentsList] = useState([]);
-    const [menuValue, setmenuValue] = useState('');
+    const [menuValue, setmenuValue] = useState('class1');
 
     // add student to local database
     const addStudent = () => {

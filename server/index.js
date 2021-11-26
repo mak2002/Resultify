@@ -36,8 +36,18 @@ app.get("/students_list", async (req, res) => {
 });
 
 app.put("/update_list", async (req, res) => {
-  const { id, rollno, first_name, last_name, gender, year, selectValue } = req.body;
-  console.log("rollno : ",id, rollno, first_name, last_name, gender, year, selectValue);
+  const { id, rollno, first_name, last_name, gender, year, selectValue } =
+    req.body;
+  console.log(
+    "rollno : ",
+    id,
+    rollno,
+    first_name,
+    last_name,
+    gender,
+    year,
+    selectValue
+  );
 
   var update_list_query =
     "UPDATE " +
@@ -45,22 +55,24 @@ app.put("/update_list", async (req, res) => {
     // " SET first_name = ($1) WHERE rollno = ($2);";
     " SET first_name = ($1), last_name = ($2), gender = ($3), year = ($4) WHERE rollno = ($5);";
 
-  pool.query(update_list_query, [
-    // rollno,
-    first_name,
-    last_name,
-    gender,
-    year,
-    rollno,
-  ],(err, result) => {
-    
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
+  pool.query(
+    update_list_query,
+    [
+      // rollno,
+      first_name,
+      last_name,
+      gender,
+      year,
+      rollno,
+    ],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
     }
-
-  });
+  );
 
   //{name: 'name', rollno: '1234', class: 'class', prn: '1234'}
 });
@@ -76,6 +88,43 @@ app.get("/list_options", async (req, res) => {
   } catch (error) {
     console.log(error.message);
   }
+});
+
+app.put("/import_csv", (req, res) => {
+  const { filePath, tableName } = req.body;
+
+  import_csv_query =
+    "CREATE TABLE " +
+    tableName +
+    " (id INT,rollno VARCHAR(50),first_name VARCHAR(50),last_name VARCHAR(50),gender VARCHAR(50),class VARCHAR(50));COPY " +
+    tableName +
+    " (id, rollno, first_name, last_name, gender, class) FROM '" +
+    filePath +
+    "' CSV HEADER;";
+
+  pool.query(import_csv_query, [], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/getmarks", (req, res) => {
+  student_marks_query =
+    "SELECT * FROM " +
+    req.query.menuValueClass +
+    "_" +
+    req.query.menuValueSemester;
+
+  pool.query(student_marks_query, [], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.listen(5000, () => {
