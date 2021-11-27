@@ -38,7 +38,12 @@ const useStyles = makeStyles({
     },
     select:{
         minWidth: '150px',
-    }
+    },
+    // wrapper: {
+    //     backgroundColor: '#888888',
+    //     // boxShadow: 5px 10px 8px #888888,
+    //     boxShadow: '5px 10px 8px #888888',
+    // }
     
 })
 
@@ -80,6 +85,9 @@ export default function AddStudentProfile() {
         return (
         <div className={classes.root}>
 
+    <div className="wrapper" className={classes.wrapper}>
+
+
          <Grid className={classes.grid}>
 
             <Grid className={classes.grid2}>
@@ -107,5 +115,6 @@ export default function AddStudentProfile() {
          </Grid>
 
         </div>
+    </div>
     )
 }

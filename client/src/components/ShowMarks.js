@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 export default function ShowMarks() {
   const classes = useStyles();
 
-  const columns1 = []
+  const columns1 = [];
 
   // const columns = [
   //   { field: "id", headerName: "ID", width: 140 },
@@ -61,16 +61,20 @@ export default function ShowMarks() {
   //   { field: "subject4", headerName: "Subject4", width: 170, editable: true },
   // ];
 
-  
   const [classname, setclassname] = useState("");
   const [semester, setsemester] = useState("");
   const [columnFields, setcolumnFields] = useState("");
-  
+
   const [tableData, settableData] = useState("");
-  
-  columnFields && columnFields.map((column) => {
-    columns1.push({field: column.name, headerName: column.name.toUpperCase(), width: 1800 / columnFields.length })
-});
+
+  columnFields &&
+    columnFields.map((column) => {
+      columns1.push({
+        field: column.name,
+        headerName: column.name.toUpperCase(),
+        width: 1800 / columnFields.length,
+      });
+    });
   // setting class and semester values
   const [menuValueClass, setmenuValueClass] = useState("year1");
   const [menuValueSemester, setmenuValueSemester] = useState("sem1");
@@ -99,7 +103,12 @@ export default function ShowMarks() {
     })
       .then((response) => response.data)
       .then((response) =>
-        console.log("response", console.log(response),setcolumnFields(response.fields), settableData(response.rows))
+        console.log(
+          "response",
+          console.log(response),
+          setcolumnFields(response.fields),
+          settableData(response.rows)
+        )
       );
   };
 
