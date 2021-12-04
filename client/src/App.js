@@ -7,9 +7,12 @@ import ShowMarks from "./components/ShowMarks";
 import Charts from "./components/Charts";
 import AddStudentProfile from "./components/AddStudentProfile";
 import StudentsList from "./components/StudentsList";
+import GeneratePdf from "./components/GeneratePdf";
+
 import { ThemeProvider, Paper } from "@material-ui/core";
 import { createTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+
 
 function App() {
   const theme = createTheme({
@@ -54,6 +57,13 @@ function App() {
                   <Charts />
                 </Paper>
               </Route>
+
+              <Route path="/generatePdf">
+                <Paper>
+                  <GeneratePdf />
+                </Paper>
+              </Route>
+
             </Switch>
           </Layout>
         </ThemeProvider>

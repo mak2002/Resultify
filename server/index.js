@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const pool = require("./db");
 const cors = require("cors");
+const fs = require('fs');
 
 app.use(express.json());
 
@@ -123,6 +124,39 @@ app.get("/getmarks", (req, res) => {
       console.log(err);
     } else {
       res.send(result);
+    }
+  });
+});
+
+app.get("/studentMarks", (req, res) => {
+  one_student_marks =
+    "SELECT * FROM " +
+    req.query.menuValueClass +
+    "_" +
+    req.query.menuValueSemester +
+    " WHERE rollno = '" +
+    req.query.rollno +
+    "';";
+
+  console.log("one_student_marks", one_student_marks);
+
+  pool.query(one_student_marks, [], (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+app.get("/generatePdf", (req, res) => {
+  // console.log("__dirname", __dirname+'/server/FormForm.pdf');
+  fs.readFile('./markformlatest.pdf', 'base64',(err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(data);
+      // console.log(data);
     }
   });
 });

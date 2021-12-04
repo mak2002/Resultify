@@ -77,6 +77,11 @@ export default function Layout({ children }) {
       icon: <SubjectOutlined color="primary" />,
       path: "/charts",
     },
+    {
+      text: "Generate PDF",
+      icon: <SubjectOutlined color="primary" />,
+      path: "/generatePdf",
+    }
   ];
 
   const classes = useStyles();

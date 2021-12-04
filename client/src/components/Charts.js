@@ -51,10 +51,13 @@ export default function Charts() {
   const [sem4, setsem4] = useState();
   const [allSems, setallSems] = useState();
 
+  const [menuValueClass, setmenuValueClass] = useState("year1");
+  const [menuValueSemester, setmenuValueSemester] = useState("sem1");
+
   const [totalMarks, settotalMarks] = useState();
 
-  const [menuValueClass, setmenuValueClass] = useState("");
-  const [menuValueSemester, setmenuValueSemester] = useState("");
+  // const [menuValueClass, setmenuValueClass] = useState("");
+  // const [menuValueSemester, setmenuValueSemester] = useState("");
   const [semester, setsemester] = useState("");
   const [classname, setclassname] = useState("");
   const [rollno, setrollno] = useState(1001);
@@ -73,15 +76,15 @@ export default function Charts() {
 
   var individualStudents = [];
 
-  const handleChangeClass = (e) => {
-    setmenuValueClass(e.target.value);
-    setclassname(e.target.value);
-  };
+  // const handleChangeClass = (e) => {
+  //   setmenuValueClass(e.target.value);
+  //   setclassname(e.target.value);
+  // };
 
-  const handleChangeSemester = (e) => {
-    setmenuValueSemester(e.target.value);
-    setsemester(e.target.value);
-  };
+  // const handleChangeSemester = (e) => {
+  //   setmenuValueSemester(e.target.value);
+  //   setsemester(e.target.value);
+  // };
 
   const handleRollNoChange = (e) => {
     setrollno(e.target.value);
@@ -91,7 +94,20 @@ export default function Charts() {
 
   const handleClick = () => {
     // setallSems([sem1, sem2, sem3, sem4]);
-    console.log("clicked");
+    console.log("clicked", menuValueSemester, menuValueClass);
+  };
+
+  // class value
+  const handleChangeClass = (e) => {
+    setmenuValueClass(e.target.value);
+    setclassname(e.target.value);
+  };
+
+  // semester value
+  const handleChangeSemester = (e) => {
+    setmenuValueSemester(e.target.value);
+    setsemester(e.target.value);
+    console.log("menuValueSemester", menuValueSemester);
   };
 
   const data = {
@@ -120,6 +136,29 @@ export default function Charts() {
 
       {/* <Select className={classes.select} value={rollno} disableUnderline label="Roll No" onChange={handleRollNoChange}>  */}
       {/* </Select> */}
+
+      <Select
+        value={menuValueClass || ""}
+        className={classes.select}
+        onChange={handleChangeClass}
+        disableUnderline
+      >
+        <MenuItem value={"year1"}>Year 1</MenuItem>
+        <MenuItem value={"year2"}>Year 2</MenuItem>
+        <MenuItem value={"year3"}>Year 3</MenuItem>
+        <MenuItem value={"year4"}>Year 4</MenuItem>
+      </Select>
+
+      <Select
+        // value={menuValueSemester || ""}
+        className={classes.select}
+        value={menuValueSemester}
+        onChange={handleChangeSemester}
+        disableUnderline
+      >
+        <MenuItem value={"sem1"}>Sem 1</MenuItem>
+        <MenuItem value={"sem2"}>Sem 2</MenuItem>
+      </Select>
 
       <Button onClick={handleClick}>Get Marks</Button>
 
