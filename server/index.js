@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const pool = require("./db");
 const cors = require("cors");
-const fs = require('fs');
+const csv = require("csv-parser");
+const fs = require("fs");
+const results = [];
 
 app.use(express.json());
 
@@ -91,15 +93,36 @@ app.get("/list_options", async (req, res) => {
   }
 });
 
-app.put("/import_csv", (req, res) => {
-  const { filePath, tableName } = req.body;
+// import csv data to postgres database  dynamically
+app.put("/import_table", async (req, res) => {
+  const { filePath, tableName, columnTypesArray, columnNames } = req.body;
+
+  var import_statement = "CREATE TABLE " + `${tableName} (`;
+  for (let i = 0; i < columnNames.length; i++) {
+
+    if (columnTypesArray[i] === "char")
+      columnTypesArray[i] = `VAR${columnTypesArray[i].toUpperCase()}(50)`;
+
+    //if column is last one then dont put ','
+    if (i != columnNames.length - 1) {
+      import_statement =
+        import_statement +
+        `${columnNames[i]} ` +
+        `${columnTypesArray[i].toUpperCase()}, `;
+    } else
+      import_statement =
+        import_statement +
+        `${columnNames[i]} ` +
+        `${columnTypesArray[i].toUpperCase()} `;
+  }
+  import_statement = import_statement + ");COPY ";
+  var import_statement2 = columnNames.toString();
+  import_statement2 = " (" + import_statement2 + ") FROM '";
 
   import_csv_query =
-    "CREATE TABLE " +
+    import_statement +
     tableName +
-    " (id INT,rollno VARCHAR(50),first_name VARCHAR(50),last_name VARCHAR(50),gender VARCHAR(50),class VARCHAR(50));COPY " +
-    tableName +
-    " (id, rollno, first_name, last_name, gender, class) FROM '" +
+    import_statement2 +
     filePath +
     "' CSV HEADER;";
 
@@ -110,6 +133,23 @@ app.put("/import_csv", (req, res) => {
       res.send(result);
     }
   });
+});
+
+// return the column names of csv file
+app.put("/upload_csv", (req, res) => {
+  const { filePath, tableName } = req.body;
+  var count = 0;
+  var columnNames;
+  fs.createReadStream(filePath)
+    .pipe(csv())
+    .on("data", (data) => {
+      if (count < 1) {
+        columnNames = Object.keys(data);
+        console.log("columnNames", columnNames);
+        res.json(columnNames);
+      }
+      count++;
+    });
 });
 
 app.get("/getmarks", (req, res) => {
@@ -151,7 +191,7 @@ app.get("/studentMarks", (req, res) => {
 
 app.get("/generatePdf", (req, res) => {
   // console.log("__dirname", __dirname+'/server/FormForm.pdf');
-  fs.readFile('./markformlatest.pdf', 'base64',(err, data) => {
+  fs.readFile("./markformlatest.pdf", "base64", (err, data) => {
     if (err) {
       console.log(err);
     } else {

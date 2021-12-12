@@ -47,35 +47,12 @@ export default function GeneratePdf() {
   const [rollno, setrollno] = useState(1001);
   const [marks, setmarks] = useState();
   var FileSaver = require("file-saver");
+  const [clicked, setclicked] = useState(false);
+
 
   // const formPdfBytes = await fetch('FormForm.pdf').then((response) => response.arrayBuffer())
 
-  var existingPdfBytes;
-  const handleClick = async () => {
-    // setallSems([sem1, sem2, sem3, sem4]);
-    console.log("clicked", rollno, menuValueSemester, menuValueClass);
-
-    Axios.get("http://localhost:5000/studentMarks", {
-      params: {
-        menuValueClass: menuValueClass,
-        menuValueSemester: menuValueSemester,
-        rollno: rollno,
-      },
-    })
-      .then((response) => response.data.rows[0])
-      .then((response) => {
-        setmarks(response);
-        // console.log("response", response);
-      });
-
-    const somePdf = await Axios.get("http://localhost:5000/generatePdf").then(
-      (response) => {
-        console.log("response response", response);
-        // console.log("response response 1", response.data.arrayBuffer());
-        return response.data;
-      }
-    );
-
+  const generatePdf = async () => {
     const pdfDoc = await PDFDocument.load(somePdf);
 
     const form = pdfDoc.getForm();
@@ -89,35 +66,75 @@ export default function GeneratePdf() {
     const total = form.getTextField("totalmarks");
 
     nameField.setText("Name");
-    rollnofield.setText(marks.rollno.toString());
-    subject1field.setText(marks.subject1.toString());
-    subject2field.setText(marks.subject2.toString());
-    subject3field.setText(marks.subject3.toString());
-    subject4field.setText(marks.subject4.toString());
-    total.setText(marks.total.toString());
+    if (marks !== undefined) {
+      rollnofield.setText(marks.rollno);
+      subject1field.setText(marks.subject1.toString());
+      subject2field.setText(marks.subject2.toString());
+      subject3field.setText(marks.subject3.toString());
+      subject4field.setText(marks.subject4.toString());
+      total.setText(marks.total.toString());
 
-    form.flatten();
+      form.flatten();
 
-    const pdfBytes = await pdfDoc.save("testpdf.js");
+      const pdfBytes = await pdfDoc.save("testpdf.js");
 
-    function saveByteArray(reportName, byte) {
-      var blob = new Blob([byte], { type: "application/pdf" });
-      var link = document.createElement("a");
-      link.href = window.URL.createObjectURL(blob);
-      var fileName = reportName;
-      link.download = fileName;
-      link.click();
+      function saveByteArray(reportName, byte) {
+        var blob = new Blob([byte], { type: "application/pdf" });
+        var link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        var fileName = reportName;
+        link.download = fileName;
+        link.click();
+      }
+
+      // function openPdf(pdfBytes) {
+      //   var file = new Blob([pdfBytes], { type: "application/pdf" });
+      //   var fileURL = URL.createObjectURL(file);
+      //   // file.save("tempDocument");
+      //   window.open(fileURL);
+      // }
+      // openPdf(pdfBytes);
+      saveByteArray(`${marks.rollno}-result`, pdfBytes);
     }
-
-    // function openPdf(pdfBytes) {
-    //   var file = new Blob([pdfBytes], { type: "application/pdf" });
-    //   var fileURL = URL.createObjectURL(file);
-    //   // file.save("tempDocument");
-    //   window.open(fileURL);
-    // }
-    // openPdf(pdfBytes);
-    saveByteArray("tempPdf", pdfBytes);
   };
+
+  var existingPdfBytes;
+  var somePdf;
+  const handleClick = async () => {
+    // setallSems([sem1, sem2, sem3, sem4]);
+    console.log("clicked", rollno, menuValueSemester, menuValueClass);
+
+    somePdf = await Axios.get("http://localhost:5000/generatePdf").then(
+      (response) => {
+        console.log("response response", response);
+        // console.log("response response 1", response.data.arrayBuffer());
+        return response.data;
+      }
+    );
+
+
+
+    Axios.get("http://localhost:5000/studentMarks", {
+      params: {
+        menuValueClass: menuValueClass,
+        menuValueSemester: menuValueSemester,
+        rollno: rollno,
+      },
+    })
+      .then((response) => response.data.rows[0])
+      .then((response) => {
+        setmarks(response);
+      });
+
+    setclicked(!clicked);
+
+    // .then(() => generatePdf());
+  };
+
+  useEffect(() => {
+    generatePdf();
+  }, [clicked]);
+
 
   const handleChangeClass = (e) => {
     setmenuValueClass(e.target.value);
@@ -165,6 +182,8 @@ export default function GeneratePdf() {
       </Select>
 
       <Button onClick={handleClick}>Get Marks</Button>
+
+      {/* <embed src="file_name.pdf" width="800px" height="2100px" /> */}
     </div>
   );
 }

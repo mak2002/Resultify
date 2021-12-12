@@ -6,6 +6,9 @@ import Button from "@material-ui/core/Button";
 import "tailwindcss/tailwind.css";
 import Axios from "axios";
 
+const csv = require("csv-parser");
+const fs = require("fs");
+
 const useStyles = makeStyles({
   root: {
     height: "100vh",
@@ -24,17 +27,41 @@ export default function AddResults() {
 
   const [filePath, setfilePath] = useState();
   const [tableName, settableName] = useState();
+  const [columnNames, setcolumnNames] = useState([]);
+  const [columnTypes, setcolumnTypes] = useState("");
+  const [columnTypesArray, setcolumnTypesArray] = useState([]);
 
   // feature to be implemented
   const handleClick = () => {
     console.log("clicked");
-    Axios.put("http://localhost:5000/import_csv", {
+    console.log("handleClick columnTypes: ", columnTypesArray);
+    Axios.put("http://localhost:5000/import_table", {
+      filePath: filePath,
+      tableName: tableName,
+      columnTypesArray: columnTypesArray,
+      columnNames: columnNames,
+    });
+  };
+
+  const uploadCsv = () => {
+    Axios.put("http://localhost:5000/upload_csv", {
       filePath: filePath,
       tableName: tableName,
     }).then((response) => {
-      console.log("success", response.data.rows);
+      console.log("success", response.data);
+      setcolumnNames(response.data);
     });
   };
+
+  const handleColumnTypesChange = (e) => {
+    setcolumnTypes(e.target.value);
+  };
+
+  useEffect(() => {
+    var initialColumnTypes = columnTypes.trim().split(",");
+    setcolumnTypesArray(initialColumnTypes);
+    console.log("columnTypes: ", columnTypesArray);
+  }, [columnTypes]);
 
   return (
     <div className={classes.root}>
@@ -46,6 +73,7 @@ export default function AddResults() {
         <TextField
           className={classes.textfield}
           label="Enter File Path"
+          autoComplete="true"
           onChange={(e) => setfilePath(e.target.value)}
         />
         <TextField
@@ -54,12 +82,24 @@ export default function AddResults() {
           onChange={(e) => settableName(e.target.value)}
         />
 
-        <TextField className={classes.textfield} label="Enter columns names" />
+        <TextField
+          value={columnNames}
+          className={classes.textfield}
+          label="Columns names are"
+        />
+
+        <TextField
+          value={columnTypes}
+          className={classes.textfield}
+          label="Enter Column types "
+          onChange={handleColumnTypesChange}
+        />
 
         <br />
         <br />
       </div>
 
+      <Button onClick={uploadCsv}>Upload CSV</Button>
       <Button onClick={handleClick}>Import Table</Button>
     </div>
   );
