@@ -12,7 +12,7 @@ import GeneratePdf from "./components/GeneratePdf";
 import { ThemeProvider, Paper } from "@material-ui/core";
 import { createTheme } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-
+import LoginOrRegister from "./components/LoginOrRegister";
 
 function App() {
   const theme = createTheme({
@@ -21,13 +21,18 @@ function App() {
     },
   });
 
+  const [loggedIn, setloggedIn] = useState(true);
+
   return (
     <div className="App">
+      {loggedIn ? <LoginOrRegister /> : 
       <Router>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Layout>
             <Switch>
+
+
               <Route exact path="/">
                 <Paper>
                   <AddStudentProfile />
@@ -63,11 +68,10 @@ function App() {
                   <GeneratePdf />
                 </Paper>
               </Route>
-
             </Switch>
           </Layout>
         </ThemeProvider>
-      </Router>
+      </Router> }
     </div>
   );
 }
