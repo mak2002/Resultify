@@ -25,3 +25,4 @@ yarn-debug.log*
 yarn-error.log*
 
 productivity.txt
+firebase-config.js

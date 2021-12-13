@@ -81,6 +81,11 @@ export default function Layout({ children }) {
       text: "Generate PDF",
       icon: <SubjectOutlined color="primary" />,
       path: "/generatePdf",
+    },
+    {
+      text: "Account",
+      icon: <SubjectOutlined color="primary" />,
+      path: "/account",
     }
   ];
 

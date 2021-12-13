@@ -8,6 +8,7 @@ import Charts from "./components/Charts";
 import AddStudentProfile from "./components/AddStudentProfile";
 import StudentsList from "./components/StudentsList";
 import GeneratePdf from "./components/GeneratePdf";
+import Account from "./components/Account";
 
 import { ThemeProvider, Paper } from "@material-ui/core";
 import { createTheme } from "@material-ui/core/styles";
@@ -21,57 +22,64 @@ function App() {
     },
   });
 
-  const [loggedIn, setloggedIn] = useState(true);
+  const [currentUser, setcurrentUser] = useState();
 
   return (
     <div className="App">
-      {loggedIn ? <LoginOrRegister /> : 
-      <Router>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Layout>
-            <Switch>
+      {!currentUser ? (
+        <LoginOrRegister setcurrentUser={setcurrentUser} />
+      ) : (
+        <Router>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Layout>
+              <Switch>
+                <Route exact path="/">
+                  <Paper>
+                    <AddStudentProfile />
+                  </Paper>
+                </Route>
 
+                <Route path="/studentsList">
+                  <Paper>
+                    <StudentsList />
+                  </Paper>
+                </Route>
 
-              <Route exact path="/">
-                <Paper>
-                  <AddStudentProfile />
-                </Paper>
-              </Route>
+                <Route path="/addResults">
+                  <Paper>
+                    <AddResults />
+                  </Paper>
+                </Route>
 
-              <Route path="/studentsList">
-                <Paper>
-                  <StudentsList />
-                </Paper>
-              </Route>
+                <Route path="/seeMarks">
+                  <Paper>
+                    <ShowMarks />
+                  </Paper>
+                </Route>
 
-              <Route path="/addResults">
-                <Paper>
-                  <AddResults />
-                </Paper>
-              </Route>
+                <Route path="/charts">
+                  <Paper>
+                    <Charts />
+                  </Paper>
+                </Route>
 
-              <Route path="/seeMarks">
-                <Paper>
-                  <ShowMarks />
-                </Paper>
-              </Route>
+                <Route path="/generatePdf">
+                  <Paper>
+                    <GeneratePdf />
+                  </Paper>
+                </Route>
 
-              <Route path="/charts">
-                <Paper>
-                  <Charts />
-                </Paper>
-              </Route>
-
-              <Route path="/generatePdf">
-                <Paper>
-                  <GeneratePdf />
-                </Paper>
-              </Route>
-            </Switch>
-          </Layout>
-        </ThemeProvider>
-      </Router> }
+                <Route path="/account">
+                  <Paper>
+                    <Account setcurrentUser={setcurrentUser}/>
+                  </Paper>
+                </Route>
+              </Switch>
+            </Layout>
+          </ThemeProvider>
+        </Router>
+      )}
     </div>
   );
 }

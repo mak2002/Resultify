@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function LoginOrRegister() {
+export default function LoginOrRegister({ setcurrentUser }) {
   const [register, setregister] = useState(true);
   const classes = useStyles();
 
@@ -45,6 +45,7 @@ export default function LoginOrRegister() {
   const handleRegisterButton = () => {
     setregister(true);
   };
+
   return (
     <div className={classes.root}>
       <div className={classes.two_buttons}>
@@ -63,7 +64,11 @@ export default function LoginOrRegister() {
           Register
         </Button>
       </div>
-      {register ? <Register /> : <Login setregister={setregister} />}
+      {register ? (
+        <Register setcurrentUser={setcurrentUser} />
+      ) : (
+        <Login setcurrentUser={setcurrentUser} />
+      )}
     </div>
   );
 }

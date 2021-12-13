@@ -10,10 +10,18 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Switch from "@material-ui/core/Switch";
 import Axios from "axios";
 
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "firebase/auth";
+import { auth } from "../firebase-config";
+
 const useStyles = makeStyles({
   root1: {
     display: "flex",
-    height: "35%",
+    // height: "35%",
     width: "20%",
     flexDirection: "column",
     justifyContent: "center",
@@ -32,21 +40,66 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Login({ setregister }) {
+export default function Login({ setcurrentUser }) {
   const classes = useStyles();
+
+  const [loginEmail, setloginUsername] = useState();
+  const [loginPassword, setloginPassword] = useState();
 
   const handleSignInButton = (e) => {
     // setregister(!)
   };
 
+  const login = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        loginEmail,
+        loginPassword
+      );
+      console.log(user);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const [user, setUser] = useState({});
+
+  onAuthStateChanged(auth, (currentUser) => {
+    console.log("currentUser", currentUser);
+    setUser(currentUser);
+    setcurrentUser(currentUser);
+  });
+
+  const logout = async () => {
+    await signOut(auth);
+  };
+
+  
+
   return (
     <div className={classes.root1}>
       <div className={classes.login_form}>
-        <TextField className={classes.input} label="Username" />
-        <TextField className={classes.input} label="Password" type="password" />
+        <TextField
+          className={classes.input}
+          label="Email"
+          onChange={(e) => setloginUsername(e.target.value)}
+        />
+        <TextField
+          className={classes.input}
+          label="Password"
+          type="password"
+          onChange={(e) => setloginPassword(e.target.value)}
+        />
       </div>
-      <Button variant="contained" className={classes.button}>Login</Button>
-
+      <Button variant="contained" className={classes.button} onClick={login}>
+        Login
+      </Button>
+      <Button variant="contained" className={classes.button} onClick={logout}>
+        Logout
+      </Button>
+      <h4> User Logged In: </h4>
+      {user?.email}
     </div>
   );
 }
