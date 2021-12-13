@@ -99,7 +99,6 @@ app.put("/import_table", async (req, res) => {
 
   var import_statement = "CREATE TABLE " + `${tableName} (`;
   for (let i = 0; i < columnNames.length; i++) {
-
     if (columnTypesArray[i] === "char")
       columnTypesArray[i] = `VAR${columnTypesArray[i].toUpperCase()}(50)`;
 
@@ -187,6 +186,39 @@ app.get("/studentMarks", (req, res) => {
       res.send(result);
     }
   });
+});
+
+app.post("/addStudent", (req, res) => {
+  const {
+    id,
+    firstName,
+    lastName,
+    rollno,
+    year,
+    menuValueYear,
+    menuValueSemester,
+  } = req.body;
+  // " SET first_name = ($1), last_name = ($2), gender = ($3), year = ($4) WHERE rollno = ($5);";
+  add_student_query =
+    "INSERT INTO " +
+    menuValueYear +
+    "_cs_2021_22 " +
+    "( id, first_name, last_name, rollno, year) VALUES (($1), ($2), ($3), ($4), ($5));";
+
+  console.log("add_student_query", add_student_query);
+
+  pool.query(
+    add_student_query,
+    [id, firstName, lastName, rollno, year],
+    // [firstName],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
 });
 
 app.get("/generatePdf", (req, res) => {

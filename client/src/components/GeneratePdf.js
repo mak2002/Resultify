@@ -45,10 +45,11 @@ export default function GeneratePdf() {
   const [semester, setsemester] = useState("");
   const [classname, setclassname] = useState("");
   const [rollno, setrollno] = useState(1001);
-  const [marks, setmarks] = useState();
+  const [marks, setmarks] = useState(0);
   var FileSaver = require("file-saver");
   const [clicked, setclicked] = useState(false);
 
+  var somePdf;
 
   // const formPdfBytes = await fetch('FormForm.pdf').then((response) => response.arrayBuffer())
 
@@ -68,6 +69,7 @@ export default function GeneratePdf() {
     nameField.setText("Name");
     if (marks !== undefined) {
       rollnofield.setText(marks.rollno);
+      console.log("marks.subject1: ", marks.subject1.toString());
       subject1field.setText(marks.subject1.toString());
       subject2field.setText(marks.subject2.toString());
       subject3field.setText(marks.subject3.toString());
@@ -99,7 +101,6 @@ export default function GeneratePdf() {
   };
 
   var existingPdfBytes;
-  var somePdf;
   const handleClick = async () => {
     // setallSems([sem1, sem2, sem3, sem4]);
     console.log("clicked", rollno, menuValueSemester, menuValueClass);
@@ -112,8 +113,6 @@ export default function GeneratePdf() {
       }
     );
 
-
-
     Axios.get("http://localhost:5000/studentMarks", {
       params: {
         menuValueClass: menuValueClass,
@@ -123,18 +122,14 @@ export default function GeneratePdf() {
     })
       .then((response) => response.data.rows[0])
       .then((response) => {
+        console.log("response marks: ", response);
         setmarks(response);
       });
+    // .then(console.log("generatePdf: "), generatePdf());
 
-    setclicked(!clicked);
+    marks ? generatePdf() : void(0);
 
-    // .then(() => generatePdf());
   };
-
-  useEffect(() => {
-    generatePdf();
-  }, [clicked]);
-
 
   const handleChangeClass = (e) => {
     setmenuValueClass(e.target.value);
@@ -156,7 +151,12 @@ export default function GeneratePdf() {
 
   return (
     <div className={classes.root}>
-      <TextField label="Roll.No." onChange={handleTextChange} value={rollno} />
+      {console.log("rollno: ", rollno)}
+      <TextField
+        label="Roll.No."
+        onChange={(e) => setrollno(e.target.value)}
+        value={rollno}
+      />
 
       <Select
         value={menuValueClass || ""}

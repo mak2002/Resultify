@@ -56,34 +56,28 @@ const useStyles = makeStyles({
 export default function AddStudentProfile() {
   const classes = useStyles();
 
-  const [name, setname] = useState();
+  const [firstName, setfirstName] = useState();
+  const [lastName, setlastName] = useState();
   const [rollno, setrollno] = useState();
   const [classname, setclassname] = useState();
-  const [prn, setprn] = useState();
+  const [year, setyear] = useState();
   const [studentsList, setstudentsList] = useState([]);
   const [menuValue, setmenuValue] = useState("class1");
+  const [id, setid] = useState();
 
   // add student to local database
   const addStudent = () => {
-    // Axios.post("http://localhost:3001/create", {
-    //     name: name,
-    //     rollno: rollno,
-    //     classname: classname,
-    //     prn: prn,
-    //   }).then(() => {console.log('success')})
-
-    Axios.get("http://localhost:5000/todos").then((response) => {
-      console.log("success", response.data.rows);
-    });
-  };
-
-  // fetching students details and storing it in studentsList
-  const getStudents = () => {
-    Axios.get("http://localhost:3001/students").then((response) => {
-      {
-        console.log(response.data);
-      }
-      setstudentsList(response.data);
+    Axios.post("http://localhost:5000/addStudent", {
+      id: id,
+      firstName: firstName,
+      lastName: lastName,
+      rollno: rollno,
+      classname: classname,
+      year: year,
+      menuValueYear: menuValueYear,
+      menuValueSemester: menuValueSemester,
+    }).then(() => {
+      console.log("success");
     });
   };
 
@@ -96,6 +90,24 @@ export default function AddStudentProfile() {
     await signOut(auth);
   };
 
+  // setting class and semester values
+  const [menuValueYear, setmenuValueYear] = useState("year1");
+  const [menuValueSemester, setmenuValueSemester] = useState("sem1");
+  const [semester, setsemester] = useState("");
+
+  // class value
+  const handleChangeClass = (e) => {
+    setmenuValueYear(e.target.value);
+    setclassname(e.target.value);
+  };
+
+  // semester value
+  const handleChangeSemester = (e) => {
+    setmenuValueSemester(e.target.value);
+    setsemester(e.target.value);
+    console.log("menuValueSemester", menuValueSemester);
+  };
+
   return (
     <div className={classes.root}>
       <div className="wrapper" className={classes.wrapper}>
@@ -106,40 +118,65 @@ export default function AddStudentProfile() {
 
           <form className={classes.form}>
             <TextField
+              onChange={(e) => setid(e.target.value)}
+              label="Id"
+              className={classes.textfield}
+            />
+
+            <TextField
               onChange={(e) => {
-                setname(e.target.value);
+                setfirstName(e.target.value);
               }}
               className={classes.textfield}
-              label="Students Name"
+              label="First Name"
+            />
+            <TextField
+              onChange={(e) => {
+                setlastName(e.target.value);
+              }}
+              className={classes.textfield}
+              label="Last Name"
             />
             <TextField
               onChange={(e) => {
                 setrollno(e.target.value);
               }}
               className={classes.textfield}
-              label="Students Roll No"
+              label="Roll No"
             />
-
-            {<label>Class</label>}
-            <Select
-              value={menuValue}
-              className={classes.select}
-              onChange={handleChange}
-              disableUnderline
-            >
-              <MenuItem value={"class1"}>Class 1</MenuItem>
-              <MenuItem value={"class2"}>Class 2</MenuItem>
-              <MenuItem value={"class3"}>Class 3</MenuItem>
-              <MenuItem value={"class4"}>Class 4</MenuItem>
-            </Select>
 
             <TextField
               onChange={(e) => {
-                setprn(e.target.value);
+                setyear(e.target.value);
               }}
               className={classes.textfield}
-              label="Students PRN"
+              label="YEAR"
             />
+
+            {/* {<label>Class</label>} */}
+            <Select
+              value={menuValueYear || ""}
+              className={classes.select}
+              onChange={handleChangeClass}
+              disableUnderline
+            >
+              <MenuItem value={"year1"}>Year 1</MenuItem>
+              <MenuItem value={"year2"}>Year 2</MenuItem>
+              <MenuItem value={"year3"}>Year 3</MenuItem>
+              <MenuItem value={"year4"}>Year 4</MenuItem>
+            </Select>
+
+            <Select
+              // value={menuValueSemester || ""}
+              className={classes.select}
+              value={menuValueSemester}
+              onChange={handleChangeSemester}
+              disableUnderline
+            >
+              <MenuItem value={"sem1"}>Sem 1</MenuItem>
+              <MenuItem value={"sem2"}>Sem 2</MenuItem>
+            </Select>
+
             <Button
               variant="contained"
               color="primary"
@@ -148,8 +185,6 @@ export default function AddStudentProfile() {
             >
               Add
             </Button>
-
-            <Button onClick={logout}>Logout</Button>
           </form>
         </Grid>
       </div>
