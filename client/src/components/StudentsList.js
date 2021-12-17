@@ -39,7 +39,6 @@ export default function StudentsList() {
 
   const [selectValue, setselectValue] = useState();
   const [selectOptions, setselectOptions] = useState();
-  // const [itemId, setitemId] = useState();
 
   var itemId;
 
@@ -86,8 +85,6 @@ export default function StudentsList() {
     });
   };
 
-  // const updateRow = (e) => {};
-
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
     { field: "rollno", headerName: "ROLL NO", width: 300, editable: true },
@@ -101,10 +98,6 @@ export default function StudentsList() {
     { field: "gender", headerName: "GENDER", width: 200, editable: true },
     { field: "year", headerName: "YEAR", width: 300, editable: true },
   ];
-
-  // useEffect(() => {
-
-  // });
 
   const getStudentsList = () => {
     Axios.get("http://localhost:5000/students_list", {
@@ -138,10 +131,6 @@ export default function StudentsList() {
         EDIT
       </Button>
 
-      {/* <Button variant="contained" color="primary">
-        Options
-      </Button> */}
-
       <Select
         value={selectValue}
         className={classes.select}
@@ -171,7 +160,6 @@ export default function StudentsList() {
           <TextField
             onChange={handleCellChange}
             name="firstname"
-            // value={currentRow.name}
             fullWidth
             label="First Name"
           />
@@ -179,7 +167,6 @@ export default function StudentsList() {
           <TextField
             onChange={handleCellChange}
             name="lastname"
-            // value={currentRow.name}
             fullWidth
             label="Last Name"
           />
@@ -187,33 +174,22 @@ export default function StudentsList() {
           <TextField
             onChange={handleCellChange}
             name="gender"
-            // value={currentRow.name}
             fullWidth
             label="Gender"
           />
 
           <TextField
             onChange={handleCellChange}
-            // value={currentRow.rollno}
             fullWidth
             name="rollno"
             label="Roll No"
           />
           <TextField
             onChange={handleCellChange}
-            // value={currentRow.class}
             fullWidth
             name="year"
             label="Year"
           />
-
-          {/* <TextField
-            onChange={handleCellChange}
-            // value={currentRow.prn}
-            fullWidth
-            label="PRN"
-            name="prn"
-          /> */}
         </DialogContent>
 
         <DialogActions>
@@ -239,13 +215,8 @@ export default function StudentsList() {
         columns={columns}
         pageSize={25}
         disableSelectionOnClick
-        // onRowDoubleClick={(item) => {
-        //   // setcurrentRow(item.row); just testing purpose
-        // }}
-        // editRowsModel={editRowsModel}
         onEditRowsModelChange={handleEditRowsModelChange}
         onCellEditCommit={handleCellEditCommit}
-        // cellDoubleClick={setdialogState(true)}
       />
     </div>
   );

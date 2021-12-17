@@ -127,15 +127,11 @@ export default function Charts() {
 
   return (
     <div>
-      {/* <Typography variant="h3" color="secondary">Charts</Typography> */}
       <Typography variant="h2" color="secondary">
         Charts
       </Typography>
 
       <TextField label="Roll.No." />
-
-      {/* <Select className={classes.select} value={rollno} disableUnderline label="Roll No" onChange={handleRollNoChange}>  */}
-      {/* </Select> */}
 
       <Select
         value={menuValueClass || ""}
@@ -161,8 +157,6 @@ export default function Charts() {
       </Select>
 
       <Button onClick={handleClick}>Get Marks</Button>
-
-      {/* <Typography variant="h4" color="secondary">{studentName}</Typography> */}
 
       <Line
         data={data}

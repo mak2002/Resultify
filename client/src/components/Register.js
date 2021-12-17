@@ -80,11 +80,7 @@ export default function Register({ setcurrentUser }) {
         type="password"
         onChange={(e) => setregisterPassword(e.target.value)}
       />
-      {/* <TextField
-        className={classes.input}
-        label="Confirm Password"
-        type="password"
-      /> */}
+
       <Button
         variant="contained"
         className={classes.button}

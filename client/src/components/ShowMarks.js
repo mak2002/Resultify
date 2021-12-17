@@ -50,17 +50,6 @@ export default function ShowMarks() {
 
   const columns1 = [];
 
-  // const columns = [
-  //   { field: "id", headerName: "ID", width: 140 },
-  //   { field: "name", headerName: "NAME", width: 250, editable: true },
-  //   { field: "rollno", headerName: "ROLL NO", width: 180, editable: true },
-  //   { field: "class", headerName: "CLASS", width: 200, editable: true },
-  //   { field: "subject1", headerName: "Subject1", width: 170, editable: true },
-  //   { field: "subject2", headerName: "Subject2", width: 170, editable: true },
-  //   { field: "subject3", headerName: "Subject3", width: 170, editable: true },
-  //   { field: "subject4", headerName: "Subject4", width: 170, editable: true },
-  // ];
-
   const [classname, setclassname] = useState("");
   const [semester, setsemester] = useState("");
   const [columnFields, setcolumnFields] = useState("");
@@ -148,13 +137,6 @@ export default function ShowMarks() {
           columns={columns1}
           pageSize={15}
           disableSelectionOnClick
-          // feature to be implemented
-
-          // onRowDoubleClick={(item) => {setcurrentRow(item.row)}}
-          // editRowsModel={editRowsModel}
-          // onEditRowsModelChange={handleEditRowsModelChange}
-          // onCellEditCommit={handleCellEditCommit}
-          // cellDoubleClick={setdialogState(true)}
         />
       ) : (
         <h1>Select Table From Menu Above</h1>

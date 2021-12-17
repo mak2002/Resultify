@@ -12,9 +12,6 @@ import { useHistory, useLocation } from "react-router";
 import TypographyLayout from "./TypographyLayout";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/core";
-// import BarChartIcon from '@material-ui/core/BarChart';  
-// import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function Layout({ children }) {
   const drawerWidth = 240;
@@ -89,7 +86,7 @@ export default function Layout({ children }) {
       text: "Account",
       icon: <SubjectOutlined color="primary" />,
       path: "/account",
-    }
+    },
   ];
 
   const classes = useStyles();
