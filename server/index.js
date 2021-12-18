@@ -210,7 +210,6 @@ app.post("/addStudent", (req, res) => {
   pool.query(
     add_student_query,
     [id, firstName, lastName, rollno, year],
-    // [firstName],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -228,6 +227,25 @@ app.get("/generatePdf", (req, res) => {
       console.log(err);
     } else {
       res.send(data);
+      // console.log(data);
+    }
+  });
+});
+
+app.get("/stats", (req, res) => {
+  var { tableNameStats } = req.body;
+  tableNameStats = "year4_cs_2021_22";
+  var gender = "gender";
+  // stats_query = "SELECT ($1) FROM " + tableNameStats;
+
+  // returns array of objects
+  stats_query = "SELECT " + gender +  ` FROM ${tableNameStats}`;
+  console.log("stats_query: ", stats_query);
+  pool.query(stats_query, [], (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(results);
       // console.log(data);
     }
   });

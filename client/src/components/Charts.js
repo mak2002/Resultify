@@ -9,6 +9,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import Axios from "axios";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
+
+import { CategoryScale, LinearScale, BarElement, Title } from "chart.js";
+// import { Bar } from 'react-chartjs-2';
+
 import {
   Container,
   Paper,
@@ -46,7 +52,45 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Charts() {
+/*import React from 'react';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+export const data = {
+  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  datasets: [
+    {
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
+
+export function App() {
+  return <Pie data={data} />;
+}
+*/
+
+export default function Charts({ GlobalTableData }) {
   const [studentDetails, setstudentDetails] = useState([10, 20]);
   const [sem4, setsem4] = useState();
   const [allSems, setallSems] = useState();
@@ -62,6 +106,7 @@ export default function Charts() {
   const [classname, setclassname] = useState("");
   const [rollno, setrollno] = useState(1001);
   const [studentName, setstudentName] = useState();
+  const [statsData, setstatsData] = useState([]);
 
   var totalMarksList = [];
 
@@ -73,6 +118,7 @@ export default function Charts() {
   const classes = useStyles();
 
   var data1;
+  var data3;
 
   var individualStudents = [];
 
@@ -95,6 +141,9 @@ export default function Charts() {
   const handleClick = () => {
     // setallSems([sem1, sem2, sem3, sem4]);
     console.log("clicked", menuValueSemester, menuValueClass);
+    Axios.get("http://localhost:5000/stats").then((response) =>
+      setstatsData(response.data.rows)
+    );
   };
 
   // class value
@@ -110,20 +159,59 @@ export default function Charts() {
     console.log("menuValueSemester", menuValueSemester);
   };
 
-  const data = {
-    labels: ["Sem1", "Sem2"],
+  // const data = {
+  //   labels: ["Sem1", "Sem2"],
+  //   datasets: [
+  //     {
+  //       label: "# of Votes",
+  //       data: studentDetails,
+  //       fill: false,
+  //       backgroundColor: "rgb(255, 99, 132)",
+  //       borderColor: "rgba(255, 99, 132, 0.2)",
+  //     },
+  //   ],
+  // };
+
+  const statsDataArray = statsData.map((stat) => {
+    return stat.gender;
+  });
+  console.log("statsDataArray: ", statsDataArray);
+
+  function getOccurrence(array, value) {
+    var count = 0;
+    array.forEach((v) => v === value && count++);
+    return count;
+  }
+
+  var uniquestatsDataArray = [...new Set(statsDataArray)];
+
+  console.log("uniquestatsDataArray", uniquestatsDataArray);
+
+  var uniqueStatsCount = [];
+  uniquestatsDataArray.forEach((uniqueStatsData) => {
+    uniqueStatsCount.push(getOccurrence(statsDataArray, uniqueStatsData));
+
+    console.log(
+      "getOccurrencex: ",
+      getOccurrence(statsDataArray, uniqueStatsData)
+    );
+    // console.log("getOccurrencex: ", getOccurrence(uniquestatsDataArray, statsData))
+  });
+
+  var data2;
+
+  var datalength = false;
+
+  data2 = {
+    labels: uniquestatsDataArray,
     datasets: [
       {
-        label: "# of Votes",
-        data: studentDetails,
-        fill: false,
-        backgroundColor: "rgb(255, 99, 132)",
-        borderColor: "rgba(255, 99, 132, 0.2)",
+        label: "Gender Ratio",
+        data: uniqueStatsCount,
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
   };
-
-  var datalength = false;
 
   return (
     <div>
@@ -158,12 +246,15 @@ export default function Charts() {
 
       <Button onClick={handleClick}>Get Marks</Button>
 
-      <Line
+      {/* <Line
         data={data}
         options={{ maintainAspectRatio: true }}
         height={10}
         width={20}
-      />
+      /> */}
+      {/* <Pie data={data2} height={5} width={5} /> */}
+      <Bar data={data2} height={5} width={10} />
+      <Pie data={data3} />
     </div>
   );
 }

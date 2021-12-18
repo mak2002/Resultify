@@ -51,6 +51,7 @@ export default function Layout({ children }) {
     },
   });
 
+  // sidebar menu items
   const menuItems = [
     {
       text: "Add Students Profile",

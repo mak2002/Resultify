@@ -45,7 +45,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ShowMarks() {
+export default function ShowMarks({ setGlobalTableData }) {
   const classes = useStyles();
 
   const columns1 = [];
@@ -82,7 +82,8 @@ export default function ShowMarks() {
   };
 
   const handleClick = (e) => {
-    // fetch marks from marks
+
+    // fetch marks from local database
     console.log("handle", menuValueSemester);
     Axios.get("http://localhost:5000/getmarks", {
       params: {
@@ -94,9 +95,10 @@ export default function ShowMarks() {
       .then((response) =>
         console.log(
           "response",
-          console.log(response),
+          console.log('marks: ',response),
           setcolumnFields(response.fields),
-          settableData(response.rows)
+          settableData(response.rows),
+          setGlobalTableData(response.rows)
         )
       );
   };
@@ -130,14 +132,17 @@ export default function ShowMarks() {
       </Select>
 
       <Button onClick={handleClick}>Get Marks</Button>
+      {tableData ? <Button>Visualize Marks</Button> : null}
 
       {tableData ? (
-        <DataGrid
-          rows={tableData}
-          columns={columns1}
-          pageSize={15}
-          disableSelectionOnClick
-        />
+        (
+          <DataGrid
+            rows={tableData}
+            columns={columns1}
+            pageSize={15}
+            disableSelectionOnClick
+          />
+        )  
       ) : (
         <h1>Select Table From Menu Above</h1>
       )}

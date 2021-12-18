@@ -43,20 +43,28 @@ export default function AddResults() {
     });
   };
 
+  // send file path and the name to be given and get the column names of CSV file
   const uploadCsv = () => {
     Axios.put("http://localhost:5000/upload_csv", {
       filePath: filePath,
       tableName: tableName,
-    }).then((response) => {
-      console.log("success", response.data);
-      setcolumnNames(response.data);
-    });
+    }).then(
+      (response) => {
+        console.log("success", response.data);
+        setcolumnNames(response.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   };
 
+  // set column types
   const handleColumnTypesChange = (e) => {
     setcolumnTypes(e.target.value);
   };
 
+  // update column types array
   useEffect(() => {
     var initialColumnTypes = columnTypes.trim().split(",");
     setcolumnTypesArray(initialColumnTypes);

@@ -55,7 +55,6 @@ export default function Account({ setcurrentUser }) {
     <div className={classes.root}>
       <div className={classes.main}>
         <Typography variant="h4"> User Email: </Typography>
-        {/* <Typography variant="h6">{user?.email}</Typography> */}
         <h2> {user?.email}</h2>
 
         <Button

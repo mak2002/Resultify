@@ -24,6 +24,13 @@ function App() {
 
   const [currentUser, setcurrentUser] = useState();
 
+  // data containing marks uplifted from showMarks component
+  const [GlobalTableData, setGlobalTableData] = useState();
+
+  useEffect(() => {
+    console.log("setGlobalTableData", GlobalTableData)
+  }, [GlobalTableData])
+
   return (
     <div className="App">
       {!currentUser ? (
@@ -54,13 +61,13 @@ function App() {
 
                 <Route path="/seeMarks">
                   <Paper>
-                    <ShowMarks />
+                    <ShowMarks setGlobalTableData={setGlobalTableData}/>
                   </Paper>
                 </Route>
 
                 <Route path="/charts">
                   <Paper>
-                    <Charts />
+                    <Charts GlobalTableData={GlobalTableData}/>
                   </Paper>
                 </Route>
 
@@ -72,7 +79,7 @@ function App() {
 
                 <Route path="/account">
                   <Paper>
-                    <Account setcurrentUser={setcurrentUser}/>
+                    <Account setcurrentUser={setcurrentUser} />
                   </Paper>
                 </Route>
               </Switch>

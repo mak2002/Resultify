@@ -51,8 +51,8 @@ export default function GeneratePdf() {
 
   var somePdf;
 
-  // const formPdfBytes = await fetch('FormForm.pdf').then((response) => response.arrayBuffer())
 
+  // make pdf from uploaded data and pre defined template
   const generatePdf = async () => {
     const pdfDoc = await PDFDocument.load(somePdf);
 
@@ -80,6 +80,7 @@ export default function GeneratePdf() {
 
       const pdfBytes = await pdfDoc.save("testpdf.js");
 
+      // function to pdf link and click on it
       function saveByteArray(reportName, byte) {
         var blob = new Blob([byte], { type: "application/pdf" });
         var link = document.createElement("a");
@@ -89,26 +90,17 @@ export default function GeneratePdf() {
         link.click();
       }
 
-      // function openPdf(pdfBytes) {
-      //   var file = new Blob([pdfBytes], { type: "application/pdf" });
-      //   var fileURL = URL.createObjectURL(file);
-      //   // file.save("tempDocument");
-      //   window.open(fileURL);
-      // }
-      // openPdf(pdfBytes);
       saveByteArray(`${marks.rollno}-result`, pdfBytes);
     }
   };
 
   var existingPdfBytes;
   const handleClick = async () => {
-    // setallSems([sem1, sem2, sem3, sem4]);
     console.log("clicked", rollno, menuValueSemester, menuValueClass);
 
     somePdf = await Axios.get("http://localhost:5000/generatePdf").then(
       (response) => {
         console.log("response response", response);
-        // console.log("response response 1", response.data.arrayBuffer());
         return response.data;
       }
     );
@@ -125,7 +117,6 @@ export default function GeneratePdf() {
         console.log("response marks: ", response);
         setmarks(response);
       });
-    // .then(console.log("generatePdf: "), generatePdf());
 
     marks ? generatePdf() : void(0);
 
