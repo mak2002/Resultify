@@ -10,23 +10,25 @@
     
 - ## Back End : Express
     
-- ## Database : My-SQL
+- ## Database : PostgreSQL
     
 
 There are 5 section to this.
 
 1.  Add Student Profile
     - Which added Students Details like Name, Roll.No etc. to the local Database
-    - <img src="client/images/screenshot1.png" > 
+    - <img src="client/images/s1.png" > 
 2.  Students List
     - It shows the Students List added in above which is fetched from local database
-    - <img src="client/images/Screenshot2.png" >
-3.  (Feature to be Implemented) Add Results
+    - [All the information here is just for demo purpose]
+    - <img src="client/images/s5.png" >
+3.  Add Results
     - Add Students Results via CSV File
-    - <img src="client/images/S3.png" >
-4.  Show Marks
+    - You have to just input the CSV file path, the types of columns, and name for table name
+    - <img src="client/images/s2.png" >
+4.  Show Results
     - Show the marks of Students added via above step. For demo purposes ii is already in the database
-    - <img src="client/images/s4.png" >
+    - <img src="client/images/s3.png" >
 5.  Charts
     - You can select Roll.No of student from dropdown menu to get the Line Chart for students' performance for all 4 Semesters
-    - <img src="client/images/s5.png" >
+    - <img src="client/images/s4.png" >
