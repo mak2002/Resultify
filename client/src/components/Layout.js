@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, Paper } from "@material-ui/core";
+import { Button, makeStyles, Paper } from "@material-ui/core";
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
@@ -19,6 +19,7 @@ export default function Layout({ children }) {
   const useStyles = makeStyles({
     main: {
       display: "flex",
+      // backgroundColor:'#509aff'
     },
 
     page: {
@@ -27,18 +28,27 @@ export default function Layout({ children }) {
     },
 
     drawer: {
+      // backgroundColor:'#509aff',
       width: drawerWidth,
       display: "flex",
       flexDirection: "column",
     },
     drawerPaper: {
       width: drawerWidth,
+      // backgroundColor: "#5f95be",
+      backgroundColor: "#5B92BC",
     },
 
     active: {
       background: "#f4f4f4",
     },
-
+    logoutbtn: {
+      height:"2rem",
+      border:'none',
+      borderRadius:'10px',
+      width: "100%",
+      marginTop: "5rem"
+    },
     list: {
       height: "100%",
       display: "flex",
@@ -115,6 +125,13 @@ export default function Layout({ children }) {
               </ListItemText>
             </ListItem>
           ))}
+          <button
+            className={classes.logoutbtn}
+            variant="contained"
+            color="primary"
+          >
+            LogOut
+          </button>
         </List>
       </Drawer>
       <div className={classes.page}>{children}</div>

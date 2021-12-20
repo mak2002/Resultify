@@ -9,6 +9,10 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import Axios from "axios";
 
+import InputAdornment from "@material-ui/core/InputAdornment";
+import FormatListNumberedRtlIcon from '@material-ui/icons/FormatListNumberedRtl';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -25,6 +29,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     height: "100vh",
     maxHeight: "100vh",
+    // backgroundColor: "#5BBCB6"
   },
   grid: {
     width: "900px",
@@ -119,8 +124,9 @@ export default function AddStudentProfile() {
           <form className={classes.form}>
             <TextField
               onChange={(e) => setid(e.target.value)}
-              label="Id"
+              label="ID"
               className={classes.textfield}
+              
             />
 
             <TextField
@@ -129,6 +135,13 @@ export default function AddStudentProfile() {
               }}
               className={classes.textfield}
               label="First Name"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+              ),
+            }}
             />
             <TextField
               onChange={(e) => {
@@ -136,6 +149,13 @@ export default function AddStudentProfile() {
               }}
               className={classes.textfield}
               label="Last Name"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <AccountCircle />
+                  </InputAdornment>
+              ),
+            }}
             />
             <TextField
               onChange={(e) => {
@@ -143,6 +163,13 @@ export default function AddStudentProfile() {
               }}
               className={classes.textfield}
               label="Roll No"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <FormatListNumberedRtlIcon />
+                  </InputAdornment>
+              ),
+            }}
             />
 
             <TextField

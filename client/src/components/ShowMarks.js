@@ -43,6 +43,9 @@ const useStyles = makeStyles({
   select: {
     minWidth: "250px",
   },
+  tempTitle:{
+    marginTop: "10rem",
+  }
 });
 
 export default function ShowMarks({ setGlobalTableData }) {
@@ -105,7 +108,9 @@ export default function ShowMarks({ setGlobalTableData }) {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h3">Show Results</Typography>
+     <Typography variant="h2" color="secondary">
+        Show Results
+      </Typography>
       {/* <h1>Show Results</h1> */}
 
       <Select
@@ -144,7 +149,7 @@ export default function ShowMarks({ setGlobalTableData }) {
           />
         )  
       ) : (
-        <h1>Select Table From Menu Above</h1>
+        <h1 className={classes.tempTitle}>Select Table From Menu Above</h1>
       )}
     </div>
   );

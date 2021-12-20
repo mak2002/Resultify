@@ -11,6 +11,7 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Axios from "axios";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import { Scatter } from "react-chartjs-2";
 
 import { CategoryScale, LinearScale, BarElement, Title } from "chart.js";
 // import { Bar } from 'react-chartjs-2';
@@ -28,7 +29,7 @@ import { DataGrid } from "@material-ui/data-grid";
 
 const useStyles = makeStyles({
   root: {
-    height: "100vh",
+    maxHeight: "100vh",
   },
   grid: {
     width: "850px",
@@ -49,6 +50,9 @@ const useStyles = makeStyles({
   },
   select: {
     minWidth: "250px",
+  },
+  scatter: {
+    width: "50%",
   },
 });
 
@@ -121,6 +125,22 @@ export default function Charts({ GlobalTableData }) {
   var data3;
 
   var individualStudents = [];
+
+  data3 = {
+    datasets: [
+      {
+        label: "A dataset",
+        // data: GlobalTableData.map((marks) => (
+        //   return {x: marks.rollno, y: marks.subject1}
+        // ),
+        data: GlobalTableData?.map((marks) => ({
+          x: marks.rollno,
+          y: marks.subject1,
+        })),
+        backgroundColor: "rgba(255, 99, 132, 1)",
+      },
+    ],
+  };
 
   // const handleChangeClass = (e) => {
   //   setmenuValueClass(e.target.value);
@@ -246,15 +266,16 @@ export default function Charts({ GlobalTableData }) {
 
       <Button onClick={handleClick}>Get Marks</Button>
 
-      {/* <Line
-        data={data}
-        options={{ maintainAspectRatio: true }}
-        height={10}
-        width={20}
-      /> */}
-      {/* <Pie data={data2} height={5} width={5} /> */}
-      <Bar data={data2} height={5} width={10} />
-      <Pie data={data3} />
+      <Bar data={data2} height={5} width={10} className={classes.scatter} />
+
+      <div className={classes.scatter}>
+        <Scatter
+          data={data3}
+          width={3}
+          height={3}
+          options={{ maintainAspectRatio: true }}
+        />
+      </div>
     </div>
   );
 }
