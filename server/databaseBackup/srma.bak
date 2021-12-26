@@ -1,0 +1,2275 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.1 (Ubuntu 14.1-2.pgdg20.04+1)
+-- Dumped by pg_dump version 14.1 (Ubuntu 14.1-2.pgdg20.04+1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- Name: new_test_table01; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.new_test_table01 (
+    id integer,
+    rollno character varying(50),
+    first_name character varying(50),
+    last_name character varying(50),
+    gender character varying(50),
+    class character varying(50)
+);
+
+
+ALTER TABLE public.new_test_table01 OWNER TO postgres;
+
+--
+-- Name: students_list; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.students_list (
+    id integer,
+    rollno character varying(50),
+    first_name character varying(50),
+    last_name character varying(50),
+    gender character varying(50),
+    class integer
+);
+
+
+ALTER TABLE public.students_list OWNER TO postgres;
+
+--
+-- Name: year1_cs_2021_22; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year1_cs_2021_22 (
+    id integer,
+    rollno character varying(50),
+    first_name character varying(50),
+    last_name character varying(50),
+    gender character varying(50),
+    year integer
+);
+
+
+ALTER TABLE public.year1_cs_2021_22 OWNER TO postgres;
+
+--
+-- Name: year1_sem1; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year1_sem1 (
+    id integer,
+    rollno character varying(50),
+    subject1 integer,
+    subject2 integer,
+    subject3 integer,
+    subject4 integer,
+    total integer
+);
+
+
+ALTER TABLE public.year1_sem1 OWNER TO postgres;
+
+--
+-- Name: year1_sem2; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year1_sem2 (
+    id integer,
+    rollno character varying(50),
+    subject1 integer,
+    subject2 integer,
+    subject3 integer,
+    subject4 integer,
+    total integer
+);
+
+
+ALTER TABLE public.year1_sem2 OWNER TO postgres;
+
+--
+-- Name: year2_cs_2021_22; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year2_cs_2021_22 (
+    id integer,
+    rollno character varying(50),
+    first_name character varying(50),
+    last_name character varying(50),
+    gender character varying(50),
+    year integer
+);
+
+
+ALTER TABLE public.year2_cs_2021_22 OWNER TO postgres;
+
+--
+-- Name: year2_sem1; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year2_sem1 (
+    id integer,
+    rollno character varying(50),
+    subject1 integer,
+    subject2 integer,
+    subject3 integer,
+    subject4 integer,
+    total integer
+);
+
+
+ALTER TABLE public.year2_sem1 OWNER TO postgres;
+
+--
+-- Name: year2_sem2; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year2_sem2 (
+    id integer,
+    rollno character varying(50),
+    subject1 integer,
+    subject2 integer,
+    subject3 integer,
+    subject4 integer,
+    total integer
+);
+
+
+ALTER TABLE public.year2_sem2 OWNER TO postgres;
+
+--
+-- Name: year3_cs_2021_22; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year3_cs_2021_22 (
+    id integer,
+    rollno character varying(50),
+    first_name character varying(50),
+    last_name character varying(50),
+    gender character varying(50),
+    year integer
+);
+
+
+ALTER TABLE public.year3_cs_2021_22 OWNER TO postgres;
+
+--
+-- Name: year3_sem1; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year3_sem1 (
+    id integer,
+    rollno character varying(50),
+    subject1 integer,
+    subject2 integer,
+    subject3 integer,
+    subject4 integer,
+    total integer
+);
+
+
+ALTER TABLE public.year3_sem1 OWNER TO postgres;
+
+--
+-- Name: year3_sem2; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year3_sem2 (
+    id integer,
+    rollno character varying(50),
+    subject1 integer,
+    subject2 integer,
+    subject3 integer,
+    subject4 integer,
+    total integer
+);
+
+
+ALTER TABLE public.year3_sem2 OWNER TO postgres;
+
+--
+-- Name: year4_cs_2021_22; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year4_cs_2021_22 (
+    id integer,
+    rollno character varying(50),
+    first_name character varying(50),
+    last_name character varying(50),
+    gender character varying(50),
+    year integer
+);
+
+
+ALTER TABLE public.year4_cs_2021_22 OWNER TO postgres;
+
+--
+-- Name: year4_sem1; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year4_sem1 (
+    id integer,
+    rollno character varying(50),
+    subject1 integer,
+    subject2 integer,
+    subject3 integer,
+    subject4 integer,
+    total integer
+);
+
+
+ALTER TABLE public.year4_sem1 OWNER TO postgres;
+
+--
+-- Name: year4_sem2; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.year4_sem2 (
+    id integer,
+    rollno character varying(50),
+    subject1 integer,
+    subject2 integer,
+    subject3 integer,
+    subject4 integer,
+    total integer
+);
+
+
+ALTER TABLE public.year4_sem2 OWNER TO postgres;
+
+--
+-- Data for Name: new_test_table01; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.new_test_table01 (id, rollno, first_name, last_name, gender, class) FROM stdin;
+1	1001	ABCD	ABCD	Genderqueer	3
+2	1002	Allina	Nelson	Genderfluid	4
+3	1003	Kathrine	Marrill	Female	2
+4	1004	Karry	Proudman	Polygender	1
+5	1005	Marjy	Giacomucci	Genderqueer	3
+6	1006	Vivyan	Courvert	Bigender	4
+7	1007	Linell	Pickthall	Male	1
+8	1008	Dela	Friese	Genderqueer	4
+9	1009	Malchy	Fowley	Bigender	3
+10	1010	Katusha	Halmkin	Male	3
+11	1011	Letitia	Bullar	Polygender	3
+12	1012	Mayne	Mongain	Non-binary	3
+13	1013	Kevina	Pascoe	Bigender	1
+14	1014	Devonna	Arnall	Agender	3
+15	1015	Liz	Gawith	Bigender	4
+16	1016	Claiborn	Mergue	Male	4
+17	1017	Jaimie	Eusden	Polygender	4
+18	1018	Eddy	Lubbock	Genderfluid	1
+19	1019	Lily	Cray	Male	2
+20	1020	Claire	Rieme	Male	3
+21	1021	Teena	Rzehorz	Bigender	4
+22	1022	Frederik	Danielsen	Genderqueer	3
+23	1023	Zea	Schuricht	Non-binary	3
+24	1024	Agathe	Beaford	Genderqueer	1
+25	1025	Thorstein	Bottleson	Agender	3
+26	1026	Ethel	Ceeley	Non-binary	3
+27	1027	Murvyn	Bolter	Female	3
+28	1028	Tammy	Jovey	Genderfluid	1
+29	1029	Odella	Pamplin	Male	4
+30	1030	Emelina	Laverty	Polygender	4
+31	1031	Rob	Bernaert	Polygender	2
+32	1032	Trish	Jacquot	Bigender	4
+33	1033	Winnie	Sharratt	Female	2
+34	1034	Kerwinn	Kinnear	Genderqueer	4
+35	1035	Sherline	Soanes	Agender	3
+36	1036	Geoff	Nixon	Female	2
+37	1037	Filia	Kiloh	Non-binary	4
+38	1038	Garner	Laughnan	Polygender	4
+39	1039	Cornell	Donnelly	Genderqueer	4
+40	1040	Jaymie	Ferruzzi	Non-binary	4
+41	1041	Weidar	Rowlin	Female	4
+42	1042	Chryste	Yoxall	Genderfluid	4
+43	1043	Garwood	Chantrell	Agender	3
+44	1044	Brinn	Thresher	Genderqueer	3
+45	1045	Ase	Stennes	Female	3
+46	1046	Irvin	Lemoir	Male	4
+47	1047	Carlen	Quimby	Bigender	2
+48	1048	Tammara	Bendin	Male	4
+49	1049	Genevra	Chazelas	Female	1
+50	1050	Aaren	Ketts	Genderfluid	4
+51	1051	Florry	Wewell	Non-binary	4
+52	1052	Marquita	Simonitto	Non-binary	1
+53	1053	Jessi	Wraight	Polygender	2
+54	1054	Sandor	Crauford	Genderqueer	1
+55	1055	Holly	Bernardon	Agender	3
+56	1056	Maggy	Kempton	Agender	3
+57	1057	Ahmed	Humblestone	Non-binary	4
+58	1058	Emilia	Bonsale	Bigender	1
+59	1059	Brucie	Dallan	Genderqueer	3
+60	1060	Rebbecca	Silcocks	Agender	2
+61	1061	Patty	Meron	Polygender	1
+62	1062	Cherilyn	Gjerde	Genderfluid	2
+63	1063	Lilith	Heminsley	Male	2
+64	1064	Noll	Setchell	Bigender	4
+65	1065	Chan	Bevans	Non-binary	2
+66	1066	Clarie	Loy	Agender	4
+67	1067	Guthry	Hambelton	Bigender	4
+68	1068	Sal	Yexley	Genderqueer	1
+69	1069	Gabrielle	Brambley	Genderqueer	3
+70	1070	Jacquie	Overthrow	Female	2
+71	1071	Kellina	Duhig	Genderfluid	4
+72	1072	Stefano	Guerriero	Polygender	3
+73	1073	Michelina	Nare	Agender	1
+74	1074	Carlie	Davydzenko	Non-binary	3
+75	1075	Marcelle	Gee	Polygender	3
+76	1076	Nikolaos	Mulles	Agender	4
+77	1077	Sax	Zanetto	Male	4
+78	1078	Fancie	Trewman	Agender	4
+79	1079	Francine	Nordass	Polygender	1
+80	1080	Evangelin	Husbands	Agender	1
+81	1081	Harrie	MacDermand	Genderqueer	3
+82	1082	Lewiss	Woolfoot	Female	3
+83	1083	Goran	Baldin	Genderqueer	3
+84	1084	Loren	Crole	Genderfluid	3
+85	1085	Fergus	Chadburn	Genderfluid	3
+86	1086	Melanie	McMurray	Female	2
+87	1087	Juliet	Schulz	Female	1
+88	1088	Marchelle	Giorgielli	Genderfluid	3
+89	1089	Augustine	Sandercock	Genderqueer	4
+90	1090	Othilia	Shinfield	Genderqueer	1
+91	1091	Virge	Berthomieu	Non-binary	1
+92	1092	Jillian	Dismore	Non-binary	3
+93	1093	Florrie	Bestar	Female	3
+94	1094	Joseph	McTavy	Genderqueer	1
+95	1095	Johnathan	Aggus	Genderqueer	1
+96	1096	Marci	Scurrell	Female	4
+97	1097	Porty	Williamson	Polygender	2
+98	1098	Johnath	Valenti	Non-binary	4
+99	1099	Amye	Satchell	Agender	4
+100	1100	Kathryne	Hothersall	Bigender	1
+101	1101	Leese	Towson	Female	1
+102	1102	Olga	Blanpein	Female	3
+103	1103	Lazaro	Moncreif	Polygender	3
+104	1104	Marena	Skurray	Non-binary	2
+105	1105	Laurice	Gillard	Genderfluid	1
+106	1106	Delora	Payne	Male	2
+107	1107	Juana	Colquete	Male	1
+108	1108	Bobbie	Skim	Genderqueer	1
+109	1109	Aile	Gabbitus	Agender	1
+110	1110	Antonio	Verry	Agender	3
+111	1111	Leonerd	Haddeston	Male	2
+112	1112	Rufe	Lillicrap	Bigender	4
+113	1113	Franciskus	Haugeh	Genderfluid	1
+114	1114	Hortense	Kiffin	Agender	3
+115	1115	Ebeneser	Josland	Polygender	3
+116	1116	Lilla	Patriche	Female	4
+117	1117	Tonie	Gandar	Bigender	4
+118	1118	Fredrika	Rosenfelt	Agender	1
+119	1119	Garv	Soares	Agender	1
+120	1120	Phil	Tomasoni	Genderfluid	2
+121	1121	Blondy	Whiterod	Genderqueer	1
+122	1122	Abby	McGauhy	Female	3
+123	1123	Ana	Mostyn	Agender	2
+124	1124	Margery	Cassy	Female	1
+125	1125	Starla	Yuranovev	Female	1
+126	1126	Gleda	Klimpke	Non-binary	4
+127	1127	Ashlin	Enser	Genderfluid	2
+128	1128	Caitlin	Aveline	Bigender	4
+129	1129	Steffen	Isles	Genderqueer	4
+130	1130	Ignazio	Scripture	Female	4
+131	1131	Witty	Dubose	Female	3
+132	1132	Cassondra	Doumenc	Bigender	4
+133	1133	Isidora	Holdron	Polygender	1
+134	1134	Zedekiah	Meconi	Agender	4
+135	1135	Matty	Fenich	Female	4
+136	1136	Manya	Sharply	Non-binary	4
+137	1137	Moore	McGinlay	Bigender	3
+138	1138	Pryce	Radloff	Polygender	2
+139	1139	Stephanus	Bannell	Genderqueer	1
+140	1140	Cookie	Hoyte	Genderfluid	2
+141	1141	Maurice	Plott	Genderqueer	2
+142	1142	Ariel	Antoney	Male	1
+143	1143	Adelina	Duffie	Bigender	3
+144	1144	Gunner	Pirrie	Non-binary	4
+145	1145	Aloisia	Trewhitt	Genderqueer	3
+146	1146	Victoir	Kibby	Polygender	2
+147	1147	Myrna	Van der Kruis	Bigender	1
+148	1148	Neddie	Taaffe	Genderqueer	4
+149	1149	Herb	Fiander	Agender	4
+150	1150	Gardener	Stothert	Non-binary	3
+151	1151	Alberta	Kirwood	Female	1
+152	1152	Rubia	Perfect	Bigender	2
+153	1153	Ulises	D'Orsay	Agender	2
+154	1154	Irma	Sonley	Genderqueer	4
+155	1155	Wileen	Duffan	Polygender	3
+156	1156	Dolph	Welsby	Female	2
+157	1157	Becki	Heball	Genderfluid	3
+158	1158	Bernette	Dmisek	Agender	3
+159	1159	Jesse	Meehan	Agender	2
+160	1160	Marcus	Ungaretti	Agender	3
+161	1161	Juliann	Fountaine	Bigender	2
+162	1162	Darleen	Butland	Agender	2
+163	1163	Elisa	Townshend	Male	1
+164	1164	Brittni	Allsobrook	Genderfluid	3
+165	1165	Brook	Windibank	Non-binary	4
+166	1166	Evangelina	Rymer	Agender	3
+167	1167	Griselda	Toffaloni	Female	3
+168	1168	Sheff	Bacup	Bigender	1
+169	1169	Walther	Axleby	Non-binary	3
+170	1170	Cobby	Gorger	Agender	1
+171	1171	Kale	Mobley	Female	4
+172	1172	Bathsheba	Jandac	Polygender	3
+173	1173	Conrado	Gostage	Agender	2
+174	1174	Roderick	Renak	Non-binary	1
+175	1175	Amberly	Walasik	Bigender	2
+176	1176	David	Reisenberg	Non-binary	3
+177	1177	Salem	Clackers	Genderfluid	2
+178	1178	Kitty	Leifer	Genderqueer	2
+179	1179	Janey	Comiam	Female	2
+180	1180	Brigid	Arnley	Bigender	4
+181	1181	Perry	Cherry	Genderqueer	2
+182	1182	Joceline	Thomassin	Male	4
+183	1183	Wat	Panther	Genderfluid	4
+184	1184	Decca	Ayrs	Agender	2
+185	1185	Hillel	Erat	Male	1
+186	1186	Adella	Hallawell	Polygender	1
+187	1187	Horatio	Spada	Genderfluid	2
+188	1188	Tiena	Jellyman	Polygender	2
+189	1189	Frasco	Carlesso	Genderfluid	2
+190	1190	Cathrine	Foux	Male	4
+191	1191	Fair	Verissimo	Male	3
+192	1192	Molly	Madgett	Genderqueer	4
+193	1193	Korry	Elsy	Agender	2
+194	1194	Billy	Raspin	Non-binary	4
+195	1195	Huberto	Garstan	Male	4
+196	1196	Sanders	Gathercole	Bigender	2
+197	1197	Ina	Mannix	Polygender	3
+198	1198	Farrell	Armell	Non-binary	1
+199	1199	Rikki	Blunt	Bigender	4
+200	1200	Odetta	Aizikovich	Genderfluid	4
+201	1201	Peyter	Beeson	Male	2
+202	1202	Elmo	Emanuelov	Male	1
+203	1203	Birdie	Rousell	Male	1
+204	1204	Bernard	Yanyshev	Agender	1
+205	1205	Forester	Combe	Agender	4
+206	1206	Eddy	Glackin	Bigender	2
+207	1207	Kele	Croster	Bigender	2
+208	1208	Carmel	Dillamore	Bigender	2
+209	1209	Jannel	Jakubovits	Bigender	3
+210	1210	Vidovic	Paddefield	Genderqueer	3
+211	1211	Jess	Killingsworth	Female	3
+212	1212	Clarinda	Beretta	Genderfluid	4
+213	1213	Alene	Fassan	Polygender	3
+214	1214	Allx	Gother	Male	4
+215	1215	Antons	Favelle	Genderqueer	1
+216	1216	Amabel	Dugood	Polygender	4
+217	1217	Grete	Janosevic	Bigender	4
+218	1218	D'arcy	Dorgon	Bigender	2
+219	1219	Mallory	Speeks	Bigender	4
+220	1220	Booth	Organ	Female	2
+221	1221	Algernon	Spini	Male	1
+222	1222	Rivi	Ivatt	Non-binary	4
+223	1223	Othello	Illes	Female	2
+224	1224	Katalin	Nellis	Genderfluid	1
+225	1225	Wilona	Heinecke	Bigender	2
+226	1226	Seth	Jillis	Genderfluid	1
+227	1227	Horatia	Collet	Genderfluid	4
+228	1228	Reta	Meneur	Genderfluid	4
+229	1229	Johann	Lindroos	Male	3
+230	1230	Luella	Stollmeier	Female	3
+231	1231	Aurthur	L'Hommeau	Genderfluid	2
+232	1232	Kev	Mitford	Genderqueer	4
+233	1233	Creigh	Britt	Polygender	3
+234	1234	Farlee	Calloway	Non-binary	3
+235	1235	Ciel	Dowry	Male	1
+236	1236	Lora	Necrews	Male	4
+237	1237	Kelcie	Wildman	Bigender	4
+238	1238	Galen	Foynes	Polygender	3
+239	1239	Oswell	MacCarrane	Polygender	4
+240	1240	Pauli	Ibbetson	Agender	4
+241	1241	Rea	McGarrity	Non-binary	2
+242	1242	Dix	Renol	Agender	1
+243	1243	Kirsti	Canada	Agender	1
+244	1244	Brittani	Dunleavy	Genderfluid	1
+245	1245	Adriena	Lipgens	Non-binary	1
+246	1246	Camala	Villa	Bigender	3
+247	1247	Lynnet	Liversidge	Female	1
+248	1248	Sidney	Ronchi	Genderqueer	3
+249	1249	Carver	Castagnasso	Male	1
+250	1250	Deerdre	Wasson	Genderfluid	2
+251	1251	Polly	Oliffe	Genderfluid	1
+252	1252	Madalyn	Beining	Female	3
+253	1253	Mureil	Truelock	Male	2
+254	1254	Bran	Daniele	Genderfluid	3
+255	1255	Olly	Wais	Genderqueer	3
+256	1256	Kendricks	Swinburn	Genderqueer	2
+257	1257	Godfrey	Coulthard	Non-binary	3
+258	1258	Kelly	Rany	Agender	4
+259	1259	Lorne	O'Reilly	Genderqueer	1
+260	1260	Hollis	Pauleau	Genderqueer	2
+261	1261	Fey	Whittle	Genderfluid	1
+262	1262	Godfree	Marty	Bigender	3
+263	1263	Garry	Brasener	Bigender	4
+264	1264	Leopold	Vanacci	Bigender	3
+265	1265	Carine	Raimbauld	Polygender	2
+266	1266	Bronny	Gimblett	Polygender	1
+267	1267	Gaston	Waleworke	Non-binary	2
+268	1268	Jeromy	Lebel	Male	2
+269	1269	Noreen	Harsnep	Genderfluid	2
+270	1270	Sunshine	Lippiatt	Male	4
+271	1271	Krystalle	Saull	Genderfluid	1
+272	1272	Casey	Conochie	Bigender	4
+273	1273	Quincey	Keddey	Genderqueer	2
+274	1274	Vannie	Gogie	Female	3
+275	1275	Grace	Carmen	Female	3
+276	1276	Fabio	Ostler	Bigender	1
+277	1277	Artemis	Casbolt	Non-binary	3
+278	1278	Elden	Birdall	Non-binary	1
+279	1279	Loretta	Treleaven	Male	2
+280	1280	Gherardo	Lanktree	Non-binary	2
+281	1281	Jocelyne	Ivain	Male	2
+282	1282	Otto	Berks	Bigender	4
+283	1283	Swen	Callender	Genderqueer	2
+284	1284	Linnea	Jakubovics	Bigender	1
+285	1285	Elsi	Vanns	Female	3
+286	1286	Donalt	Stoter	Male	3
+287	1287	Janos	Lanigan	Genderfluid	3
+288	1288	Roxane	Barti	Male	1
+289	1289	Emmy	Jallin	Genderfluid	1
+290	1290	Jessey	Croot	Genderqueer	2
+291	1291	Anders	Nial	Non-binary	3
+292	1292	Doralia	Manes	Polygender	4
+293	1293	Lexis	Nuttey	Genderqueer	2
+294	1294	Michelina	Cowper	Polygender	1
+295	1295	Tedda	Gwynn	Bigender	4
+296	1296	Putnem	Kacheler	Polygender	2
+297	1297	Waylon	Davidovics	Genderqueer	3
+298	1298	Guilbert	Beetles	Genderqueer	4
+299	1299	Quinn	Seneschal	Polygender	1
+300	1300	Abigale	Mertsching	Non-binary	2
+301	1301	Selestina	Jerrom	Polygender	3
+302	1302	Desiree	Byars	Agender	2
+303	1303	Meara	Mallan	Agender	2
+304	1304	Barrett	Lawday	Genderfluid	2
+305	1305	Fraser	Nardi	Genderqueer	4
+306	1306	Evaleen	O'Rowane	Polygender	4
+307	1307	Boony	Botcherby	Genderqueer	2
+308	1308	Bess	Berntssen	Agender	4
+309	1309	Rafaela	Franey	Polygender	1
+310	1310	Cornela	Venn	Bigender	3
+311	1311	Annadiane	Cradoc	Genderfluid	1
+312	1312	Hastie	Tomich	Bigender	3
+313	1313	Nani	Carryer	Agender	1
+314	1314	Sydney	Poulgreen	Genderfluid	4
+315	1315	Alethea	Robelow	Polygender	4
+316	1316	Dylan	Simonitto	Non-binary	3
+317	1317	Bernie	Kirkbright	Bigender	2
+318	1318	Maximo	Kubicek	Male	4
+319	1319	Timothee	Gatecliff	Polygender	1
+320	1320	Branden	Shillum	Bigender	3
+321	1321	Mirabel	Domek	Bigender	1
+322	1322	Mela	Langan	Male	1
+323	1323	Sibylle	Autrie	Male	2
+324	1324	Alix	Overell	Non-binary	1
+325	1325	Thorny	Ciccarelli	Genderqueer	4
+326	1326	Cassi	Kember	Non-binary	1
+327	1327	Brit	Wolvey	Female	4
+328	1328	Bartie	Kemster	Bigender	1
+329	1329	Christos	Tailour	Agender	2
+330	1330	Ivie	Caswell	Male	2
+331	1331	Andromache	Hamlet	Female	3
+332	1332	Alberik	Serjeantson	Bigender	3
+333	1333	Sonny	O' Neligan	Genderfluid	3
+334	1334	Pearl	Dooly	Agender	1
+335	1335	Marika	Cheke	Male	3
+336	1336	Noe	D'Alwis	Polygender	1
+337	1337	Mychal	Cattermull	Bigender	2
+338	1338	Welby	Frantzeni	Agender	1
+339	1339	Archambault	Scholes	Male	3
+340	1340	Melinde	Spenton	Genderqueer	1
+341	1341	Dennison	Almack	Non-binary	1
+342	1342	Eydie	Arnaudet	Agender	2
+343	1343	Benyamin	Swire	Agender	1
+344	1344	Dniren	Olpin	Bigender	2
+345	1345	Kelila	Aarons	Bigender	4
+346	1346	Dunstan	Kopecka	Male	3
+347	1347	Bentley	Renn	Polygender	1
+348	1348	Brenna	Rockwill	Bigender	3
+349	1349	Magnum	Scholig	Genderqueer	3
+350	1350	Iago	Pearman	Female	1
+351	1351	Cassi	Budcock	Female	2
+352	1352	Langsdon	Elcome	Female	3
+353	1353	Blakelee	Kemm	Genderqueer	1
+354	1354	Letta	Van Der Walt	Male	1
+355	1355	Nicky	Crenage	Female	4
+356	1356	Gilemette	Verney	Female	3
+357	1357	Lorenza	Disbury	Non-binary	2
+358	1358	Cassandra	Cabane	Agender	4
+359	1359	Corrianne	Lechelle	Bigender	3
+360	1360	Jasper	Bassingden	Male	3
+361	1361	Farr	Schoenleiter	Male	3
+362	1362	Hebert	Jobke	Bigender	1
+363	1363	Tresa	Swale	Male	2
+364	1364	Brandy	Breddy	Female	2
+365	1365	Marissa	Pods	Genderfluid	3
+366	1366	Norine	Reichartz	Male	1
+367	1367	Josey	Rate	Genderfluid	4
+368	1368	Erl	Meneely	Female	4
+369	1369	Neddie	Sinden	Non-binary	3
+370	1370	Ansell	Costelow	Genderqueer	2
+371	1371	Falkner	Crankshaw	Polygender	4
+372	1372	Clem	Aird	Polygender	1
+373	1373	Julian	Grayer	Genderfluid	4
+374	1374	Frasco	Kasperski	Polygender	4
+375	1375	Hyatt	Larkins	Agender	3
+376	1376	Vito	Olivie	Non-binary	2
+377	1377	Eduard	Tregunnah	Agender	1
+378	1378	Shanna	Orrill	Genderqueer	4
+379	1379	Gunner	Fludgate	Non-binary	2
+380	1380	Kelsi	Stickland	Genderqueer	1
+381	1381	Jeddy	Casewell	Bigender	2
+382	1382	Virgina	Mougeot	Bigender	3
+383	1383	Ryan	Ambroix	Female	4
+384	1384	Liana	Sands-Allan	Polygender	1
+385	1385	Shawna	Clutton	Genderfluid	2
+386	1386	Nessy	Greenhowe	Female	1
+387	1387	Marysa	Vernon	Genderfluid	3
+388	1388	Shayne	Bundey	Agender	3
+389	1389	Darleen	Esselin	Non-binary	2
+390	1390	Mollie	Blackader	Genderqueer	4
+391	1391	Chad	Naisey	Agender	4
+392	1392	Taffy	Thirtle	Polygender	2
+393	1393	Phylys	Bradnocke	Male	2
+394	1394	Leshia	Milmoe	Female	3
+395	1395	Judie	Kenner	Genderqueer	1
+396	1396	Aarika	Barge	Polygender	2
+397	1397	Jo	Paquet	Female	1
+398	1398	Desi	Spaldin	Female	2
+399	1399	Ruddy	Worster	Male	3
+400	1400	Noach	Ormistone	Polygender	4
+401	1401	Pearline	McWaters	Genderqueer	2
+402	1402	Deloris	Kirkland	Female	2
+403	1403	Bernard	Rider	Agender	1
+404	1404	Sheryl	Crosen	Female	4
+405	1405	Viole	Brixham	Agender	4
+406	1406	Mabelle	Hoppner	Male	3
+407	1407	Sayer	Dominey	Male	2
+408	1408	Amelie	Speed	Bigender	4
+409	1409	Ruthie	Bosche	Agender	4
+410	1410	Cherilyn	Wraight	Female	2
+411	1411	Terrence	Du Pre	Male	1
+412	1412	Quintin	Kuller	Polygender	4
+413	1413	Lenette	Chidley	Genderqueer	3
+414	1414	Mirna	Croneen	Non-binary	3
+415	1415	Tannie	Bernolet	Polygender	4
+416	1416	Isis	Plews	Female	1
+417	1417	Jim	Pryell	Female	2
+418	1418	Ettore	Kesten	Bigender	2
+419	1419	Glori	Hatherley	Polygender	4
+420	1420	Hyacinthe	Wheelwright	Polygender	1
+421	1421	Jonell	Dikelin	Male	4
+422	1422	Shellysheldon	Goddert.sf	Non-binary	4
+423	1423	Krysta	Parsonage	Genderfluid	3
+424	1424	Harrison	Arnatt	Genderfluid	2
+425	1425	Candra	Symcox	Agender	2
+426	1426	Frasco	Whightman	Female	3
+427	1427	Boycey	Huckleby	Agender	1
+428	1428	Lenee	Guiso	Female	4
+429	1429	Malena	Fairtlough	Polygender	2
+430	1430	Atlante	Chadderton	Bigender	4
+431	1431	Beale	Carnell	Genderfluid	2
+432	1432	Roch	Blasiak	Genderqueer	4
+433	1433	Raddy	Ivimy	Bigender	1
+434	1434	Gretel	Burkin	Bigender	3
+435	1435	Malory	McGarvie	Non-binary	3
+436	1436	Eunice	Smallthwaite	Female	2
+437	1437	Hashim	Sayse	Agender	1
+438	1438	Arliene	Chadwyck	Agender	1
+439	1439	Tadio	Peplay	Polygender	2
+440	1440	Hank	Miller	Genderfluid	2
+441	1441	Bridget	MacCoughen	Female	4
+442	1442	Judye	Vuitton	Female	3
+443	1443	Elise	Grindle	Female	3
+444	1444	Pippa	McLaughlin	Bigender	4
+445	1445	Fairfax	Kenchington	Polygender	4
+446	1446	Eldredge	Adolphine	Non-binary	4
+447	1447	Kearney	Marcussen	Genderfluid	2
+448	1448	Decca	Haskur	Agender	4
+449	1449	Persis	Mitie	Bigender	1
+450	1450	Janey	Aspland	Non-binary	3
+451	1451	Evelin	Karsh	Male	2
+452	1452	Bondie	Tether	Male	1
+453	1453	Sarette	Dibbs	Genderqueer	3
+454	1454	King	Audus	Male	4
+455	1455	Alon	Bour	Agender	1
+456	1456	Bradly	Talkington	Polygender	1
+457	1457	Marcos	Hicken	Polygender	2
+458	1458	Gunner	Ferber	Polygender	1
+459	1459	Coleman	Mitchelhill	Genderqueer	1
+460	1460	Reid	Dodd	Genderqueer	1
+461	1461	Nicolais	de Villier	Genderfluid	4
+462	1462	Wright	Fumagalli	Polygender	3
+463	1463	Hope	Kahn	Polygender	1
+464	1464	Adore	Forton	Male	2
+465	1465	Nara	Gilmour	Female	4
+466	1466	Edmund	Ghest	Bigender	2
+467	1467	Galvan	Fullwood	Female	3
+468	1468	Camey	Howett	Male	4
+469	1469	Davita	Gauld	Genderfluid	4
+470	1470	Stacia	Sproson	Genderqueer	3
+471	1471	Jeromy	Clotworthy	Polygender	4
+472	1472	Con	Labadini	Male	4
+473	1473	Correy	Mapholm	Polygender	4
+474	1474	Karlie	Burris	Genderqueer	2
+475	1475	Jehanna	Trevaskis	Non-binary	4
+476	1476	Dud	O'Sherrin	Non-binary	1
+477	1477	Rossy	Hefner	Agender	2
+478	1478	Christophorus	Armand	Non-binary	4
+479	1479	Pearle	Lunney	Female	3
+480	1480	Sela	Drain	Male	2
+481	1481	Lorie	Romaynes	Polygender	3
+482	1482	Mariel	Wagner	Agender	1
+483	1483	Belvia	Learoyde	Genderfluid	3
+484	1484	Emmalynne	Gathercole	Male	4
+485	1485	Hillary	Spinola	Agender	2
+486	1486	Shelly	Ahrens	Female	4
+487	1487	Curtice	Jirek	Bigender	4
+488	1488	Kathye	Banbridge	Bigender	2
+489	1489	Aaron	McGreil	Polygender	2
+490	1490	Quintilla	Teasdale	Non-binary	3
+491	1491	Krishna	Sandyford	Polygender	3
+492	1492	Dorey	Glasscock	Male	4
+493	1493	Cara	Wadie	Female	1
+494	1494	Twyla	Diggles	Genderqueer	1
+495	1495	Keelby	Kitchinghan	Bigender	3
+496	1496	Kesley	Lepere	Non-binary	2
+497	1497	Tomaso	Riedel	Female	1
+498	1498	Emmy	Giroldo	Genderfluid	1
+499	1499	Corella	Howes	Genderqueer	3
+500	1500	Thorn	Spanswick	Bigender	3
+\.
+
+
+--
+-- Data for Name: students_list; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.students_list (id, rollno, first_name, last_name, gender, class) FROM stdin;
+1	1000	Reamonn	Sugge	Polygender	4
+2	1001	Deonne	Starzaker	Non-binary	4
+3	1002	Giustina	Cottrill	Non-binary	1
+4	1003	Ardine	Hannaway	Agender	3
+5	1004	Lindsay	Hubbuck	Non-binary	1
+6	1005	Berty	Sumpner	Non-binary	2
+7	1006	Odelle	Sarfati	Bigender	3
+8	1007	Jayme	Fonteyne	Genderfluid	3
+9	1008	Zoe	McCoughan	Polygender	3
+10	1009	Maisie	Conibere	Non-binary	2
+11	1010	Nikolai	Hegerty	Agender	4
+12	1011	Gauthier	Leatherborrow	Genderfluid	3
+13	1012	Jaime	Fewster	Female	3
+14	1013	Pat	Cafferky	Genderfluid	3
+15	1014	Der	Mintoft	Agender	1
+16	1015	Spenser	Bavidge	Genderfluid	3
+17	1016	Nonnah	Eppson	Bigender	3
+18	1017	Candice	Edeler	Genderqueer	4
+19	1018	Drud	Stormont	Bigender	3
+20	1019	Sheba	Trott	Bigender	2
+21	1020	Josepha	Trenaman	Genderqueer	4
+22	1021	Lammond	Winterscale	Male	2
+23	1022	Findlay	Cooke	Agender	1
+24	1023	Idelle	Clutterham	Polygender	4
+25	1024	Darrel	Campione	Non-binary	3
+26	1025	Hercule	Sumpner	Bigender	4
+27	1026	Uri	Poutress	Agender	2
+28	1027	Tina	Fearby	Genderfluid	4
+29	1028	Roxanne	Wadwell	Polygender	2
+30	1029	Rosie	Boxell	Polygender	4
+31	1030	Clemmie	MacGillavery	Genderqueer	2
+32	1031	Sander	Laurentin	Female	4
+33	1032	Cristionna	Bramsom	Polygender	3
+34	1033	Nev	Deshorts	Genderqueer	3
+35	1034	Christian	Philp	Male	1
+36	1035	Kerrill	Bruin	Polygender	3
+37	1036	Godfry	Symcock	Male	2
+38	1037	Donal	Higgonet	Bigender	2
+39	1038	Bengt	Basketter	Genderfluid	3
+40	1039	Debbi	McCallum	Bigender	2
+41	1040	Kyle	Neeson	Polygender	2
+42	1041	Adair	Hallgate	Non-binary	1
+43	1042	Cathe	Briers	Bigender	1
+44	1043	Mignon	Perell	Male	1
+45	1044	Sacha	Tempest	Female	1
+46	1045	Roda	Attarge	Genderfluid	1
+47	1046	Melody	Duiged	Genderqueer	2
+48	1047	Dody	Ironmonger	Polygender	2
+49	1048	Kass	Jovasevic	Polygender	1
+50	1049	Randy	Allanson	Non-binary	1
+51	1050	Evie	Josipovic	Genderqueer	1
+52	1051	Toby	Workman	Genderfluid	3
+53	1052	Dewie	Kisbey	Female	1
+54	1053	Kristofer	Orpin	Polygender	1
+55	1054	Worth	Wisbey	Polygender	1
+56	1055	Adiana	Critten	Polygender	3
+57	1056	Smitty	Tingcomb	Non-binary	2
+58	1057	Blane	Smeuin	Non-binary	4
+59	1058	Griswold	Annice	Agender	2
+60	1059	Diannne	Croson	Genderfluid	3
+61	1060	Preston	Peaurt	Non-binary	3
+62	1061	Lisbeth	Coiley	Bigender	4
+63	1062	Dorris	Shieldon	Polygender	4
+64	1063	Grover	Abbison	Female	3
+65	1064	Rudolfo	Kneeshaw	Genderqueer	1
+66	1065	Drucy	Meneely	Polygender	4
+67	1066	Cathrine	Ingrem	Agender	3
+68	1067	Lurette	Yousef	Female	3
+69	1068	Celina	O' Faherty	Bigender	3
+70	1069	Gill	Clucas	Female	1
+71	1070	Harriot	Arrighini	Male	3
+72	1071	Ezmeralda	McMenemy	Non-binary	2
+73	1072	Brigg	Lockley	Bigender	4
+74	1073	Kinsley	Bellworthy	Genderfluid	2
+75	1074	Toma	Niblett	Genderfluid	1
+76	1075	Suellen	Thairs	Genderqueer	3
+77	1076	Alfy	Wenderott	Male	2
+78	1077	Tildi	Osbiston	Female	1
+79	1078	Mona	Gilderoy	Non-binary	3
+80	1079	Marysa	Pamplin	Male	4
+81	1080	Buffy	Lygoe	Agender	4
+82	1081	Brittany	Ashwood	Male	2
+83	1082	Jonis	Pammenter	Polygender	2
+84	1083	Layla	Itzchaki	Female	1
+85	1084	Mikey	Tyne	Male	2
+86	1085	Mimi	Stoner	Genderfluid	1
+87	1086	Monica	Joslow	Genderqueer	3
+88	1087	Loralee	O'Dunniom	Bigender	1
+89	1088	Donal	Brodie	Agender	4
+90	1089	Wilt	Foucher	Bigender	1
+91	1090	Roley	Piotrkowski	Male	1
+92	1091	Fanny	Treher	Genderfluid	4
+93	1092	Florette	Claybourn	Non-binary	1
+94	1093	Milissent	Fenn	Genderqueer	1
+95	1094	Lorrie	Suero	Genderqueer	3
+96	1095	Alice	Tame	Polygender	4
+97	1096	Maynard	Peckitt	Bigender	1
+98	1097	Chicky	Parriss	Female	3
+99	1098	Reinwald	Pigdon	Genderqueer	1
+100	1099	Audrie	Loggie	Genderfluid	4
+101	1100	Rosmunda	Aicken	Genderqueer	4
+102	1101	Cazzie	Canizares	Male	4
+103	1102	Hallie	Rosenqvist	Genderfluid	2
+104	1103	Brit	Pethybridge	Genderqueer	1
+105	1104	Tildie	Monument	Non-binary	3
+106	1105	Adriena	Soars	Agender	4
+107	1106	Meredith	Mott	Polygender	3
+108	1107	Clare	Dadson	Bigender	4
+109	1108	Stesha	Belton	Non-binary	3
+110	1109	Normy	Lazare	Female	2
+111	1110	Gaylor	Bavage	Female	3
+112	1111	Missy	Goade	Genderqueer	4
+113	1112	Gene	Rodda	Genderqueer	2
+114	1113	Niki	Mulderrig	Male	2
+115	1114	Tucky	McKane	Non-binary	1
+116	1115	Dulsea	Vitall	Non-binary	4
+117	1116	Cesar	Bettenson	Female	4
+118	1117	Wally	Wenman	Polygender	1
+119	1118	Nathalie	Mottershaw	Bigender	3
+120	1119	Joana	Diglin	Agender	2
+121	1120	Ted	Berge	Non-binary	3
+122	1121	Saxe	Redgrove	Agender	3
+123	1122	Jenda	Pamplin	Female	4
+124	1123	Berny	Durnill	Bigender	3
+125	1124	Boony	Harrod	Genderfluid	3
+126	1125	Susie	Whistlecroft	Male	1
+127	1126	Benedick	Chichgar	Agender	2
+128	1127	Rhea	Roeby	Male	2
+129	1128	Tonie	Tregiddo	Polygender	4
+130	1129	Leena	Seif	Female	2
+131	1130	Kore	McKmurrie	Female	4
+132	1131	Auguste	Plover	Female	2
+133	1132	Ganny	Chate	Male	1
+134	1133	Gill	Mariyushkin	Male	4
+135	1134	Mala	Cyster	Non-binary	2
+136	1135	Lira	Michelmore	Genderfluid	1
+137	1136	Penrod	Massimo	Genderqueer	1
+138	1137	Vin	Eschalotte	Non-binary	4
+139	1138	Byrann	Bennit	Bigender	4
+140	1139	Annmarie	Forton	Non-binary	2
+141	1140	Chane	Hrus	Bigender	3
+142	1141	Graham	Gudd	Non-binary	1
+143	1142	Cele	Hiland	Genderfluid	3
+144	1143	Cathie	Cashin	Male	2
+145	1144	Willamina	Sicha	Agender	3
+146	1145	Gregor	Czadla	Polygender	1
+147	1146	Willyt	Youings	Agender	2
+148	1147	Tessie	Wrankmore	Female	3
+149	1148	Dave	Eggle	Male	1
+150	1149	Marleen	Rable	Male	3
+151	1150	Phoebe	Kitter	Non-binary	1
+152	1151	Jarrett	Blazewicz	Bigender	1
+153	1152	Abby	Kerslake	Female	1
+154	1153	Alon	Burton	Genderqueer	3
+155	1154	Lorin	Leather	Genderfluid	3
+156	1155	Riannon	Gelling	Genderfluid	2
+157	1156	Allianora	Gulk	Genderfluid	2
+158	1157	Ruggiero	Grunson	Genderqueer	1
+159	1158	Ab	Brockton	Non-binary	2
+160	1159	Tiffi	Draxford	Genderqueer	3
+161	1160	Holli	Cleare	Polygender	4
+162	1161	Bria	Dytham	Bigender	3
+163	1162	Rasla	Keay	Male	3
+164	1163	Angie	Ephgrave	Polygender	1
+165	1164	Delila	Johnsey	Female	2
+166	1165	Jake	Hampe	Non-binary	2
+167	1166	Hendrik	Allon	Agender	1
+168	1167	Viv	Clitheroe	Genderfluid	1
+169	1168	Burke	McKeever	Agender	4
+170	1169	Mylo	Hinstock	Genderqueer	3
+171	1170	Moreen	Fellman	Non-binary	4
+172	1171	Munmro	Whoolehan	Polygender	4
+173	1172	Christan	Kolin	Agender	2
+174	1173	Adelaide	Pullin	Non-binary	1
+175	1174	Rockie	Kaufman	Non-binary	2
+176	1175	Francisco	Eadmead	Male	2
+177	1176	Dyanna	Chagg	Male	2
+178	1177	Jesselyn	Cooksey	Agender	4
+179	1178	Mattias	Hassur	Polygender	4
+180	1179	Beret	Hambers	Male	1
+181	1180	Katya	Larchier	Male	3
+182	1181	Kizzee	Klosa	Genderqueer	4
+183	1182	Evaleen	Fussen	Bigender	4
+184	1183	Lexy	Woodard	Female	3
+185	1184	Lucila	MacKibbon	Non-binary	2
+186	1185	Victor	Cobb	Male	3
+187	1186	Yvonne	Effaunt	Polygender	2
+188	1187	Jaime	Wolfendale	Polygender	1
+189	1188	Corenda	Cloy	Agender	3
+190	1189	Darwin	O'Henecan	Non-binary	2
+191	1190	Alanna	Tiuit	Agender	3
+192	1191	Ethelind	Frere	Female	1
+193	1192	Donna	Barstowk	Genderfluid	3
+194	1193	Rustin	Bonnet	Genderqueer	1
+195	1194	Bendix	Smallbone	Male	2
+196	1195	Timmi	Issett	Genderfluid	4
+197	1196	Arabelle	Huertas	Male	4
+198	1197	Allys	Duchesne	Non-binary	4
+199	1198	Findley	Upchurch	Female	3
+200	1199	Cacilia	Goreisr	Polygender	3
+\.
+
+
+--
+-- Data for Name: year1_cs_2021_22; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year1_cs_2021_22 (id, rollno, first_name, last_name, gender, year) FROM stdin;
+2	1001	Wallas	Cuesta	Female	1
+3	1002	Inge	Filipczynski	Genderqueer	1
+4	1003	Stanford	O'Canavan	Genderfluid	1
+5	1004	Evania	Studdal	Polygender	1
+6	1005	Pietro	Badam	Female	1
+7	1006	Fernandina	Pickaver	Polygender	1
+8	1007	Rex	Bedrosian	Polygender	1
+9	1008	Ashbey	Paske	Agender	1
+10	1009	Joanna	Pues	Agender	1
+11	1010	Modestine	Wagstaffe	Male	1
+12	1011	Elladine	Povey	Genderqueer	1
+13	1012	Chauncey	Faraday	Genderfluid	1
+14	1013	Eddie	Culbard	Polygender	1
+15	1014	Sharleen	Hatherell	Agender	1
+16	1015	Thia	Debold	Non-binary	1
+17	1016	Bettina	Briscow	Non-binary	1
+18	1017	Osborne	Wanklyn	Bigender	1
+19	1018	Lorettalorna	Cheshire	Genderqueer	1
+20	1019	Nora	Mattedi	Non-binary	1
+21	1020	Pennie	Carnegy	Agender	1
+22	1021	Lorena	Chittock	Genderqueer	1
+23	1022	Breanne	Renac	Non-binary	1
+24	1023	Leicester	Comoletti	Genderqueer	1
+25	1024	Lyle	Upson	Genderqueer	1
+26	1025	Algernon	Schnieder	Female	1
+27	1026	Trixy	Sirkett	Female	1
+28	1027	Norrie	Cleveland	Non-binary	1
+29	1028	Melba	Peers	Genderqueer	1
+30	1029	Hirsch	Abbey	Male	1
+31	1030	Ronna	Lincey	Genderqueer	1
+32	1031	Elli	Debow	Genderqueer	1
+33	1032	Dniren	Fryman	Male	1
+34	1033	Hannis	Steward	Agender	1
+35	1034	Linus	Moriarty	Genderqueer	1
+36	1035	Talbot	Syphus	Genderqueer	1
+37	1036	Thornton	Barette	Female	1
+38	1037	Gregorio	Petasch	Genderfluid	1
+39	1038	Raymond	Mountain	Agender	1
+40	1039	Chandra	Lanfranconi	Non-binary	1
+41	1040	Lazar	Cosslett	Genderqueer	1
+42	1041	Salome	Chidgey	Male	1
+43	1042	Claybourne	Batalle	Polygender	1
+44	1043	Myriam	Boldero	Genderqueer	1
+45	1044	Royal	Patching	Bigender	1
+46	1045	Anders	Berthelmot	Non-binary	1
+47	1046	Morgana	Bulfield	Male	1
+48	1047	Gannon	Mathew	Male	1
+49	1048	Tomas	Boord	Male	1
+50	1049	Jan	Helder	Non-binary	1
+51	1050	Aileen	Ratazzi	Female	1
+52	1051	Rourke	Scorer	Genderfluid	1
+53	1052	Austen	Happs	Bigender	1
+54	1053	Doe	Woolliams	Bigender	1
+55	1054	Johanna	Flintuff	Polygender	1
+56	1055	Filbert	Spikings	Bigender	1
+57	1056	Maire	Willimont	Non-binary	1
+58	1057	Garold	Bakhrushkin	Bigender	1
+59	1058	Sally	Clew	Female	1
+60	1059	Sigismond	Bosma	Bigender	1
+61	1060	Dalis	Tansill	Agender	1
+62	1061	Wilfrid	Crewe	Polygender	1
+63	1062	Nelson	Million	Genderqueer	1
+64	1063	Izaak	Dulson	Male	1
+65	1064	Egan	Parysiak	Male	1
+66	1065	Craggie	Christoffersen	Male	1
+67	1066	Douglas	Philcott	Agender	1
+68	1067	Michele	Threlfall	Genderqueer	1
+69	1068	Collette	Klimus	Agender	1
+70	1069	Carlin	Pidler	Female	1
+71	1070	Nolie	Haskew	Genderqueer	1
+72	1071	Chrissy	Aistrop	Agender	1
+73	1072	Frank	Feldstern	Agender	1
+74	1073	Coleen	Bwy	Male	1
+75	1074	Alice	Van den Velde	Polygender	1
+76	1075	Aleece	Bartoszewski	Male	1
+77	1076	Andrey	Furneaux	Male	1
+78	1077	Godfrey	Belli	Male	1
+79	1078	Henriette	Punter	Male	1
+80	1079	Dulcia	Dorling	Non-binary	1
+81	1080	Tull	Clampett	Male	1
+82	1081	Hamel	Boylin	Genderfluid	1
+83	1082	Ruby	Whipple	Genderfluid	1
+84	1083	Neddy	Brissard	Agender	1
+85	1084	Bentlee	Espine	Polygender	1
+86	1085	Darrelle	Ferrini	Agender	1
+87	1086	Danell	Barrasse	Male	1
+88	1087	Cornie	Feldklein	Genderfluid	1
+89	1088	Nikolos	Pepis	Polygender	1
+90	1089	Mateo	Blockey	Genderfluid	1
+91	1090	Georgina	Barnbrook	Female	1
+92	1091	Ann-marie	Leftridge	Genderqueer	1
+93	1092	Giraud	Kent	Agender	1
+94	1093	Orsola	Pettegree	Bigender	1
+95	1094	Sunny	Olver	Polygender	1
+96	1095	Bengt	Matskevich	Male	1
+97	1096	Lew	Van Der Walt	Polygender	1
+98	1097	Myrtie	Larder	Genderqueer	1
+99	1098	Sawyere	Selwood	Agender	1
+100	1099	Obie	Coverlyn	Bigender	1
+1	1000	ABCD	ABCD	GENDER	1
+\N	1406	ABCDABCD	ABCDABCD	\N	4
+\N	1510	ABCDABCD	ABCDABCD	\N	\N
+1515	1515	ABCDABCD	ABCDABCD	\N	1
+\.
+
+
+--
+-- Data for Name: year1_sem1; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year1_sem1 (id, rollno, subject1, subject2, subject3, subject4, total) FROM stdin;
+1	1000	89	59	41	92	281
+2	1001	67	32	23	90	212
+3	1002	69	1	76	24	170
+4	1003	33	37	21	19	110
+5	1004	30	32	96	48	206
+6	1005	45	9	32	100	186
+7	1006	22	41	19	70	152
+8	1007	2	16	18	4	40
+9	1008	24	100	81	82	287
+10	1009	88	79	43	58	268
+11	1010	68	9	18	94	189
+12	1011	51	91	9	25	176
+13	1012	4	65	99	31	199
+14	1013	86	54	41	89	270
+15	1014	87	67	28	47	229
+16	1015	5	96	17	11	129
+17	1016	22	23	73	11	129
+18	1017	11	50	61	92	214
+19	1018	7	16	40	52	115
+20	1019	34	24	71	11	140
+21	1020	25	30	54	85	194
+22	1021	59	88	13	40	200
+23	1022	38	60	84	63	245
+24	1023	51	27	1	82	161
+25	1024	34	85	100	45	264
+26	1025	98	8	56	18	180
+27	1026	54	88	52	59	253
+28	1027	42	87	90	57	276
+29	1028	40	38	54	93	225
+30	1029	86	26	81	99	292
+31	1030	87	57	33	50	227
+32	1031	87	73	91	61	312
+33	1032	12	58	94	5	169
+34	1033	49	82	88	60	279
+35	1034	7	54	7	50	118
+36	1035	72	49	7	57	185
+37	1036	81	4	94	59	238
+38	1037	51	96	66	32	245
+39	1038	75	75	6	31	187
+40	1039	63	84	26	53	226
+41	1040	43	59	76	7	185
+42	1041	51	74	52	5	182
+43	1042	94	70	6	19	189
+44	1043	26	25	13	54	118
+45	1044	61	6	71	30	168
+46	1045	80	23	51	35	189
+47	1046	91	83	40	41	255
+48	1047	30	59	87	3	179
+49	1048	60	3	69	46	178
+50	1049	54	37	23	81	195
+51	1050	6	80	55	98	239
+52	1051	59	56	78	46	239
+53	1052	11	74	76	33	194
+54	1053	96	36	29	71	232
+55	1054	4	5	12	54	75
+56	1055	5	60	83	91	239
+57	1056	40	74	83	38	235
+58	1057	39	14	35	53	141
+59	1058	35	19	42	99	195
+60	1059	56	39	13	69	177
+61	1060	51	70	64	18	203
+62	1061	98	42	51	90	281
+63	1062	7	92	59	64	222
+64	1063	87	87	64	35	273
+65	1064	2	15	79	53	149
+66	1065	14	51	43	37	145
+67	1066	7	70	39	20	136
+68	1067	7	64	95	20	186
+69	1068	88	28	98	88	302
+70	1069	1	81	26	37	145
+71	1070	75	46	93	24	238
+72	1071	17	29	33	41	120
+73	1072	29	86	76	48	239
+74	1073	90	42	74	51	257
+75	1074	89	3	52	76	220
+76	1075	56	50	100	77	283
+77	1076	41	53	52	5	151
+78	1077	72	43	67	54	236
+79	1078	64	19	53	16	152
+80	1079	3	73	58	71	205
+81	1080	91	77	97	66	331
+82	1081	38	41	64	15	158
+83	1082	88	67	87	95	337
+84	1083	54	52	24	2	132
+85	1084	35	53	19	24	131
+86	1085	3	1	81	65	150
+87	1086	13	34	93	70	210
+88	1087	86	54	78	25	243
+89	1088	33	21	57	47	158
+90	1089	39	91	94	4	228
+91	1090	9	100	12	59	180
+92	1091	65	12	16	71	164
+93	1092	65	24	88	34	211
+94	1093	34	23	62	77	196
+95	1094	88	26	90	56	260
+96	1095	58	23	86	89	256
+97	1096	40	46	19	58	163
+98	1097	1	78	93	73	245
+99	1098	39	2	5	77	123
+100	1099	99	80	58	65	302
+\.
+
+
+--
+-- Data for Name: year1_sem2; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year1_sem2 (id, rollno, subject1, subject2, subject3, subject4, total) FROM stdin;
+1	1000	30	57	12	10	109
+2	1001	66	97	43	35	241
+3	1002	40	46	81	50	217
+4	1003	62	78	77	55	272
+5	1004	59	55	32	4	150
+6	1005	45	55	8	72	180
+7	1006	51	74	93	46	264
+8	1007	57	81	93	95	326
+9	1008	40	93	1	61	195
+10	1009	49	41	28	84	202
+11	1010	81	51	44	56	232
+12	1011	48	85	43	40	216
+13	1012	40	84	31	49	204
+14	1013	98	30	50	37	215
+15	1014	78	91	2	70	241
+16	1015	48	40	7	69	164
+17	1016	2	14	77	78	171
+18	1017	23	84	35	20	162
+19	1018	33	9	35	100	177
+20	1019	14	14	47	23	98
+21	1020	62	68	29	96	255
+22	1021	43	3	88	6	140
+23	1022	92	55	6	5	158
+24	1023	38	13	32	57	140
+25	1024	10	97	72	83	262
+26	1025	35	99	91	93	318
+27	1026	80	33	60	24	197
+28	1027	26	37	31	15	109
+29	1028	97	47	74	14	232
+30	1029	61	81	29	80	251
+31	1030	12	77	2	1	92
+32	1031	30	73	78	96	277
+33	1032	100	63	6	47	216
+34	1033	70	41	43	44	198
+35	1034	13	99	76	37	225
+36	1035	97	51	66	29	243
+37	1036	41	95	83	70	289
+38	1037	31	9	9	9	58
+39	1038	30	9	50	93	182
+40	1039	13	66	15	66	160
+41	1040	17	81	50	49	197
+42	1041	83	63	13	53	212
+43	1042	59	57	9	99	224
+44	1043	61	84	55	56	256
+45	1044	69	80	75	3	227
+46	1045	7	39	19	92	157
+47	1046	32	66	85	12	195
+48	1047	53	52	16	66	187
+49	1048	92	53	80	21	246
+50	1049	26	84	16	45	171
+51	1050	7	36	2	16	61
+52	1051	8	89	69	16	182
+53	1052	54	54	56	36	200
+54	1053	22	42	91	33	188
+55	1054	41	46	65	33	185
+56	1055	76	16	65	67	224
+57	1056	17	20	88	88	213
+58	1057	76	96	66	92	330
+59	1058	26	57	31	57	171
+60	1059	6	53	98	25	182
+61	1060	53	19	24	20	116
+62	1061	43	11	80	13	147
+63	1062	71	99	28	46	244
+64	1063	31	20	38	90	179
+65	1064	64	80	23	4	171
+66	1065	90	46	76	41	253
+67	1066	24	70	23	2	119
+68	1067	77	28	31	11	147
+69	1068	90	31	100	49	270
+70	1069	35	57	47	66	205
+71	1070	86	24	27	97	234
+72	1071	31	35	28	54	148
+73	1072	9	17	31	98	155
+74	1073	34	13	8	61	116
+75	1074	22	86	27	68	203
+76	1075	73	11	85	45	214
+77	1076	66	53	92	6	217
+78	1077	22	19	59	35	135
+79	1078	70	30	66	13	179
+80	1079	66	72	13	12	163
+81	1080	12	96	11	80	199
+82	1081	52	28	25	92	197
+83	1082	31	83	66	50	230
+84	1083	61	5	78	21	165
+85	1084	92	92	65	29	278
+86	1085	70	93	43	14	220
+87	1086	7	18	31	76	132
+88	1087	56	35	45	34	170
+89	1088	6	78	5	29	118
+90	1089	8	18	97	22	145
+91	1090	77	71	44	79	271
+92	1091	70	86	70	10	236
+93	1092	95	59	73	59	286
+94	1093	40	66	54	39	199
+95	1094	68	17	78	66	229
+96	1095	93	99	86	88	366
+97	1096	16	16	49	48	129
+98	1097	38	41	84	76	239
+99	1098	4	96	42	89	231
+100	1099	90	8	14	81	193
+\.
+
+
+--
+-- Data for Name: year2_cs_2021_22; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year2_cs_2021_22 (id, rollno, first_name, last_name, gender, year) FROM stdin;
+101	1100	Packston	Wedon	Non-binary	2
+102	1101	Aviva	Derill	Polygender	2
+103	1102	Ardys	Von Welldun	Genderqueer	2
+104	1103	Guenna	Covelle	Polygender	2
+105	1104	Glynis	Bessey	Agender	2
+106	1105	Lissy	Habert	Genderfluid	2
+107	1106	Gibby	Jeratt	Genderfluid	2
+108	1107	Corney	Hepher	Non-binary	2
+109	1108	Nerissa	Lanfer	Female	2
+110	1109	Matthaeus	O'Donovan	Bigender	2
+111	1110	Adaline	Beatey	Agender	2
+112	1111	Brice	Grimsell	Non-binary	2
+113	1112	Harrietta	Genike	Bigender	2
+114	1113	Gerladina	Rosenfelder	Genderfluid	2
+115	1114	Rozamond	Vella	Non-binary	2
+116	1115	Hendrick	Issacov	Male	2
+117	1116	Perceval	Petrello	Non-binary	2
+118	1117	Wayland	Ovell	Genderqueer	2
+119	1118	Cornie	Swinyard	Bigender	2
+120	1119	Nicolais	Wheway	Genderqueer	2
+121	1120	Malissa	Lorait	Bigender	2
+122	1121	Adeline	Tearney	Genderfluid	2
+123	1122	Yetta	Bye	Polygender	2
+124	1123	Isabelle	Cattach	Agender	2
+125	1124	Thedrick	Finlow	Agender	2
+126	1125	Osbert	Eyton	Male	2
+127	1126	Bobbee	Chalcraft	Genderqueer	2
+128	1127	Jere	Cripwell	Genderqueer	2
+129	1128	Ailee	Zoane	Bigender	2
+130	1129	Clio	Henke	Female	2
+131	1130	Nanci	Willshire	Male	2
+132	1131	Loraine	Guidetti	Non-binary	2
+133	1132	Dermot	Ethersey	Male	2
+134	1133	Selig	Ancliffe	Non-binary	2
+135	1134	Cob	Stookes	Male	2
+136	1135	Nickola	Brettelle	Polygender	2
+137	1136	Alick	Himsworth	Polygender	2
+138	1137	Anna-maria	Aymer	Agender	2
+139	1138	Alikee	Barrabeale	Non-binary	2
+140	1139	Abrahan	Brabon	Genderqueer	2
+141	1140	Dewey	Ripley	Bigender	2
+142	1141	Eldridge	Piggins	Female	2
+143	1142	Trixy	Danihelka	Bigender	2
+144	1143	Wendall	Domek	Female	2
+145	1144	Amelie	Chisman	Genderfluid	2
+146	1145	Osmund	Pibworth	Genderqueer	2
+147	1146	Lenka	Brissenden	Non-binary	2
+148	1147	Eugenio	Tidgewell	Female	2
+149	1148	Erda	Outerbridge	Genderqueer	2
+150	1149	Ignatius	Keyte	Polygender	2
+151	1150	Dorine	Tamlett	Polygender	2
+152	1151	Babb	Ruddom	Female	2
+153	1152	Wesley	Kleingrub	Bigender	2
+154	1153	Demott	Wernher	Bigender	2
+155	1154	Kathy	Odney	Polygender	2
+156	1155	Delainey	Grinov	Non-binary	2
+157	1156	Glyn	Tallyn	Non-binary	2
+158	1157	Lodovico	Voase	Non-binary	2
+159	1158	Randy	Bellsham	Polygender	2
+160	1159	Reginauld	Reimer	Agender	2
+161	1160	Micah	Taye	Polygender	2
+162	1161	Calv	Kunzler	Male	2
+163	1162	Angelica	MacAughtrie	Bigender	2
+164	1163	Shoshana	Tambling	Non-binary	2
+165	1164	Pen	Upcraft	Female	2
+166	1165	Nicki	Cakebread	Genderfluid	2
+167	1166	Philippa	MacCosty	Male	2
+168	1167	Abbi	Sofe	Genderfluid	2
+169	1168	Shayla	Tierney	Bigender	2
+170	1169	Shamus	Bruinemann	Female	2
+171	1170	Shepherd	Hughf	Agender	2
+172	1171	Sonny	Klosa	Male	2
+173	1172	Ottilie	Bartosch	Male	2
+174	1173	Mildrid	MacNab	Male	2
+175	1174	Viviene	Glacken	Polygender	2
+176	1175	Judon	Hawksworth	Agender	2
+177	1176	Liza	Jealous	Female	2
+178	1177	Remus	Nortunen	Agender	2
+179	1178	Lucille	Seleway	Female	2
+180	1179	Goldie	Riguard	Male	2
+181	1180	Erina	O'Sirin	Polygender	2
+182	1181	Tye	Jest	Bigender	2
+183	1182	Emery	Hagyard	Bigender	2
+184	1183	Cymbre	Causer	Genderfluid	2
+185	1184	Hephzibah	Masdin	Agender	2
+186	1185	Shoshanna	Boorn	Bigender	2
+187	1186	Hayley	Inglesant	Genderqueer	2
+188	1187	Tudor	Yielding	Genderqueer	2
+189	1188	Elene	Mattam	Agender	2
+190	1189	Cross	Naylor	Bigender	2
+191	1190	Edithe	Alflat	Genderfluid	2
+192	1191	Nico	Shreeves	Polygender	2
+193	1192	Denna	Paridge	Polygender	2
+194	1193	Gilberta	Scally	Bigender	2
+195	1194	Carlene	Karchewski	Female	2
+196	1195	Fionnula	Mervyn	Female	2
+197	1196	Joey	Gaddie	Male	2
+198	1197	Anet	Maffetti	Genderqueer	2
+199	1198	Vanda	Timberlake	Male	2
+200	1199	Helsa	Paule	Male	2
+\.
+
+
+--
+-- Data for Name: year2_sem1; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year2_sem1 (id, rollno, subject1, subject2, subject3, subject4, total) FROM stdin;
+1	1100	10	89	57	99	255
+2	1101	77	1	85	73	236
+3	1102	13	70	7	81	171
+4	1103	63	47	96	54	260
+5	1104	19	75	70	39	203
+6	1105	40	34	91	67	232
+7	1106	92	65	12	79	248
+8	1107	50	45	42	3	140
+9	1108	8	92	88	89	277
+10	1109	49	15	42	26	132
+11	1110	13	34	8	73	128
+12	1111	100	39	24	41	204
+13	1112	49	83	82	68	282
+14	1113	45	71	59	57	232
+15	1114	84	45	65	79	273
+16	1115	2	26	49	81	158
+17	1116	14	22	51	67	154
+18	1117	81	37	31	6	155
+19	1118	45	2	55	21	123
+20	1119	83	38	20	65	206
+21	1120	31	57	61	12	161
+22	1121	44	29	74	92	239
+23	1122	57	52	73	10	192
+24	1123	95	84	64	14	257
+25	1124	25	29	28	23	105
+26	1125	11	30	13	13	67
+27	1126	33	37	30	2	102
+28	1127	62	89	30	61	242
+29	1128	64	54	95	39	252
+30	1129	48	83	88	92	311
+31	1130	2	79	42	33	156
+32	1131	85	35	80	45	245
+33	1132	23	54	27	76	180
+34	1133	45	6	58	55	164
+35	1134	5	58	70	85	218
+36	1135	8	42	70	41	161
+37	1136	9	4	3	62	78
+38	1137	38	48	46	63	195
+39	1138	24	37	61	66	188
+40	1139	62	71	91	67	291
+41	1140	33	40	1	4	78
+42	1141	79	2	38	98	217
+43	1142	91	19	54	66	230
+44	1143	82	54	82	17	235
+45	1144	53	47	13	85	198
+46	1145	47	95	4	7	153
+47	1146	11	37	94	89	231
+48	1147	8	5	74	12	99
+49	1148	51	55	28	93	227
+50	1149	71	54	16	41	182
+51	1150	50	2	21	51	124
+52	1151	12	61	26	3	102
+53	1152	68	34	95	79	276
+54	1153	67	39	53	19	178
+55	1154	23	57	45	63	188
+56	1155	6	11	97	76	190
+57	1156	42	65	55	15	177
+58	1157	33	27	27	92	179
+59	1158	20	60	8	6	94
+60	1159	84	46	52	31	213
+61	1160	14	29	51	24	118
+62	1161	94	42	92	52	280
+63	1162	91	89	97	63	340
+64	1163	30	32	66	67	195
+65	1164	73	64	93	3	233
+66	1165	16	14	15	36	81
+67	1166	40	49	9	17	115
+68	1167	56	15	68	40	179
+69	1168	96	36	94	45	271
+70	1169	25	40	65	75	205
+71	1170	22	50	75	43	190
+72	1171	94	35	59	9	197
+73	1172	46	6	48	95	195
+74	1173	38	40	19	86	183
+75	1174	84	65	86	4	239
+76	1175	46	60	12	5	123
+77	1176	56	59	89	72	276
+78	1177	68	78	58	10	214
+79	1178	45	99	28	38	210
+80	1179	100	27	90	69	286
+81	1180	36	73	10	24	143
+82	1181	91	7	91	28	217
+83	1182	48	96	47	29	220
+84	1183	74	72	40	96	282
+85	1184	49	23	94	36	202
+86	1185	77	16	43	80	216
+87	1186	11	45	56	65	177
+88	1187	11	93	13	88	205
+89	1188	80	13	48	29	170
+90	1189	28	33	79	77	217
+91	1190	79	77	44	51	251
+92	1191	92	62	59	75	288
+93	1192	21	68	13	98	200
+94	1193	96	23	63	42	224
+95	1194	74	11	96	63	244
+96	1195	28	76	22	29	155
+97	1196	98	54	23	41	216
+98	1197	7	64	45	27	143
+99	1198	55	42	54	25	176
+100	1199	90	17	84	40	231
+\.
+
+
+--
+-- Data for Name: year2_sem2; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year2_sem2 (id, rollno, subject1, subject2, subject3, subject4, total) FROM stdin;
+1	1100	84	39	99	90	312
+2	1101	87	97	10	99	293
+3	1102	31	63	63	67	224
+4	1103	23	96	55	15	189
+5	1104	20	70	93	23	206
+6	1105	26	82	82	19	209
+7	1106	80	36	72	32	220
+8	1107	27	81	67	84	259
+9	1108	53	56	25	42	176
+10	1109	9	42	27	64	142
+11	1110	59	11	75	90	235
+12	1111	59	70	64	72	265
+13	1112	13	59	90	88	250
+14	1113	20	46	34	50	150
+15	1114	90	49	73	17	229
+16	1115	93	27	71	98	289
+17	1116	12	79	50	62	203
+18	1117	2	56	36	63	157
+19	1118	11	88	99	71	269
+20	1119	97	37	51	9	194
+21	1120	49	22	11	16	98
+22	1121	73	16	25	56	170
+23	1122	23	96	17	95	231
+24	1123	64	19	72	35	190
+25	1124	49	78	93	19	239
+26	1125	84	11	25	34	154
+27	1126	5	46	99	20	170
+28	1127	4	75	58	51	188
+29	1128	32	95	71	36	234
+30	1129	96	41	57	36	230
+31	1130	71	13	67	76	227
+32	1131	35	40	18	84	177
+33	1132	33	11	49	83	176
+34	1133	48	48	27	59	182
+35	1134	22	52	85	18	177
+36	1135	92	22	84	73	271
+37	1136	34	19	77	23	153
+38	1137	90	69	65	26	250
+39	1138	13	14	92	43	162
+40	1139	72	88	40	79	279
+41	1140	67	46	76	8	197
+42	1141	23	41	61	43	168
+43	1142	24	40	54	72	190
+44	1143	8	83	79	65	235
+45	1144	79	39	67	1	186
+46	1145	71	7	57	61	196
+47	1146	73	73	49	13	208
+48	1147	96	28	67	9	200
+49	1148	71	7	80	96	254
+50	1149	12	84	76	8	180
+51	1150	59	86	98	65	308
+52	1151	85	64	20	33	202
+53	1152	96	4	25	100	225
+54	1153	17	69	62	68	216
+55	1154	4	44	40	94	182
+56	1155	7	35	53	9	104
+57	1156	37	46	50	52	185
+58	1157	49	44	42	97	232
+59	1158	18	44	34	91	187
+60	1159	39	100	86	4	229
+61	1160	24	18	6	45	93
+62	1161	36	55	36	72	199
+63	1162	67	26	61	21	175
+64	1163	44	11	10	4	69
+65	1164	3	85	32	15	135
+66	1165	20	96	21	61	198
+67	1166	88	92	20	65	265
+68	1167	29	18	23	15	85
+69	1168	65	94	49	81	289
+70	1169	13	56	14	54	137
+71	1170	73	14	83	79	249
+72	1171	57	18	11	74	160
+73	1172	89	41	70	42	242
+74	1173	85	85	39	40	249
+75	1174	94	43	93	29	259
+76	1175	57	87	8	70	222
+77	1176	27	21	19	63	130
+78	1177	79	66	41	92	278
+79	1178	92	31	99	22	244
+80	1179	27	15	53	47	142
+81	1180	43	100	9	18	170
+82	1181	12	85	95	4	196
+83	1182	26	21	7	66	120
+84	1183	39	77	100	18	234
+85	1184	57	93	52	25	227
+86	1185	32	66	48	11	157
+87	1186	84	45	65	48	242
+88	1187	93	62	37	39	231
+89	1188	37	20	3	93	153
+90	1189	45	41	70	49	205
+91	1190	94	3	43	59	199
+92	1191	32	14	6	57	109
+93	1192	89	39	96	18	242
+94	1193	100	6	42	26	174
+95	1194	4	69	55	16	144
+96	1195	76	19	66	85	246
+97	1196	76	83	30	87	276
+98	1197	38	59	67	65	229
+99	1198	34	79	78	88	279
+100	1199	100	38	20	12	170
+\.
+
+
+--
+-- Data for Name: year3_cs_2021_22; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year3_cs_2021_22 (id, rollno, first_name, last_name, gender, year) FROM stdin;
+201	1200	Prentice	Colley	Agender	3
+202	1201	Jacinda	Ferenczi	Agender	3
+203	1202	Irina	MacAllen	Non-binary	3
+204	1203	Allin	Clingan	Genderqueer	3
+205	1204	Alvie	Guilford	Female	3
+206	1205	Joachim	Tolliday	Polygender	3
+207	1206	Kristo	Blachford	Male	3
+208	1207	Patrizia	Lilywhite	Bigender	3
+209	1208	Rodolphe	Hammant	Polygender	3
+210	1209	Joelle	Ladds	Polygender	3
+211	1210	Chrissie	Gadault	Female	3
+212	1211	Jacquelyn	Le Barr	Genderqueer	3
+213	1212	Berk	Crotty	Genderqueer	3
+214	1213	Marget	Dumphries	Bigender	3
+215	1214	Thedric	Stanyard	Agender	3
+216	1215	Markos	Skirvin	Female	3
+217	1216	Charlene	Jenoure	Genderqueer	3
+218	1217	Thor	Dovydenas	Agender	3
+219	1218	Lenard	Penrith	Non-binary	3
+220	1219	Tawsha	Erley	Male	3
+221	1220	Saunder	Skipping	Genderqueer	3
+222	1221	Felicdad	Benneton	Genderqueer	3
+223	1222	Reinaldos	Brenstuhl	Non-binary	3
+224	1223	Marja	Emmerson	Polygender	3
+225	1224	Laurie	Kinman	Male	3
+226	1225	Lenore	Honniebal	Male	3
+227	1226	Pearline	Lambal	Genderfluid	3
+228	1227	Zelda	Krzysztofiak	Non-binary	3
+229	1228	Dulsea	Lipman	Genderfluid	3
+230	1229	Gerick	Sutherley	Non-binary	3
+231	1230	Darcy	Pegrum	Polygender	3
+232	1231	Caryn	Vasyukov	Polygender	3
+233	1232	Dorella	Halwood	Bigender	3
+234	1233	Benny	Bonnin	Female	3
+235	1234	Scarlett	Concannon	Female	3
+236	1235	Barclay	Ockenden	Female	3
+237	1236	Malissa	Klejna	Agender	3
+238	1237	Norma	Hold	Polygender	3
+239	1238	Genny	Lakeland	Non-binary	3
+240	1239	Monika	Drinkeld	Genderfluid	3
+241	1240	Loralie	MacFaul	Female	3
+242	1241	Marje	Bezemer	Agender	3
+243	1242	Alan	Picken	Bigender	3
+244	1243	Dix	Wyett	Male	3
+245	1244	Wandis	Fynan	Polygender	3
+246	1245	Sig	Enrietto	Male	3
+247	1246	Richmound	Lohrensen	Non-binary	3
+248	1247	Florencia	Coulling	Genderqueer	3
+249	1248	Tulley	Van Arsdalen	Non-binary	3
+250	1249	Brock	Vinsen	Genderqueer	3
+251	1250	D'arcy	Dessent	Agender	3
+252	1251	Issi	Crichton	Agender	3
+253	1252	Stephani	Holwell	Genderfluid	3
+254	1253	Ethelbert	Thackston	Genderfluid	3
+255	1254	Tedra	Simmonett	Genderfluid	3
+256	1255	Abbey	Gyver	Genderfluid	3
+257	1256	Pattie	Quilkin	Agender	3
+258	1257	Pearce	Nozzolinii	Non-binary	3
+259	1258	Joella	Turri	Non-binary	3
+260	1259	Marta	Dowty	Male	3
+261	1260	Bamby	Wratten	Genderfluid	3
+262	1261	Therine	Clemmen	Non-binary	3
+263	1262	Farr	Berkeley	Genderqueer	3
+264	1263	Farah	Ronan	Female	3
+265	1264	Corty	Hubber	Non-binary	3
+266	1265	North	Hachard	Male	3
+267	1266	Ninnetta	Ruddiman	Genderfluid	3
+268	1267	Dalenna	Crittal	Genderfluid	3
+269	1268	Hervey	Henrot	Polygender	3
+270	1269	Kele	Usmar	Polygender	3
+271	1270	Natalee	De Zamudio	Polygender	3
+272	1271	Onofredo	Wykey	Genderfluid	3
+273	1272	Melisenda	Oxberry	Genderqueer	3
+274	1273	Cherye	Scarrott	Non-binary	3
+275	1274	Sande	Stark	Genderqueer	3
+276	1275	Griselda	Janeway	Non-binary	3
+277	1276	Vivian	Youde	Polygender	3
+278	1277	Libbey	Baigent	Female	3
+279	1278	Beret	Goodhay	Genderfluid	3
+280	1279	Christalle	Kaspar	Polygender	3
+281	1280	Kiersten	Bennion	Non-binary	3
+282	1281	Carlos	Whittenbury	Agender	3
+283	1282	Hillel	MacCarrane	Bigender	3
+284	1283	Geraldine	Buzine	Bigender	3
+285	1284	Josy	Thorald	Bigender	3
+286	1285	Eleonore	Forestall	Non-binary	3
+287	1286	Jennie	Luscombe	Genderqueer	3
+288	1287	Hilly	Thring	Genderqueer	3
+289	1288	Sammy	Lowth	Female	3
+290	1289	Mathilda	Sharvill	Non-binary	3
+291	1290	Karia	Parsisson	Genderfluid	3
+292	1291	Jase	McKeller	Bigender	3
+293	1292	Jeffry	Downgate	Non-binary	3
+294	1293	Darci	Brusby	Bigender	3
+295	1294	Ganny	Lehrmann	Genderfluid	3
+296	1295	Hal	Siemandl	Female	3
+297	1296	Nell	Hewkin	Non-binary	3
+298	1297	Isidor	Leinster	Genderfluid	3
+299	1298	Field	Amey	Genderfluid	3
+300	1299	Eva	Holdall	Agender	3
+\.
+
+
+--
+-- Data for Name: year3_sem1; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year3_sem1 (id, rollno, subject1, subject2, subject3, subject4, total) FROM stdin;
+1	1200	61	28	77	33	199
+2	1201	84	1	24	91	200
+3	1202	17	20	32	67	136
+4	1203	50	94	46	76	266
+5	1204	81	38	86	9	214
+6	1205	53	35	64	35	187
+7	1206	94	53	98	52	297
+8	1207	22	56	24	33	135
+9	1208	55	51	7	53	166
+10	1209	20	83	85	43	231
+11	1210	27	93	12	45	177
+12	1211	52	76	55	93	276
+13	1212	29	98	64	45	236
+14	1213	48	87	70	16	221
+15	1214	50	41	41	89	221
+16	1215	75	62	79	7	223
+17	1216	59	88	49	98	294
+18	1217	16	37	43	58	154
+19	1218	80	79	14	22	195
+20	1219	4	12	4	22	42
+21	1220	52	9	25	35	121
+22	1221	89	32	96	15	232
+23	1222	94	57	73	48	272
+24	1223	40	55	58	33	186
+25	1224	30	87	73	88	278
+26	1225	4	12	79	88	183
+27	1226	20	82	60	22	184
+28	1227	56	18	66	78	218
+29	1228	23	26	16	65	130
+30	1229	2	68	56	62	188
+31	1230	62	48	45	100	255
+32	1231	88	67	13	4	172
+33	1232	81	78	87	55	301
+34	1233	96	93	97	13	299
+35	1234	21	37	39	33	130
+36	1235	52	52	57	52	213
+37	1236	90	2	59	19	170
+38	1237	56	11	18	56	141
+39	1238	90	91	100	4	285
+40	1239	100	17	66	10	193
+41	1240	71	84	8	67	230
+42	1241	77	16	28	41	162
+43	1242	81	98	95	87	361
+44	1243	43	66	61	92	262
+45	1244	70	58	91	20	239
+46	1245	20	33	68	48	169
+47	1246	28	39	55	17	139
+48	1247	94	24	4	77	199
+49	1248	28	71	94	83	276
+50	1249	23	85	73	15	196
+51	1250	48	47	68	10	173
+52	1251	42	27	81	41	191
+53	1252	54	68	100	92	314
+54	1253	74	88	50	16	228
+55	1254	59	68	97	1	225
+56	1255	67	20	14	51	152
+57	1256	4	67	51	12	134
+58	1257	17	50	7	24	98
+59	1258	63	21	67	10	161
+60	1259	68	17	56	36	177
+61	1260	51	89	76	44	260
+62	1261	76	51	46	80	253
+63	1262	92	62	64	38	256
+64	1263	30	65	25	2	122
+65	1264	61	93	40	9	203
+66	1265	53	76	47	7	183
+67	1266	21	91	31	33	176
+68	1267	80	94	70	82	326
+69	1268	76	67	53	51	247
+70	1269	29	26	13	59	127
+71	1270	35	51	1	79	166
+72	1271	26	57	18	28	129
+73	1272	54	55	93	31	233
+74	1273	88	57	62	77	284
+75	1274	37	95	18	60	210
+76	1275	43	91	18	31	183
+77	1276	15	61	42	29	147
+78	1277	23	74	83	26	206
+79	1278	75	80	80	31	266
+80	1279	59	48	12	24	143
+81	1280	14	72	59	61	206
+82	1281	70	95	10	15	190
+83	1282	28	47	10	90	175
+84	1283	39	50	68	11	168
+85	1284	53	20	7	86	166
+86	1285	9	42	50	85	186
+87	1286	92	38	93	69	292
+88	1287	47	6	6	25	84
+89	1288	67	51	56	48	222
+90	1289	54	49	31	18	152
+91	1290	44	8	77	35	164
+92	1291	81	1	80	56	218
+93	1292	10	71	32	25	138
+94	1293	9	5	22	21	57
+95	1294	37	89	80	100	306
+96	1295	55	8	65	16	144
+97	1296	73	6	16	61	156
+98	1297	39	56	5	33	133
+99	1298	40	79	93	41	253
+100	1299	36	1	40	15	92
+\.
+
+
+--
+-- Data for Name: year3_sem2; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year3_sem2 (id, rollno, subject1, subject2, subject3, subject4, total) FROM stdin;
+1	1200	89	10	68	83	250
+2	1201	41	30	41	81	193
+3	1202	71	48	59	71	249
+4	1203	6	71	19	24	120
+5	1204	30	65	69	58	222
+6	1205	9	25	58	54	146
+7	1206	70	34	76	96	276
+8	1207	20	60	2	58	140
+9	1208	63	39	12	63	177
+10	1209	78	7	88	71	244
+11	1210	13	73	10	59	155
+12	1211	8	39	37	82	166
+13	1212	65	70	39	78	252
+14	1213	66	36	88	90	280
+15	1214	1	23	18	42	84
+16	1215	52	89	69	50	260
+17	1216	31	46	21	14	112
+18	1217	42	83	77	8	210
+19	1218	51	14	52	12	129
+20	1219	90	12	89	3	194
+21	1220	69	25	42	30	166
+22	1221	69	2	92	22	185
+23	1222	84	34	80	98	296
+24	1223	32	30	8	62	132
+25	1224	22	87	38	55	202
+26	1225	23	64	16	53	156
+27	1226	88	37	68	83	276
+28	1227	27	51	52	39	169
+29	1228	65	68	88	61	282
+30	1229	57	88	16	27	188
+31	1230	32	21	80	57	190
+32	1231	22	95	89	86	292
+33	1232	19	3	100	38	160
+34	1233	95	64	76	30	265
+35	1234	14	64	95	52	225
+36	1235	44	49	12	66	171
+37	1236	30	65	66	9	170
+38	1237	27	61	6	23	117
+39	1238	38	19	77	38	172
+40	1239	39	75	52	91	257
+41	1240	33	91	98	43	265
+42	1241	79	73	59	98	309
+43	1242	64	9	53	62	188
+44	1243	56	91	83	42	272
+45	1244	32	47	42	85	206
+46	1245	61	53	97	58	269
+47	1246	2	100	25	12	139
+48	1247	34	29	23	36	122
+49	1248	78	36	4	61	179
+50	1249	70	72	73	79	294
+51	1250	29	28	21	86	164
+52	1251	44	71	30	32	177
+53	1252	1	42	16	53	112
+54	1253	27	24	43	93	187
+55	1254	36	48	5	37	126
+56	1255	94	75	96	63	328
+57	1256	43	2	87	55	187
+58	1257	44	37	63	18	162
+59	1258	45	92	34	10	181
+60	1259	76	16	31	64	187
+61	1260	73	95	78	74	320
+62	1261	30	17	74	70	191
+63	1262	30	10	29	18	87
+64	1263	75	57	70	19	221
+65	1264	30	56	71	81	238
+66	1265	95	6	12	6	119
+67	1266	100	82	4	24	210
+68	1267	86	15	66	23	190
+69	1268	40	12	41	96	189
+70	1269	16	54	79	12	161
+71	1270	6	64	71	32	173
+72	1271	23	14	26	91	154
+73	1272	50	74	3	17	144
+74	1273	95	31	12	35	173
+75	1274	44	95	98	37	274
+76	1275	51	18	7	78	154
+77	1276	28	97	32	75	232
+78	1277	59	47	41	81	228
+79	1278	55	44	53	55	207
+80	1279	11	31	97	35	174
+81	1280	11	33	20	90	154
+82	1281	75	91	37	90	293
+83	1282	41	16	30	84	171
+84	1283	37	64	35	100	236
+85	1284	28	82	4	96	210
+86	1285	63	30	22	38	153
+87	1286	41	77	1	71	190
+88	1287	65	69	59	51	244
+89	1288	49	64	88	55	256
+90	1289	44	22	86	64	216
+91	1290	56	85	29	42	212
+92	1291	41	76	62	90	269
+93	1292	49	79	53	11	192
+94	1293	10	9	16	11	46
+95	1294	56	69	36	99	260
+96	1295	11	72	66	65	214
+97	1296	50	16	81	68	215
+98	1297	55	63	79	89	286
+99	1298	73	14	80	24	191
+100	1299	15	9	83	82	189
+\.
+
+
+--
+-- Data for Name: year4_cs_2021_22; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year4_cs_2021_22 (id, rollno, first_name, last_name, gender, year) FROM stdin;
+300	1299	Royall	Goroni	Male	4
+301	1300	Gretna	Tennant	Female	4
+302	1301	Joshuah	Manthroppe	Genderqueer	4
+303	1302	Nanci	Kalewe	Genderfluid	4
+304	1303	Alicia	Fairbrother	Non-binary	4
+305	1304	Gwenneth	Ashpole	Non-binary	4
+306	1305	Locke	Roswarn	Genderfluid	4
+307	1306	Teodorico	Langfat	Agender	4
+308	1307	Rosaleen	Donson	Polygender	4
+309	1308	Andy	Trobridge	Male	4
+310	1309	Janeen	Nassy	Genderqueer	4
+311	1310	Eldin	Venart	Polygender	4
+312	1311	Anallese	Hupka	Polygender	4
+313	1312	Torry	McClymond	Non-binary	4
+314	1313	Rochella	Cardero	Agender	4
+315	1314	Mike	Durek	Genderfluid	4
+316	1315	Angel	Gyde	Bigender	4
+317	1316	Mallorie	Bondy	Genderfluid	4
+318	1317	Alistair	Yeulet	Genderfluid	4
+319	1318	Adrian	Delos	Polygender	4
+320	1319	Aldric	Thurman	Genderfluid	4
+321	1320	Hadria	Magauran	Male	4
+322	1321	Xenos	Skerratt	Non-binary	4
+323	1322	Ariel	Yablsley	Polygender	4
+324	1323	Neila	Stopp	Non-binary	4
+325	1324	Armando	Millmoe	Female	4
+326	1325	Avis	McFetrich	Non-binary	4
+327	1326	Perice	Brokenshire	Female	4
+328	1327	Savina	Bedberry	Genderfluid	4
+329	1328	Lombard	Burbury	Genderfluid	4
+330	1329	Calhoun	McIlenna	Genderfluid	4
+331	1330	Ida	Di Baudi	Female	4
+332	1331	Nicol	Aiskovitch	Male	4
+333	1332	Twila	Quesne	Genderfluid	4
+334	1333	Teodora	Mahaddy	Bigender	4
+335	1334	Ashlen	Mattholie	Bigender	4
+336	1335	Trudi	Strand	Genderqueer	4
+337	1336	Bellina	Overland	Agender	4
+338	1337	Glory	Dussy	Bigender	4
+339	1338	Tisha	Stolting	Polygender	4
+340	1339	Konstance	Gaughan	Bigender	4
+341	1340	Derrek	De Miranda	Genderqueer	4
+342	1341	Leonhard	Rahl	Genderfluid	4
+343	1342	Allix	Stuart	Genderqueer	4
+344	1343	Pancho	Matyushkin	Genderqueer	4
+345	1344	Livy	Brayfield	Female	4
+346	1345	Ada	Dunmore	Bigender	4
+347	1346	Benedikta	Cockayne	Female	4
+348	1347	Minnaminnie	Olivetta	Genderfluid	4
+349	1348	Jennine	Griston	Male	4
+350	1349	Godfry	Kift	Male	4
+351	1350	Clair	Shurmer	Male	4
+352	1351	Morgan	Mercik	Bigender	4
+353	1352	Annie	Deport	Bigender	4
+354	1353	Ancell	Hurler	Agender	4
+355	1354	Marmaduke	MacKilroe	Bigender	4
+356	1355	Ceciley	Batcock	Agender	4
+357	1356	Aigneis	Dallas	Genderfluid	4
+358	1357	Becca	Greatbanks	Bigender	4
+359	1358	Keriann	Wakes	Bigender	4
+360	1359	Jefferey	Beyer	Male	4
+361	1360	Darren	Hotson	Genderqueer	4
+362	1361	Waylin	Rowles	Bigender	4
+363	1362	Kylila	MacNeilly	Genderqueer	4
+364	1363	Teirtza	De Ambrosis	Male	4
+365	1364	Quinton	Jarad	Agender	4
+366	1365	Elonore	Addenbrooke	Polygender	4
+367	1366	Elston	Dye	Polygender	4
+368	1367	Rozina	Wollen	Agender	4
+369	1368	Tiler	Winborn	Agender	4
+370	1369	Pippa	Neame	Polygender	4
+371	1370	Dex	Hammel	Agender	4
+372	1371	Lucias	Soots	Female	4
+373	1372	Bianca	Sidlow	Polygender	4
+374	1373	Arvy	Reijmers	Genderfluid	4
+375	1374	Gerti	Widdows	Genderfluid	4
+376	1375	Colman	Drinkwater	Genderqueer	4
+377	1376	Winnie	Kirkebye	Genderfluid	4
+378	1377	Mart	Wolstencroft	Female	4
+379	1378	Steven	Hartill	Genderfluid	4
+380	1379	Nerissa	Jakubovski	Agender	4
+381	1380	Harald	Skain	Polygender	4
+382	1381	Bondie	Castiglioni	Polygender	4
+383	1382	Anna-maria	Sidary	Polygender	4
+384	1383	Dougy	Salamon	Genderqueer	4
+385	1384	Wallache	Parlott	Agender	4
+386	1385	Dru	Rabbitts	Genderqueer	4
+387	1386	Tadeo	Allmark	Genderfluid	4
+388	1387	Gabby	Pengilly	Polygender	4
+389	1388	Truda	Roose	Female	4
+390	1389	Patty	Milmith	Polygender	4
+391	1390	Colas	Spinley	Bigender	4
+392	1391	Desmund	Momery	Non-binary	4
+393	1392	Adrien	Rouch	Genderqueer	4
+394	1393	Moss	MacGown	Genderqueer	4
+395	1394	Eric	Gerrels	Agender	4
+396	1395	Demott	Vasechkin	Male	4
+397	1396	Hermione	Lesor	Male	4
+398	1397	Eolanda	Fullerd	Agender	4
+399	1398	Lilias	Chilcott	Genderfluid	4
+400	1399	Lexine	Murfin	Genderqueer	4
+\N	\N	ABCDABCD	\N	\N	\N
+\.
+
+
+--
+-- Data for Name: year4_sem1; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year4_sem1 (id, rollno, subject1, subject2, subject3, subject4, total) FROM stdin;
+1	1300	67	25	26	98	216
+2	1301	15	73	73	22	183
+3	1302	44	89	60	20	213
+4	1303	48	54	63	99	264
+5	1304	52	12	80	40	184
+6	1305	56	77	70	43	246
+7	1306	74	25	45	15	159
+8	1307	100	93	100	69	362
+9	1308	84	16	60	20	180
+10	1309	96	80	48	93	317
+11	1310	53	30	3	37	123
+12	1311	93	95	62	60	310
+13	1312	29	87	86	21	223
+14	1313	9	72	39	7	127
+15	1314	80	16	86	26	208
+16	1315	12	58	7	98	175
+17	1316	42	81	9	92	224
+18	1317	67	32	9	100	208
+19	1318	92	70	34	10	206
+20	1319	44	48	40	61	193
+21	1320	74	98	55	99	326
+22	1321	19	36	69	67	191
+23	1322	74	76	82	78	310
+24	1323	96	23	73	76	268
+25	1324	86	7	74	61	228
+26	1325	22	19	79	13	133
+27	1326	42	17	57	51	167
+28	1327	92	19	2	64	177
+29	1328	35	53	11	2	101
+30	1329	85	28	12	10	135
+31	1330	81	92	50	18	241
+32	1331	13	33	12	5	63
+33	1332	8	82	74	8	172
+34	1333	54	76	54	50	234
+35	1334	15	29	84	25	153
+36	1335	100	30	39	9	178
+37	1336	38	65	26	36	165
+38	1337	94	67	22	32	215
+39	1338	72	66	11	60	209
+40	1339	96	99	28	62	285
+41	1340	30	8	87	89	214
+42	1341	19	29	87	93	228
+43	1342	80	19	66	77	242
+44	1343	77	50	97	32	256
+45	1344	33	3	17	68	121
+46	1345	86	89	33	91	299
+47	1346	51	79	97	82	309
+48	1347	15	74	61	57	207
+49	1348	74	79	46	67	266
+50	1349	74	28	52	85	239
+51	1350	55	34	89	59	237
+52	1351	55	54	73	28	210
+53	1352	90	100	88	93	371
+54	1353	15	98	19	9	141
+55	1354	7	32	52	40	131
+56	1355	83	9	70	97	259
+57	1356	51	28	71	45	195
+58	1357	23	74	40	19	156
+59	1358	93	99	25	91	308
+60	1359	10	50	97	51	208
+61	1360	57	71	66	45	239
+62	1361	81	80	21	74	256
+63	1362	53	72	75	18	218
+64	1363	56	77	11	77	221
+65	1364	38	84	69	12	203
+66	1365	36	93	3	11	143
+67	1366	64	52	32	38	186
+68	1367	80	18	21	26	145
+69	1368	77	44	14	7	142
+70	1369	60	56	4	99	219
+71	1370	100	50	8	34	192
+72	1371	48	61	51	95	255
+73	1372	46	27	91	50	214
+74	1373	93	24	28	11	156
+75	1374	25	62	79	23	189
+76	1375	76	60	14	57	207
+77	1376	71	96	90	54	311
+78	1377	27	50	79	85	241
+79	1378	32	39	83	76	230
+80	1379	90	99	58	17	264
+81	1380	90	25	66	44	225
+82	1381	88	23	76	33	220
+83	1382	78	21	91	53	243
+84	1383	16	56	22	63	157
+85	1384	22	57	91	62	232
+86	1385	87	13	70	72	242
+87	1386	58	87	93	39	277
+88	1387	39	79	73	47	238
+89	1388	60	41	14	57	172
+90	1389	29	24	81	77	211
+91	1390	90	5	17	48	160
+92	1391	81	37	75	5	198
+93	1392	67	8	10	47	132
+94	1393	15	100	14	72	201
+95	1394	29	41	54	94	218
+96	1395	49	36	84	68	237
+97	1396	72	29	57	14	172
+98	1397	86	4	47	13	150
+99	1398	38	20	72	57	187
+100	1399	39	49	71	93	252
+\.
+
+
+--
+-- Data for Name: year4_sem2; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.year4_sem2 (id, rollno, subject1, subject2, subject3, subject4, total) FROM stdin;
+1	1300	97	70	73	62	302
+2	1301	93	62	61	88	304
+3	1302	56	46	68	8	178
+4	1303	24	39	96	60	219
+5	1304	100	98	8	77	283
+6	1305	95	19	5	47	166
+7	1306	44	40	84	90	258
+8	1307	77	28	83	31	219
+9	1308	61	17	81	74	233
+10	1309	43	9	86	21	159
+11	1310	62	90	82	42	276
+12	1311	5	42	34	72	153
+13	1312	5	83	26	50	164
+14	1313	1	81	1	26	109
+15	1314	44	84	40	39	207
+16	1315	3	85	64	26	178
+17	1316	64	44	55	34	197
+18	1317	31	93	47	83	254
+19	1318	55	23	47	58	183
+20	1319	14	24	6	61	105
+21	1320	35	36	49	77	197
+22	1321	71	22	8	39	140
+23	1322	40	1	7	62	110
+24	1323	93	65	23	33	214
+25	1324	8	79	36	96	219
+26	1325	8	74	64	46	192
+27	1326	23	87	18	50	178
+28	1327	97	14	1	1	113
+29	1328	23	19	31	90	163
+30	1329	73	57	98	26	254
+31	1330	82	82	93	97	354
+32	1331	7	17	94	67	185
+33	1332	92	4	29	29	154
+34	1333	98	47	36	79	260
+35	1334	12	71	50	38	171
+36	1335	72	49	61	88	270
+37	1336	44	72	41	72	229
+38	1337	11	90	7	90	198
+39	1338	16	60	41	56	173
+40	1339	96	45	10	74	225
+41	1340	68	99	41	17	225
+42	1341	56	20	25	9	110
+43	1342	58	90	90	38	276
+44	1343	96	37	72	44	249
+45	1344	36	77	7	60	180
+46	1345	56	14	63	5	138
+47	1346	59	14	29	27	129
+48	1347	46	12	67	54	179
+49	1348	79	20	60	4	163
+50	1349	24	1	39	14	78
+51	1350	75	25	13	37	150
+52	1351	13	88	91	88	280
+53	1352	46	22	29	84	181
+54	1353	64	39	32	49	184
+55	1354	38	3	95	46	182
+56	1355	4	15	29	9	57
+57	1356	43	59	79	12	193
+58	1357	52	1	30	60	143
+59	1358	95	34	94	18	241
+60	1359	34	77	10	4	125
+61	1360	22	5	21	7	55
+62	1361	29	48	56	52	185
+63	1362	18	97	13	36	164
+64	1363	44	8	79	85	216
+65	1364	61	37	43	64	205
+66	1365	52	37	70	12	171
+67	1366	42	68	60	62	232
+68	1367	72	24	38	83	217
+69	1368	26	13	26	11	76
+70	1369	10	74	18	75	177
+71	1370	4	67	79	87	237
+72	1371	26	7	55	4	92
+73	1372	86	59	70	67	282
+74	1373	83	4	73	7	167
+75	1374	93	55	51	18	217
+76	1375	93	25	46	47	211
+77	1376	20	69	69	4	162
+78	1377	43	67	46	53	209
+79	1378	79	76	56	69	280
+80	1379	24	14	50	10	98
+81	1380	86	68	38	48	240
+82	1381	87	40	40	68	235
+83	1382	3	76	82	37	198
+84	1383	39	85	23	45	192
+85	1384	88	99	97	6	290
+86	1385	18	59	59	53	189
+87	1386	41	10	31	23	105
+88	1387	44	18	89	27	178
+89	1388	70	71	2	33	176
+90	1389	82	87	56	39	264
+91	1390	48	50	40	89	227
+92	1391	25	28	73	6	132
+93	1392	60	21	66	56	203
+94	1393	63	70	79	67	279
+95	1394	67	44	88	56	255
+96	1395	68	6	95	15	184
+97	1396	53	71	23	13	160
+98	1397	37	88	13	90	228
+99	1398	27	7	87	8	129
+100	1399	26	42	49	87	204
+\.
+
+
+--
+-- PostgreSQL database dump complete
+--
+
