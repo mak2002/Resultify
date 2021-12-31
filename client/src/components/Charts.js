@@ -53,46 +53,10 @@ const useStyles = makeStyles({
   },
   scatter: {
     width: "50%",
+    display: "flex",
+    flexWrap: "wrap",
   },
 });
-
-/*import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
-
-ChartJS.register(ArcElement, Tooltip, Legend);
-
-export const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
-
-export function App() {
-  return <Pie data={data} />;
-}
-*/
 
 export default function Charts({ GlobalTableData }) {
   const [studentDetails, setstudentDetails] = useState([10, 20]);
@@ -104,13 +68,13 @@ export default function Charts({ GlobalTableData }) {
 
   const [totalMarks, settotalMarks] = useState();
 
-  // const [menuValueClass, setmenuValueClass] = useState("");
-  // const [menuValueSemester, setmenuValueSemester] = useState("");
   const [semester, setsemester] = useState("");
   const [classname, setclassname] = useState("");
   const [rollno, setrollno] = useState(1001);
   const [studentName, setstudentName] = useState();
   const [statsData, setstatsData] = useState([]);
+
+  var data4, data5, data6;
 
   var totalMarksList = [];
 
@@ -129,7 +93,7 @@ export default function Charts({ GlobalTableData }) {
   data3 = {
     datasets: [
       {
-        label: "A dataset",
+        label: "Subject 1 Marks",
         // data: GlobalTableData.map((marks) => (
         //   return {x: marks.rollno, y: marks.subject1}
         // ),
@@ -141,16 +105,53 @@ export default function Charts({ GlobalTableData }) {
       },
     ],
   };
+  data4 = {
+    datasets: [
+      {
+        label: "Subject 2 Marks",
+        // data: GlobalTableData.map((marks) => (
+        //   return {x: marks.rollno, y: marks.subject1}
+        // ),
+        data: GlobalTableData?.map((marks) => ({
+          x: marks.rollno,
+          y: marks.subject2,
+        })),
+        backgroundColor: "rgba(255, 99, 132, 1)",
+      },
+    ],
+  };
+  data5 = {
+    datasets: [
+      {
+        label: "Subject 3 Marks",
+        // data: GlobalTableData.map((marks) => (
+        //   return {x: marks.rollno, y: marks.subject1}
+        // ),
+        data: GlobalTableData?.map((marks) => ({
+          x: marks.rollno,
+          y: marks.subject3,
+        })),
+        backgroundColor: "rgba(255, 99, 132, 1)",
+      },
+    ],
+  };
+  data6 = {
+    datasets: [
+      {
+        label: "Subject 4 Marks",
+        // data: GlobalTableData.map((marks) => (
+        //   return {x: marks.rollno, y: marks.subject1}
+        // ),
+        data: GlobalTableData?.map((marks) => ({
+          x: marks.rollno,
+          y: marks.subject4,
+        })),
+        backgroundColor: "rgba(255, 99, 132, 1)",
+      },
+    ],
+  };
 
-  // const handleChangeClass = (e) => {
-  //   setmenuValueClass(e.target.value);
-  //   setclassname(e.target.value);
-  // };
-
-  // const handleChangeSemester = (e) => {
-  //   setmenuValueSemester(e.target.value);
-  //   setsemester(e.target.value);
-  // };
+  console.log("GlobalTableData", GlobalTableData);
 
   const handleRollNoChange = (e) => {
     setrollno(e.target.value);
@@ -178,19 +179,6 @@ export default function Charts({ GlobalTableData }) {
     setsemester(e.target.value);
     console.log("menuValueSemester", menuValueSemester);
   };
-
-  // const data = {
-  //   labels: ["Sem1", "Sem2"],
-  //   datasets: [
-  //     {
-  //       label: "# of Votes",
-  //       data: studentDetails,
-  //       fill: false,
-  //       backgroundColor: "rgb(255, 99, 132)",
-  //       borderColor: "rgba(255, 99, 132, 0.2)",
-  //     },
-  //   ],
-  // };
 
   const statsDataArray = statsData.map((stat) => {
     return stat.gender;
@@ -264,13 +252,31 @@ export default function Charts({ GlobalTableData }) {
         <MenuItem value={"sem2"}>Sem 2</MenuItem>
       </Select>
 
-      <Button onClick={handleClick}>Get Marks</Button>
+      <Button onClick={handleClick}>Visualize</Button>
 
       <Bar data={data2} height={5} width={10} className={classes.scatter} />
 
       <div className={classes.scatter}>
         <Scatter
           data={data3}
+          width={3}
+          height={3}
+          options={{ maintainAspectRatio: true }}
+        />
+        <Scatter
+          data={data4}
+          width={3}
+          height={3}
+          options={{ maintainAspectRatio: true }}
+        />
+        <Scatter
+          data={data5}
+          width={3}
+          height={3}
+          options={{ maintainAspectRatio: true }}
+        />
+        <Scatter
+          data={data6}
           width={3}
           height={3}
           options={{ maintainAspectRatio: true }}

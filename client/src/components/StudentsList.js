@@ -127,10 +127,6 @@ export default function StudentsList() {
 
   return (
     <div className={classes.root} style={{ height: 1000, width: "100%" }}>
-      <Button variant="contained" color="primary">
-        EDIT
-      </Button>
-
       <Select
         value={selectValue}
         className={classes.select}
