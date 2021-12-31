@@ -51,10 +51,25 @@ const useStyles = makeStyles({
   select: {
     minWidth: "250px",
   },
+  bar: {
+    width: "100%",
+    height: "50vh",
+    maxWidth: "80%",
+    display: "flex",
+    justifyContent: "center",
+    margin: "auto",
+  },
   scatter: {
-    width: "50%",
+    width: "20%",
+    display: "flex",
+    margin: "30px",
+  },
+  scatterWrapper: {
+    width: "100%",
+    maxWidth: "100%",
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "center",
   },
 });
 
@@ -254,33 +269,47 @@ export default function Charts({ GlobalTableData }) {
 
       <Button onClick={handleClick}>Visualize</Button>
 
-      <Bar data={data2} height={5} width={10} className={classes.scatter} />
+      <div className={classes.bar}>
+        {/* <Bar data={data2} height={5} width={10} /> */}
+        <Bar data={data2} options={{ maintainAspectRatio: false }} />
+      </div>
 
-      <div className={classes.scatter}>
-        <Scatter
-          data={data3}
-          width={3}
-          height={3}
-          options={{ maintainAspectRatio: true }}
-        />
-        <Scatter
-          data={data4}
-          width={3}
-          height={3}
-          options={{ maintainAspectRatio: true }}
-        />
-        <Scatter
-          data={data5}
-          width={3}
-          height={3}
-          options={{ maintainAspectRatio: true }}
-        />
-        <Scatter
-          data={data6}
-          width={3}
-          height={3}
-          options={{ maintainAspectRatio: true }}
-        />
+      <div className={classes.scatterWrapper}>
+        <div className={classes.scatter}>
+          <Scatter
+            data={data3}
+            width={3}
+            height={3}
+            options={{ maintainAspectRatio: true }}
+          />
+        </div>
+
+        <div className={classes.scatter}>
+          <Scatter
+            data={data4}
+            width={3}
+            height={3}
+            options={{ maintainAspectRatio: true }}
+          />
+        </div>
+
+        <div className={classes.scatter}>
+          <Scatter
+            data={data5}
+            width={3}
+            height={3}
+            options={{ maintainAspectRatio: true }}
+          />
+        </div>
+
+        <div className={classes.scatter}>
+          <Scatter
+            data={data6}
+            width={3}
+            height={3}
+            options={{ maintainAspectRatio: true }}
+          />
+        </div>
       </div>
     </div>
   );
