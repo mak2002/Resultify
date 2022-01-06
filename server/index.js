@@ -4,6 +4,7 @@ const pool = require("./db");
 const cors = require("cors");
 const csv = require("csv-parser");
 const fs = require("fs");
+var format = require("pg-format");
 const results = [];
 
 app.use(express.json());
@@ -15,23 +16,21 @@ var todo_name = "todo_4";
 var query_statement =
   "INSERT INTO " + todo_name + "(description) VALUES ($1) RETURNING *";
 
-var query_statement1 =
-  "SELECT table_name FROM information_schema.tables WHERE table_schema=" +
-  "'public'" +
-  "AND table_type=" +
-  "'BASE TABLE';";
+// var query_statement1 =
+//   "SELECT table_name FROM information_schema.tables WHERE table_schema=" +
+//   "'public'" +
+//   "AND table_type=" +
+//   "'BASE TABLE';";
 
 app.get("/students_list", async (req, res) => {
   try {
     const { description } = req.body;
-    // console.log();
-    // console.log('studentYear',req.query.studentYear)
 
-    // const newTodo = await pool.query(query_statement, [description]);
-    student_list_query = "SELECT * FROM " + req.query.studentYear;
+    student_list_query = format("SELECT * FROM %I", req.query.studentYear);
+
     const newTodo = await pool.query(student_list_query);
 
-    req.body.studentYear && console.log("req paramas : ", req.body.studentYear);
+    console.log("Student List Query : ", student_list_query);
     res.json(newTodo);
   } catch (err) {
     console.log(err.message);
@@ -52,40 +51,38 @@ app.put("/update_list", async (req, res) => {
     selectValue
   );
 
-  var update_list_query =
-    "UPDATE " +
-    selectValue +
-    // " SET first_name = ($1) WHERE rollno = ($2);";
-    " SET first_name = ($1), last_name = ($2), gender = ($3), year = ($4) WHERE rollno = ($5);";
-
-  pool.query(
-    update_list_query,
-    [
-      // rollno,
-      first_name,
-      last_name,
-      gender,
-      year,
-      rollno,
-    ],
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(result);
-      }
-    }
+  let update_list_query = format(
+    "UPDATE %I  SET first_name = %L, last_name = %L, gender = %L, year = %L WHERE rollno = %L",
+    selectValue,
+    first_name,
+    last_name,
+    gender,
+    year,
+    rollno
   );
+  console.log("Update Query: " + update_list_query);
 
-  //{name: 'name', rollno: '1234', class: 'class', prn: '1234'}
+  pool.query(update_list_query, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
 });
 
+// list options for select menu from database
 app.get("/list_options", async (req, res) => {
   try {
-    // const options = await pool.query('SELECT table_name FROM information_schema.tables WHERE table_schema='+'public'+ ' AND table_type='+'BASE TABLE'+'')
+    let query_statement1 = format(
+      "SELECT table_name FROM information_schema.tables WHERE table_schema= %L AND table_type= %L;",
+      "public",
+      "BASE TABLE"
+    );
+
+    console.log("query_statement1: ", query_statement1);
 
     const options = await pool.query(query_statement1);
-    // const options = await pool.query("");
 
     res.json(options.rows);
   } catch (error) {
@@ -152,11 +149,10 @@ app.put("/upload_csv", (req, res) => {
 });
 
 app.get("/getmarks", (req, res) => {
-  student_marks_query =
-    "SELECT * FROM " +
-    req.query.menuValueClass +
-    "_" +
-    req.query.menuValueSemester;
+  let tableName = req.query.menuValueClass + "_" + req.query.menuValueSemester;
+
+  student_marks_query = format("SELECT * FROM %I", tableName);
+  console.log("student_marks_query: ", student_marks_query);
 
   pool.query(student_marks_query, [], (err, result) => {
     if (err) {
@@ -168,14 +164,22 @@ app.get("/getmarks", (req, res) => {
 });
 
 app.get("/studentMarks", (req, res) => {
-  one_student_marks =
-    "SELECT * FROM " +
-    req.query.menuValueClass +
-    "_" +
-    req.query.menuValueSemester +
-    " WHERE rollno = '" +
-    req.query.rollno +
-    "';";
+  // one_student_marks =
+  //   "SELECT * FROM " +
+  //   req.query.menuValueClass +
+  //   "_" +
+  //   req.query.menuValueSemester +
+  //   " WHERE rollno = '" +
+  //   req.query.rollno +
+  //   "';";
+
+  let table_name = req.query.menuValueClass + "_" + req.query.menuValueSemester;
+
+  one_student_marks = format(
+    "SELECT * FROM %I WHERE rollno = %L",
+    table_name,
+    req.query.rollno
+  );
 
   console.log("one_student_marks", one_student_marks);
 
@@ -199,17 +203,22 @@ app.post("/addStudent", (req, res) => {
     menuValueSemester,
   } = req.body;
   // " SET first_name = ($1), last_name = ($2), gender = ($3), year = ($4) WHERE rollno = ($5);";
-  add_student_query =
-    "INSERT INTO " +
-    menuValueYear +
-    "_cs_2021_22 " +
-    "( id, first_name, last_name, rollno, year) VALUES (($1), ($2), ($3), ($4), ($5));";
 
-  console.log("add_student_query", add_student_query);
+  // add_student_query =
+  //   "INSERT INTO " +
+  //   menuValueYear +
+  //   "_cs_2021_22 " +
+  //   "( id, first_name, last_name, rollno, year) VALUES (($1), ($2), ($3), ($4), ($5));";
+
+    let table_name = menuValueYear + "_cs_2021_22 "
+    //%s, %s, %s, %s, %s
+
+    let add_student_query = ("INSERT INTO %I ( id, first_name, last_name, rollno, year) VALUES (%L, %L, %L, %L, %L)", table_name, id, firstName, lastName, rollno, year)
+
+  console.log("add_student_query: ", table_name);
 
   pool.query(
     add_student_query,
-    [id, firstName, lastName, rollno, year],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -239,7 +248,7 @@ app.get("/stats", (req, res) => {
   // stats_query = "SELECT ($1) FROM " + tableNameStats;
 
   // returns array of objects
-  stats_query = "SELECT " + gender +  ` FROM ${tableNameStats}`;
+  stats_query = "SELECT " + gender + ` FROM ${tableNameStats}`;
   console.log("stats_query: ", stats_query);
   pool.query(stats_query, [], (err, results) => {
     if (err) {
