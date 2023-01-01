@@ -1,5 +1,5 @@
-# Resultify
-## (Student Result management App)
+# Resultify :books:
+## (Student Result management App )
 
 ### This app helps to manage the students' List as well as their results.
 
