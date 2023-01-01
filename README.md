@@ -1,5 +1,5 @@
 # Resultify
-## (A full stack app used to manage students’ results)
+## (Student Result management App)
 
 ### This app helps to manage the students' List as well as their results.
 
